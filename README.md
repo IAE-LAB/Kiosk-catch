@@ -13,9 +13,9 @@ SDK API 28로 하면 에뮬레이터도 같은 API LEVEL로 설정하기
     $ npm install --global yarn
     $ yarn --version
 6. React Native CLI 설치
-    # 설치
+    #설치
     $ npm install -g react-native-cli
-    # 버전확인
+    #버전확인
     $ react-native --version
     
 7. React-Native 신규 프로젝트 생성
@@ -26,8 +26,8 @@ SDK API 28로 하면 에뮬레이터도 같은 API LEVEL로 설정하기
     3) 파일에 내용 입력
 
         sdk.dir=C\:\\Users\\UserName\\AppData\\Local\\Android\\sdk
-        # 위치는 2번의 Android SDK Location과 동일
-        # sdk.dir=C\:\\Users\\nyang\\AppData\\Local\\Android\\Sdk`
+        #위치는 2번의 Android SDK Location과 동일
+        #sdk.dir=C\:\\Users\\nyang\\AppData\\Local\\Android\\Sdk`
 
 
 ---
