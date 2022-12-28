@@ -13,6 +13,7 @@ const App = () =>{
                     <Text>키오스크 이용방법 배우기</Text>
                 </TouchableOpacity>
             
+                
             </View> */}
         </ImageBackground>
     );
