@@ -1,14 +1,17 @@
 import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import * as React from 'react';
+import 'react-native-gesture-handler';
 
-function Tutorial_1() {
+function Tutorial_1({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.h1_container}>
         <Text style={styles.h1}>🤗 키오스크 배워보기</Text>
       </View>
       {/* 일반적인 좌우구조 키오스크 배우기 버튼 */}
-      <TouchableOpacity style={styles.btn}>
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => navigation.navigate('Tutorial_LRkiosk_list')}>
         <Image
           source={require('KioskCatch/assets/img/tutorial_1/kiosk_icon_1.png')}
           style={styles.btnImage}
@@ -20,8 +23,10 @@ function Tutorial_1() {
           <Text style={styles.btn_text_2}>배우기</Text>
         </View>
       </TouchableOpacity>
-      {/* 일반적인 좌우구조 키오스크 배우기 버튼 */}
-      <TouchableOpacity style={styles.btn}>
+      {/* 통합구조 키오스크 배우기 버튼 */}
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => navigation.navigate('Tutorial_CBkiosk_list')}>
         <Image
           source={require('KioskCatch/assets/img/tutorial_1/kiosk_icon_2.png')}
           style={styles.btnImage}
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
   },
   h1: {
     fontFamily: 'NanumSquare_acEB',
-    fontSize: 30,
+    fontSize: 25,
     color: 'black',
     marginBottom: 2,
   },
