@@ -7,8 +7,8 @@
 3. Android Studio 설치
 4. Android Studio SDK 환경변수 설정
 - jdk 설치 후 JAVA_HOME 환경변수 설정이 되어있는지 확인
-자바 설치할때 15로 설치하기
-SDK API 28로 하면 에뮬레이터도 같은 API LEVEL로 설정하기
+자바 설치할때 15(자바 11이상)로 설치하기
+SDK API 31로 하면 에뮬레이터도 같은 API LEVEL로 설정하기
 5. yarn 설치
     $ npm install --global yarn
     $ yarn --version
