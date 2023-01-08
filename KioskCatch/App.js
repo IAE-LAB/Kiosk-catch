@@ -8,6 +8,9 @@ import Tutorial_LRkiosk_list from './src/screens/Tutorial_LRkiosk_list';
 import Tutorial_CBkiosk_list from './src/screens/Tutorial_CBkiosk_list';
 import LR_Kiosk from './src/screens/LR_Kiosk';
 import CB_Kiosk from './src/screens/CB_Kiosk';
+import LR_Kiosk_explore from './src/screens/LR_Kiosk_explore';
+import LR_Kiosk_explore_category from './src/screens/LR_Kiosk_explore_category';
+import LR_Kiosk_explore_menu from './src/screens/LR_Kiosk_explore_menu';
 
 const Stack = createStackNavigator();
 
@@ -61,6 +64,39 @@ function App() {
             component={LR_Kiosk}
             options={{
               title: '시작단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="LR_Kiosk_explore"
+            component={LR_Kiosk_explore}
+            options={{
+              title: '탐색단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="LR_Kiosk_explore_category"
+            component={LR_Kiosk_explore_category}
+            options={{
+              title: '탐색단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="LR_Kiosk_explore_menu"
+            component={LR_Kiosk_explore_menu}
+            options={{
+              title: '탐색단계',
               headerTitleStyle: {
                 fontWeight: 'bold',
                 fontSize: 20,
