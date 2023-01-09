@@ -22,7 +22,7 @@ export default function LR_Kiosk({navigation, route}) {
 
         <TouchableOpacity
           style={styles.background}
-          onPress={() => navigation.navigate('LR_Kiosk_Explore')}>
+          onPress={() => navigation.navigate('LR_Kiosk_explore_tutorial_1')}>
           <View style={styles.btn}>
             <View style={{flexDirection: 'row', marginBottom: 10}}>
               <Text style={styles.btn_text}>"</Text>

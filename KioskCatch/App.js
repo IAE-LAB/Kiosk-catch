@@ -16,6 +16,7 @@ import LR_Kiosk from './src/screens/LR_Kiosk';
 import CB_Kiosk from './src/screens/CB_Kiosk';
 
 import CB_Kiosk_Start from './src/screens/CB_Kiosk/CB_Kiosk_Start';
+import CB_Kiosk_Explore from './src/screens/CB_Kiosk/CB_Kiosk_Explore';
 
 import LR_Kiosk_Start from './src/screens/LR_Kiosk/LR_Kiosk_Start';
 import LR_Kiosk_Explore from './src/screens/LR_Kiosk/LR_Kiosk_Explore';
@@ -40,16 +41,16 @@ function App() {
         />
         <Stack.Group>
           <Stack.Screen
-              name="Kiosk_practical"
-              component={Kiosk_practical}
-              options={{
-                title: '실전 키오스크 이용하기',
-                headerTitleStyle: {
-                  fontWeight: 'bold',
-                  fontSize: 20,
-                },
-              }}
-            />
+            name="Kiosk_practical"
+            component={Kiosk_practical}
+            options={{
+              title: '실전 키오스크 이용하기',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
           <Stack.Screen
             name="Kiosk_difficulty_high"
             component={Kiosk_difficulty_high}
@@ -250,6 +251,17 @@ function App() {
             component={CB_Kiosk_Start}
             options={{
               title: '시작단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Explore"
+            component={CB_Kiosk_Explore}
+            options={{
+              title: '탐색단계',
               headerTitleStyle: {
                 fontWeight: 'bold',
                 fontSize: 20,
