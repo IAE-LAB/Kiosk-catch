@@ -18,9 +18,9 @@ function Tutorial_1({navigation}) {
         />
         <View style={{flexDirection: 'column'}}>
           <Text style={styles.btn_text}>일반적인</Text>
-          <Text style={styles.btn_text}>좌우구조</Text>
+          <Text style={[styles.btn_text, {color: '#005D2E'}]}>좌우 구조</Text>
           <Text style={styles.btn_text_2}>키오스크</Text>
-          <Text style={styles.btn_text_2}>배우기</Text>
+          <Text style={styles.btn_text_2}>배워보기</Text>
         </View>
       </TouchableOpacity>
       {/* 통합구조 키오스크 배우기 버튼 */}
@@ -32,9 +32,9 @@ function Tutorial_1({navigation}) {
           style={styles.btnImage}
         />
         <View style={{flexDirection: 'column'}}>
-          <Text style={styles.btn_text}>통합구조</Text>
+          <Text style={[styles.btn_text, {color: '#E02649'}]}>통합 구조</Text>
           <Text style={styles.btn_text_2}>키오스크</Text>
-          <Text style={styles.btn_text_2}>배우기</Text>
+          <Text style={styles.btn_text_2}>배워보기</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderBottomColor: '#FFC000',
     borderBottomWidth: 2,
-    marginBottom: 20,
+    marginBottom: 30,
   },
   h1: {
     fontFamily: 'NanumSquare_acEB',
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     height: 211,
     width: '100%',
     borderRadius: 17,
-    marginBottom: 20,
+    marginBottom: 30,
     elevation: 10,
   },
   btnImage: {

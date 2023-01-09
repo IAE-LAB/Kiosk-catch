@@ -31,8 +31,7 @@ export default function LR_Kiosk_explore_menu({navigation}) {
             <View style={styles.menu}>
                 <TouchableOpacity
                     style={styles.menuBtn}
-                    /*onPress={() => this.setState({open: true})}*/
-                    >
+                    onPress={() => navigation.navigate('LR_Kiosk_explore_option')}>
                     <Image
                         source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.jpg')}
                         style={styles.menuImage}>

@@ -8,11 +8,11 @@ export default function LR_Kiosk_explore_category({navigation}) {
     return (
         <View style={styles.contents}>
             <Image
-                source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
+                source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')} 
                 style={styles.bgImage}>
             </Image>
             <View style={styles.category}>
-                <TouchableOpacity onPress={() => navigation.navigate('LR_Kiosk_explore')}>
+                <TouchableOpacity onPress={() => navigation.navigate('LR_Kiosk_explore_tutorial_2')}>
                     <Icon_FontAwesome name="angle-left" size={40} style={styles.category_icon} />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.categoryBtn}>

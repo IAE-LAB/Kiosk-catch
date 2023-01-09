@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 function Main({navigation}) {
-  console.log('navigation ' + navigation);
+  // console.log('navigation ' + navigation);
   return (
     <ImageBackground
       source={require('KioskCatch/assets/img/main/background.png')}
@@ -45,7 +45,9 @@ function Main({navigation}) {
           </View>
         </TouchableOpacity>
         {/* 키오스크 시뮬레이션 버튼 */}
-        <TouchableOpacity style={[styles.btn, {borderColor: '#EF6F5D'}]}>
+        <TouchableOpacity
+          style={[styles.btn, {borderColor: '#EF6F5D'}]}
+          onPress={() => navigation.navigate('Kiosk_practical')}>
           <Image
             source={require('KioskCatch/assets/img/main/simulation_icon.png')}
             style={styles.btnImage2}
