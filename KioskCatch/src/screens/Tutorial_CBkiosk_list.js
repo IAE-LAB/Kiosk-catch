@@ -155,7 +155,7 @@ export default function Tutorial_CBkiosk_list({navigation}) {
         <TouchableOpacity
           style={styles.btn}
           onPress={() =>
-            navigation.navigate('CB_Kiosk_Start', {
+            navigation.navigate('LR_Kiosk_Start', {
               state: KioskState.stage[0],
             })
           }>

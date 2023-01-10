@@ -70,7 +70,7 @@ const TutorialScreen = props => {
       style={styles.blackImg}>
       <TouchableOpacity
         style={styles.tutorial_contents}
-        onPress={() => navigation.navigate('LR_Kiosk_explore')}>
+        onPress={() => navigation.navigate('LR_Kiosk_Explore')}>
         <View
           style={{borderWidth: 1, borderColor: 'black', top: props.offsetY}}>
           <View style={[styles.taskBox]}>
