@@ -36,7 +36,7 @@ export default function LR_Kiosk_explore_category({navigation}) {
             {/* 메뉴 */}
             <View style={styles.menu}>
                 <View style={styles.menuRow}>
-                    <TouchableOpacity style={styles.menuBtn}>
+                    <TouchableOpacity style={styles.menuBtn} onPress={() => navigation.navigate('Kiosk_update')}>
                         <Image
                             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_cho_ic.jpg')}
                             style={styles.menuImage}>
@@ -47,7 +47,7 @@ export default function LR_Kiosk_explore_category({navigation}) {
                             <Text style={styles.menuTxt_highlight}>3,200</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.menuBtn}>
+                    <TouchableOpacity style={styles.menuBtn} onPress={() => navigation.navigate('Kiosk_update')}>
                         <Image
                             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_straw_ic.jpg')}
                             style={styles.menuImage}>
@@ -113,8 +113,8 @@ export default function LR_Kiosk_explore_category({navigation}) {
                     <Text style={styles.LR_text}>이전</Text>
                 </TouchableOpacity>
                 <View style={styles.circle}>
-                    <View style={styles.circle1} />
-                    <View style={styles.circle2} />
+                    <Icon_FontAwesome name="circle" size={10} style={styles.circle_icon} />
+                    <Icon_FontAwesome name="circle-thin" size={10} style={styles.circle_icon} />
                 </View>
                 <TouchableOpacity
                     style={styles.LR_btn}>
@@ -136,12 +136,13 @@ export default function LR_Kiosk_explore_category({navigation}) {
             </View>
             <View style={styles.orderList}>
                 <View style={styles.orderInfo}>
-                    <Text style={styles.order_text}></Text>
+                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
                 </View>
-                <View style={styles.line}>
-                    <View style={styles.line1} />
-                    <View style={styles.line1} />
-                    <View style={styles.line1} />
+                <View style={styles.orderInfo}>
+                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
+                </View>
+                <View style={styles.orderInfo}>
+                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
                 </View>
             </View>
             <View style={styles.orderList_icon}>
@@ -305,7 +306,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         alignItems: 'center',
         justifyContent: 'center',
-        marginHorizontal: 33,
+        marginHorizontal: -29,
     },
     LR_text: {
         fontFamily: 'NanumSquare_acEB',
@@ -314,25 +315,12 @@ const styles = StyleSheet.create({
     },
     circle: {
         flexDirection: 'row',
-        height: '300%',
-        width: '23%',
         alignItems: 'center',
         justifyContent: 'center',
     },
-    circle1: {
-        height: '10%',
-        width: '10%',
-        //backgroundColor: '#005D2E',
-        borderRadius: 10,
-        marginRight: 5,
-    },
-    circle2: {
-        height: '10%',
-        width: '10%',
-        backgroundColor: 'white',
-        //borderWidth: 1,
-        borderColor: '#005D2E',
-        borderRadius: 10,
+    circle_icon: {
+        color: 'white',
+        marginHorizontal: 2,
     },
     cart: {
         backgroundColor: '#654F43',
@@ -356,44 +344,42 @@ const styles = StyleSheet.create({
     },
     orderList: {
         flexDirection: 'column',
-        height: '4.4%',
-        width: '100%',
-        //alignItems: 'center',
-        marginTop: 6,
-        //justifyContent: 'space-between',
+        height: '14%',
+        width: '89%',
+        justifyContent: 'space-evenly',
+        //backgroundColor: 'red',
+    },
+    orderInfo: {
+        backgroundColor: 'white',
+        width: '97%',
+        height: '30%',
+        justifyContent: 'center',
+        borderBottomColor: '#B8B8B8',
+        borderBottomWidth: 2,
+        marginLeft: 10,
     },
     order_text: {
         fontFamily: 'NanumSquare_acB',
         fontSize: 18,
         color: 'black',
-        marginLeft: 18,
-    },
-    line: {
-        width: '100%',
-        height: '200%',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-    },
-    line1: {
-        marginLeft: 13,
-        backgroundColor: '#B8B8B8',
-        height: '3%',
-        width: '85%',
+        marginLeft: 7,
     },
     orderList_icon: {
-        width: '189%',
-        marginTop: -23,
+        width: '11%',
+        marginLeft: 349.5,
+        height: '13.95%',
+        marginTop: -94.9,
         color: '#B8B8B8',
         alignItems: 'center',
         justifyContent: 'center',
+        //backgroundColor: 'blue',
     },
     footer: {
         flexDirection: 'row',
         width: '100%',
-        height: '10%',
-        marginTop: -5,
-        alignItems: 'center',
+        height: '5.5%',
         justifyContent: 'space-between',
+        //backgroundColor: 'black',
     },
     backBtn: {
         backgroundColor: 'white',
@@ -402,7 +388,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '32.7%',
-        height: '55%',
+        //height: '55%',
     },
     cancelBtn: {
         backgroundColor: 'white',
@@ -411,13 +397,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '32.7%',
-        height: '55%',
+        //height: '55%',
     },
     paymentBtn: {
         backgroundColor: '#3D3D4F',
         alignItems: 'center',
         justifyContent: 'center',
         width: '32.7%',
-        height: '55%',
+        //height: '55%',
     },
 })

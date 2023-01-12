@@ -37,6 +37,7 @@ import LR_Kiosk_explore_menu from './src/screens/danbi/LR_Kiosk_explore_menu';
 import LR_Kiosk_explore_option from './src/screens/danbi/LR_Kiosk_explore_option';
 import LR_Kiosk_explore_tutorial_1 from './src/screens/danbi/LR_Kiosk_explore_tutorial_1';
 import LR_Kiosk_explore_tutorial_2 from './src/screens/danbi/LR_Kiosk_explore_tutorial_2';
+import Kiosk_update from './src/screens/danbi/Kiosk_update';
 
 const Stack = createStackNavigator();
 
@@ -141,6 +142,22 @@ function App() {
             }}
           />
         </Stack.Group>
+
+        {/* 업데이트 예정 화면 */}
+        <Stack.Group>
+          <Stack.Screen
+            name="Kiosk_update"
+            component={Kiosk_update}
+            options={{
+              title: '탐색단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+        </Stack.Group>
+
         <Stack.Group>
           {/* 새로 제작 */}
           <Stack.Screen

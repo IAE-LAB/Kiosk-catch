@@ -7,11 +7,13 @@ import {Text, View, Image, StyleSheet, TouchableOpacity, } from 'react-native';
 export default function LR_Kiosk_explore_option({navigation}) {
     return (
         <View style={styles.contents}>
+            {/* 좌우구조 상단 배경사진 */}
             <Image
                 source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
                 style={styles.bgImage}>
             </Image>
 
+            {/* 카테고리 */}
             <View style={styles.category}>
                 <TouchableOpacity>
                     <Icon_FontAwesome name="angle-left" size={40} style={styles.category_icon} />
@@ -30,44 +32,98 @@ export default function LR_Kiosk_explore_option({navigation}) {
                 </TouchableOpacity>
             </View>
 
+            {/* 메뉴 */}
             <View style={styles.menu}>
-                <TouchableOpacity style={styles.menuBtn}>
-                    <Image
-                        source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.jpg')}
-                        style={styles.menuImage}>
-                    </Image>
-                    <View style={{flexDirection: 'column'}}>
-                        <Text style={styles.menuTxt}>말차라떼   </Text>
-                        <Text style={styles.menuTxt_highlight}>2,500</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuBtn}>
-                    <Image
-                        source={require('KioskCatch/assets/img/digital_cafe_menu/cold.jpg')}
-                        style={styles.menuImage}>
-                    </Image>
-                    <View style={{flexDirection: 'column'}}>
-                        <Text style={styles.menuTxt}>콜드브루   </Text>
-                        <Text style={styles.menuTxt_highlight}>2,500</Text>
-                    </View>
-                </TouchableOpacity>
+                <View style={styles.menuRow}>
+                    <TouchableOpacity
+                        style={styles.menuBtn}
+                        onPress={() => navigation.navigate('LR_Kiosk_explore_option')}
+                        >
+                        <Image
+                            source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt}>말차라떼   </Text>
+                            <Text style={styles.menuTxt_highlight}>2,500</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.menuBtn}>
+                        <Image
+                            source={require('KioskCatch/assets/img/digital_cafe_menu/cold.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt}>콜드브루   </Text>
+                            <Text style={styles.menuTxt_highlight}>2,500</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.menuRow}>
+                    <TouchableOpacity style={styles.menuBtn_2}>
+                        <Image
+                            //source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso_conpa.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt_2}>에스프레소</Text>
+                            <Text style={styles.menuTxt_2}>콘파냐</Text>
+                            <Text style={styles.menuTxt_highlight_2}>2,000</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.menuBtn_2}>
+                        <Image
+                            //source={require('KioskCatch/assets/img/digital_cafe_menu/digital_caramel_latte.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt_2}>카라멜</Text>
+                            <Text style={styles.menuTxt_2}>카페라떼   </Text>
+                            <Text style={styles.menuTxt_highlight_2}>2,500</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.menuRow}>
+                    <TouchableOpacity style={styles.menuBtn_2}>
+                        <Image
+                            //source={require('KioskCatch/assets/img/digital_cafe_menu/digital_carameo_moca.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt_2}>카라멜모카</Text>
+                            <Text style={styles.menuTxt_highlight_2}>2,500</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.menuBtn_2}>
+                        <Image
+                            //source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt_2}>에스프레소</Text>
+                            <Text style={styles.menuTxt_highlight_2}>1,500</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </View>
 
+            {/* 이전&다음 버튼 */}
             <View style={styles.menu_LR}>
                 <TouchableOpacity
                     style={styles.LR_btn}
                     onPress={() => navigation.navigate('LR_Kiosk_explore')}>
                     <Text style={styles.LR_text}>이전</Text>
                 </TouchableOpacity>
-                <View style={styles.circle1} />
-                <View style={styles.circle2} />
-                <TouchableOpacity
-                    style={styles.LR_btn}
-                    onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}>
+                <View style={styles.circle}>
+                    <Icon_FontAwesome name="circle-thin" size={10} style={styles.circle_icon} />
+                    <Icon_FontAwesome name="circle" size={10} style={styles.circle_icon} />
+                </View>
+                <TouchableOpacity style={styles.LR_btn}>
                     <Text style={styles.LR_text}>다음</Text>
                 </TouchableOpacity>
             </View>
 
+            {/* 장바구니 */}
             <View style={styles.cart}>
                 <View style={styles.cartInfo}>
                     <Text style={styles.cart_text}>총주문내역</Text>
@@ -79,25 +135,26 @@ export default function LR_Kiosk_explore_option({navigation}) {
                     <Text style={styles.cart_text}>0</Text>
                 </View>
             </View>
-
             <View style={styles.orderList}>
                 <View style={styles.orderInfo}>
-                    <Text style={styles.order_text}></Text>
+                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
                 </View>
-                <View style={styles.line1} />
-                <View style={styles.line2} />
-                <View style={styles.line3} />
-                <TouchableOpacity>
-                    <Icon_AntDesign name="up-square-o" size={35} style={{position: 'absolute', top: -20, left: 353, color: '#B8B8B8'}} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Icon_AntDesign name="down-square-o" size={35} style={{position: 'absolute', top: 20, left: 353, color: '#B8B8B8'}} />
-                </TouchableOpacity>
+                <View style={styles.orderInfo}>
+                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
+                </View>
+                <View style={styles.orderInfo}>
+                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
+                </View>
+            </View>
+            <View style={styles.orderList_icon}>
+                <Icon_AntDesign name="up-square-o" size={35} style={{color: '#B8B8B8'}}/>
+                <Icon_AntDesign name="down-square-o" size={35} style={{color: '#B8B8B8'}}/>
             </View>
 
+            {/* 하단 버튼 */}
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.backBtn}>
-                    <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: '#BABABA',}}>이전</Text>
+                    <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: '#BABABA', }}>이전</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.cancelBtn}>
                     <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: '#3D3D4F',}}>취소하기</Text>
@@ -106,6 +163,7 @@ export default function LR_Kiosk_explore_option({navigation}) {
                     <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: 'white',}}>결제하기</Text>
                 </TouchableOpacity>
             </View>
+
 
             {/*팝업 화면*/}
             <View style={styles.overlay}>
@@ -121,13 +179,17 @@ export default function LR_Kiosk_explore_option({navigation}) {
 
                         {/*온도 선택*/}
                         <View style={styles.optionTemperature}>
-                            <TouchableOpacity style={styles.temperatureBtn}>
+                            <TouchableOpacity
+                                style={styles.temperatureBtn}
+                                onPress={() => navigation.navigate('Kiosk_update')}>
                                 <Image
                                     source={require('KioskCatch/assets/img/LR_kiosk/coffee-cup_hot.png')}
                                     style={styles.optionImage_hot} />
                                 <Text style={styles.temperature_text}>HOT</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.temperatureBtn}>
+                            <TouchableOpacity
+                                style={styles.temperatureBtn}
+                                onPress={() => navigation.navigate('Kiosk_update')}>
                                 <Image
                                     source={require('KioskCatch/assets/img/LR_kiosk/iced-coffee_ice.png')}
                                     style={styles.optionImage_ice} />
@@ -137,21 +199,27 @@ export default function LR_Kiosk_explore_option({navigation}) {
 
                         {/*사이즈 선택*/}
                         <View style={styles.optionSize}>
-                            <TouchableOpacity style={styles.sizeBtn}>
+                            <TouchableOpacity
+                                style={styles.sizeBtn}
+                                onPress={() => navigation.navigate('Kiosk_update')}>
                                 <Image
                                     source={require('KioskCatch/assets/img/LR_kiosk/cup_size_s.png')}
                                     style={styles.optionImage_size_1} />
                                 <Text style={styles.size_text_1}>스몰</Text>
                                 <Text style={styles.size_text_2}>5,700</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.sizeBtn}>
+                            <TouchableOpacity
+                                style={styles.sizeBtn}
+                                onPress={() => navigation.navigate('Kiosk_update')}>
                                 <Image
                                     source={require('KioskCatch/assets/img/LR_kiosk/cup_size_m.png')}
                                     style={styles.optionImage_size_2} />
                                 <Text style={styles.size_text_1}>레귤러</Text>
                                 <Text style={styles.size_text_2}>6,200</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.sizeBtn}>
+                            <TouchableOpacity
+                                style={styles.sizeBtn}
+                                onPress={() => navigation.navigate('Kiosk_update')}>
                                 <Image
                                     source={require('KioskCatch/assets/img/LR_kiosk/cup_size_l.png')}
                                     style={styles.optionImage_size_3} />
@@ -160,14 +228,16 @@ export default function LR_Kiosk_explore_option({navigation}) {
                             </TouchableOpacity>
                         </View>
 
-                        {/*취소/선택 버튼*/}
+                        {/* 취소&선택 버튼 */}
                         <View style={styles.optionBtn}>
                             <TouchableOpacity
                                 style={styles.selectBtn_1}
                                 onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}>
                                 <Text style={styles.cancel_text}>취소하기</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.selectBtn_2}>
+                            <TouchableOpacity
+                                style={styles.selectBtn_2}
+                                onPress={() => navigation.navigate('Kiosk_update')}>
                                 <Text style={styles.select_text}>선택완료</Text>
                             </TouchableOpacity>
                         </View>
@@ -181,15 +251,17 @@ export default function LR_Kiosk_explore_option({navigation}) {
 const styles = StyleSheet.create({
     contents: {
         flex: 1,
+        width: '100%',
+        height: '100%',
         backgroundColor: 'white',
     },
     bgImage: {
         width: '100%',
-        height: 110,
+        height: '16.1%',
     },
     category: {
         width: '100%',
-        height: 40,
+        height: '5.9%',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#005D2E',
@@ -201,9 +273,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    category_icon_2: {
+        color: '#005D2E',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     categoryBtn1: {
-        width: 100,
-        height: 40,
+        width: '25.5%',
+        height: '100%',
         backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
@@ -217,8 +294,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     categoryBtn2: {
-        width: 100,
-        height: 40,
+        width: '25.5%',
+        height: '100%',
         backgroundColor: '#005D2E',
         alignItems: 'center',
         justifyContent: 'center',
@@ -232,11 +309,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     menu: {
+        width: '100%',
+        height: '44.6%',
+        backgroundColor: 'white',
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        marginTop: 3,
+    },
+    menuRow: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        marginHorizontal: 10,
-        marginTop: 12,
-        height: 294,
+        marginTop: 8,
+        height: '30%',
+        width: '90%',
     },
     menuBtn: {
         flexDirection: 'row',
@@ -245,16 +331,27 @@ const styles = StyleSheet.create({
         borderColor: '#F0F0F0',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 90,
-        width: 170,
         borderRadius: 10,
         elevation: 10,
+        marginHorizontal: 15,
+    },
+    menuBtn_2: {
+        flexDirection: 'row',
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+        //elevation: 10,
+        marginHorizontal: 15,
     },
     menuImage: {
-        width: 55,
-        height: 70,
+        width: '25%',
+        height: '70%',
         marginRight: 10,
         resizeMode: 'contain',
+        zIndex: -1,
     },
     menuTxt: {
         fontFamily: 'NanumSquare_acB',
@@ -266,49 +363,51 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: 'black',
     },
+    menuTxt_2: {
+        fontFamily: 'NanumSquare_acB',
+        fontSize: 18,
+        color: 'white',
+    },
+    menuTxt_highlight_2: {
+        fontFamily: 'NanumSquare_acEB',
+        fontSize: 18,
+        color: 'white',
+    },
     menu_LR: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
         marginTop: 15,
-        marginHorizontal: 20,
+        width: '100%',
+        height: '4.5%',
+        justifyContent: 'space-around',
+        alignItems: 'center',
     },
     LR_btn: {
         backgroundColor: '#D3CBC0',
-        height: 30,
-        width: 95,
+        width: '25%',
+        height: '100%',
         borderRadius: 30,
         alignItems: 'center',
         justifyContent: 'center',
+        marginHorizontal: -29,
     },
     LR_text: {
         fontFamily: 'NanumSquare_acEB',
         fontSize: 18,
         color: 'black',
     },
-    circle1: {
-        position : 'relative',
-        top: 10,
-        left: 21,
-        height: 10,
-        width: 10,
-        backgroundColor: 'white',
-        borderWidth: 1,
-        borderColor: '#005D2E',
-        borderRadius: 10,
+    circle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    circle2: {
-        position : 'relative',
-        top: 10,
-        right: 21,
-        height: 10,
-        width: 10,
-        backgroundColor: '#005D2E',
-        borderRadius: 10,
+    circle_icon: {
+        color: '#005D2E',
+        marginHorizontal: 2,
     },
     cart: {
         backgroundColor: '#654F43',
         flexDirection: 'row',
-        height: 30,
+        height: '4.4%',
         width: '100%',
         marginTop: 16,
         alignItems: 'center',
@@ -327,44 +426,42 @@ const styles = StyleSheet.create({
     },
     orderList: {
         flexDirection: 'column',
-        height: 30,
-        width: '100%',
-        marginTop: 6,
+        height: '14%',
+        width: '89%',
+        justifyContent: 'space-evenly',
+        //backgroundColor: 'red',
+    },
+    orderInfo: {
+        backgroundColor: 'white',
+        width: '97%',
+        height: '30%',
+        justifyContent: 'center',
+        borderBottomColor: '#B8B8B8',
+        borderBottomWidth: 2,
+        marginLeft: 10,
     },
     order_text: {
         fontFamily: 'NanumSquare_acB',
         fontSize: 18,
         color: 'black',
-        marginLeft: 18,
+        marginLeft: 7,
     },
-    line1: {
-        position : 'absolute',
-        top: 25,
-        left: 13,
-        backgroundColor: '#B8B8B8',
-        height: 2,
-        width: 333,
-    },
-    line2: {
-        position : 'absolute',
-        top: 55,
-        left: 13,
-        backgroundColor: '#B8B8B8',
-        height: 2,
-        width: 333,
-    },
-    line3: {
-        position : 'absolute',
-        top: 85,
-        left: 13,
-        backgroundColor: '#B8B8B8',
-        height: 2,
-        width: 333,
+    orderList_icon: {
+        width: '11%',
+        marginLeft: 349.5,
+        height: '13.95%',
+        marginTop: -94.9,
+        color: '#B8B8B8',
+        alignItems: 'center',
+        justifyContent: 'center',
+        //backgroundColor: 'blue',
     },
     footer: {
         flexDirection: 'row',
-        marginTop: 60,
+        width: '100%',
+        height: '5.5%',
         justifyContent: 'space-between',
+        //backgroundColor: 'black',
     },
     backBtn: {
         backgroundColor: 'white',
@@ -372,8 +469,8 @@ const styles = StyleSheet.create({
         borderColor: '#BABABA',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 125,
-        height: 37,
+        width: '32.7%',
+        //height: '55%',
     },
     cancelBtn: {
         backgroundColor: 'white',
@@ -381,15 +478,15 @@ const styles = StyleSheet.create({
         borderColor: '#3D3D4F',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 130,
-        height: 37,
+        width: '32.7%',
+        //height: '55%',
     },
     paymentBtn: {
         backgroundColor: '#3D3D4F',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 130,
-        height: 37,
+        width: '32.7%',
+        //height: '55%',
     },
     
     // 옵션 화면
