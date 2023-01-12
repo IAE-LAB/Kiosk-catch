@@ -7,7 +7,6 @@ import {Text, View, Image, StyleSheet, TouchableOpacity, } from 'react-native';
 export default function LR_Kiosk_explore({navigation}) {
     return (
         <View style={styles.contents}>
-
             {/* 좌우구조 상단 배경사진 */}
             <Image
                 source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
@@ -22,10 +21,10 @@ export default function LR_Kiosk_explore({navigation}) {
                 <TouchableOpacity style={styles.categoryBtn1}>
                     <Text style={styles.category_text1}>커피</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.categoryBtn2}>
+                <TouchableOpacity style={styles.categoryBtn2} onPress={() => navigation.navigate('Kiosk_update')}>
                     <Text style={styles.category_text2}>음료</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.categoryBtn2}>
+                <TouchableOpacity style={styles.categoryBtn2} onPress={() => navigation.navigate('Kiosk_update')}>
                     <Text style={styles.category_text2}>베이커리</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate('LR_Kiosk_explore_category')}>
@@ -36,7 +35,7 @@ export default function LR_Kiosk_explore({navigation}) {
             {/* 메뉴 */}
             <View style={styles.menu}>
                 <View style={styles.menuRow}>
-                    <TouchableOpacity style={styles.menuBtn}>
+                    <TouchableOpacity style={styles.menuBtn} onPress={() => navigation.navigate('Kiosk_update')}>
                         <Image
                             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_americano.jpg')}
                             style={styles.menuImage}>
@@ -46,7 +45,7 @@ export default function LR_Kiosk_explore({navigation}) {
                             <Text style={styles.menuTxt_highlight}>1,400</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.menuBtn}>
+                    <TouchableOpacity style={styles.menuBtn} onPress={() => navigation.navigate('Kiosk_update')}>
                         <Image
                             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_cafe_latte.jpg')}
                             style={styles.menuImage}>
@@ -58,7 +57,7 @@ export default function LR_Kiosk_explore({navigation}) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.menuRow}>
-                    <TouchableOpacity style={styles.menuBtn}>
+                    <TouchableOpacity style={styles.menuBtn} onPress={() => navigation.navigate('Kiosk_update')}>
                         <Image
                             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso_conpa.jpg')}
                             style={styles.menuImage}>
@@ -69,7 +68,7 @@ export default function LR_Kiosk_explore({navigation}) {
                             <Text style={styles.menuTxt_highlight}>2,000</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.menuBtn}>
+                    <TouchableOpacity style={styles.menuBtn} onPress={() => navigation.navigate('Kiosk_update')}>
                         <Image
                             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_caramel_latte.jpg')}
                             style={styles.menuImage}>
@@ -82,7 +81,7 @@ export default function LR_Kiosk_explore({navigation}) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.menuRow}>
-                    <TouchableOpacity style={styles.menuBtn}>
+                    <TouchableOpacity style={styles.menuBtn} onPress={() => navigation.navigate('Kiosk_update')}>
                         <Image
                             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_carameo_moca.jpg')}
                             style={styles.menuImage}>
@@ -92,7 +91,7 @@ export default function LR_Kiosk_explore({navigation}) {
                             <Text style={styles.menuTxt_highlight}>2,500</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.menuBtn}>
+                    <TouchableOpacity style={styles.menuBtn} onPress={() => navigation.navigate('Kiosk_update')}>
                         <Image
                             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso.jpg')}
                             style={styles.menuImage}>
@@ -111,8 +110,8 @@ export default function LR_Kiosk_explore({navigation}) {
                     <Text style={styles.LR_text}>이전</Text>
                 </TouchableOpacity>
                 <View style={styles.circle}>
-                    <View style={styles.circle1} />
-                    <View style={styles.circle2} />
+                    <Icon_FontAwesome name="circle" size={10} style={styles.circle_icon} />
+                    <Icon_FontAwesome name="circle-thin" size={10} style={styles.circle_icon} />
                 </View>
                 <TouchableOpacity
                     style={styles.LR_btn}
@@ -135,12 +134,13 @@ export default function LR_Kiosk_explore({navigation}) {
             </View>
             <View style={styles.orderList}>
                 <View style={styles.orderInfo}>
-                    <Text style={styles.order_text}></Text>
+                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
                 </View>
-                <View style={styles.line}>
-                    <View style={styles.line1} />
-                    <View style={styles.line1} />
-                    <View style={styles.line1} />
+                <View style={styles.orderInfo}>
+                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
+                </View>
+                <View style={styles.orderInfo}>
+                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
                 </View>
             </View>
             <View style={styles.orderList_icon}>
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         width: '100%',
         height: '4.5%',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
     },
     LR_btn: {
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         alignItems: 'center',
         justifyContent: 'center',
-        marginHorizontal: 33,
+        marginHorizontal: -29,
     },
     LR_text: {
         fontFamily: 'NanumSquare_acEB',
@@ -286,25 +286,12 @@ const styles = StyleSheet.create({
     },
     circle: {
         flexDirection: 'row',
-        height: '300%',
-        width: '23%',
         alignItems: 'center',
         justifyContent: 'center',
     },
-    circle1: {
-        height: '10%',
-        width: '10%',
-        backgroundColor: '#005D2E',
-        borderRadius: 10,
-        marginRight: 5,
-    },
-    circle2: {
-        height: '10%',
-        width: '10%',
-        backgroundColor: 'white',
-        borderWidth: 1,
-        borderColor: '#005D2E',
-        borderRadius: 10,
+    circle_icon: {
+        color: '#005D2E',
+        marginHorizontal: 2,
     },
     cart: {
         backgroundColor: '#654F43',
@@ -328,44 +315,42 @@ const styles = StyleSheet.create({
     },
     orderList: {
         flexDirection: 'column',
-        height: '4.4%',
-        width: '100%',
-        //alignItems: 'center',
-        marginTop: 6,
-        //justifyContent: 'space-between',
+        height: '14%',
+        width: '89%',
+        justifyContent: 'space-evenly',
+        //backgroundColor: 'red',
+    },
+    orderInfo: {
+        backgroundColor: 'white',
+        width: '97%',
+        height: '30%',
+        justifyContent: 'center',
+        borderBottomColor: '#B8B8B8',
+        borderBottomWidth: 2,
+        marginLeft: 10,
     },
     order_text: {
         fontFamily: 'NanumSquare_acB',
         fontSize: 18,
         color: 'black',
-        marginLeft: 18,
-    },
-    line: {
-        width: '100%',
-        height: '200%',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-    },
-    line1: {
-        marginLeft: 13,
-        backgroundColor: '#B8B8B8',
-        height: '3%',
-        width: '85%',
+        marginLeft: 7,
     },
     orderList_icon: {
-        width: '189%',
-        marginTop: -23,
+        width: '11%',
+        marginLeft: 349.5,
+        height: '13.95%',
+        marginTop: -94.9,
         color: '#B8B8B8',
         alignItems: 'center',
         justifyContent: 'center',
+        //backgroundColor: 'blue',
     },
     footer: {
         flexDirection: 'row',
         width: '100%',
-        height: '10%',
-        marginTop: -5,
-        alignItems: 'center',
+        height: '5.5%',
         justifyContent: 'space-between',
+        //backgroundColor: 'black',
     },
     backBtn: {
         backgroundColor: 'white',
@@ -374,7 +359,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '32.7%',
-        height: '55%',
+        //height: '55%',
     },
     cancelBtn: {
         backgroundColor: 'white',
@@ -383,13 +368,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '32.7%',
-        height: '55%',
+        //height: '55%',
     },
     paymentBtn: {
         backgroundColor: '#3D3D4F',
         alignItems: 'center',
         justifyContent: 'center',
         width: '32.7%',
-        height: '55%',
+        //height: '55%',
     },
 })

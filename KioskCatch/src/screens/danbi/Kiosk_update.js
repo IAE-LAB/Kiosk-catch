@@ -14,8 +14,9 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
+import Icon_Entypo from 'react-native-vector-icons/Entypo';
 
-function Kiosk_difficulty_low({navigation}) {
+function Kiosk_update({navigation}) {
   console.log('navigation ' + navigation);
   return (
     <ImageBackground
@@ -30,20 +31,23 @@ function Kiosk_difficulty_low({navigation}) {
           source={require('KioskCatch/assets/img/main/title.png')}
           style={styles.title}
         />
-        <View
-          style={[styles.btn]}
-        //   onPress={() => navigation.navigate('Tutorial_1')}
-          >
+        <View style={styles.btn}>
           <View style={{flexDirection: 'column'}}>
             <Text style={styles.btn_text_1}>추후 업데이트 예정입니다</Text>
             <Text style={styles.btn_text_2}>'뒤로가기' 버튼을 눌러주세요</Text>
           </View>
         </View>
+        <TouchableOpacity
+          style={styles.homeBtn}
+          onPress={() => navigation.navigate('Home')}>
+          <Icon_Entypo name="home" size={23} style={styles.home_icon} />
+          <Text style={styles.btn_text_3}>홈으로 돌아가기</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
 }
-export default Kiosk_difficulty_low;
+export default Kiosk_update;
 
 const styles = StyleSheet.create({
   container: {
@@ -99,6 +103,7 @@ const styles = StyleSheet.create({
     height: '16%',
     width: '90%',
     borderRadius: 17,
+    //elevation: 10,
   },
   btn_text_1: {
     fontFamily: 'NanumSquare_acEB',
@@ -111,5 +116,27 @@ const styles = StyleSheet.create({
     color: 'black',
     marginTop: 10,
     textAlign: 'center',
+  },
+  homeBtn: {
+    flexDirection: 'row',
+    backgroundColor: '#FFA800',
+    //borderWidth: 4,
+    //borderColor: '#FFA800',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '6%',
+    width: '45%',
+    borderRadius: 100,
+    elevation: 10,
+    marginTop: 140,
+  },
+  home_icon: {
+    color: 'white',
+    marginRight: 5,
+  },
+  btn_text_3: {
+    fontFamily: 'NanumSquare_acEB',
+    fontSize: 20,
+    color: 'white',
   },
 });
