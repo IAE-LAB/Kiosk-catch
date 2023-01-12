@@ -22,7 +22,7 @@ export default function CB_Kiosk_Start({navigation, route}) {
 
         <TouchableOpacity
           style={styles.background}
-          onPress={() => navigation.navigate('CB_Kiosk_Explore')}>
+          onPress={() => navigation.navigate('LR_Kiosk_Explore')}>
           <View style={styles.btn}>
             <View style={{flexDirection: 'row', marginBottom: 10}}>
               <Text style={styles.btn_text}>"</Text>

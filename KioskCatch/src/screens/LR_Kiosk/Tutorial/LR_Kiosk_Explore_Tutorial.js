@@ -1,15 +1,11 @@
 import React, {useRef, useState, useEffect} from 'react';
 import 'react-native-gesture-handler';
-
-import * as Animatable from 'react-native-animatable';
-
 import Icon_FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon_MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon_Entypo from 'react-native-vector-icons/Entypo';
-
 import {useHeaderHeight} from '@react-navigation/elements';
-import KioskStage_2_1 from './Tutorial/KioskStage_2-1';
+import KioskStage_2_1 from '../Tutorial/KioskStage_2-1';
 import StageHeader from 'KioskCatch/src/components/Kiosk/Stage';
 
 import {
@@ -19,17 +15,23 @@ import {
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
-  Animated,
 } from 'react-native';
-import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
+import styles from 'KioskCatch/src/style/LR_Kiosk/LR_Kiosk_Explore';
 
-export default function LR_Kiosk_Explore({navigation, route}) {
+export default function LR_Kiosk_Explore_Tutoial({navigation, route}) {
   const KioskState = route.params.KioskState;
 
   const CatagoryRef = useRef();
   const TutorialRef = useRef();
   const headerHeight = useHeaderHeight();
   check = 0;
+
+  // setKioskState(KioskState => (KioskState = route.state));
+  const getBoxMeasure = () => {
+    temp = {x: 0, y: 0};
+
+    console.log('getBoxMeasure');
+  };
 
   return (
     <View style={styles.contents}>
@@ -43,6 +45,21 @@ export default function LR_Kiosk_Explore({navigation, route}) {
       <OrderList />
       <OrderListIcon />
       <FooterBtn />
+      {/* 튜토리얼 화면 */}
+      {route.params.state[0] === '2-1' ? (
+        <KioskStage_2_1
+          navigation={navigation}
+          CatagoryRef={CatagoryRef}
+          headerHeight={headerHeight}
+          route={route}
+          KioskState={KioskState}
+        />
+      ) : null}
+      <StageHeader
+        state={route.params.state}
+        navigation={navigation}
+        style={{zIndex: 1}}
+      />
     </View>
   );
 
@@ -51,29 +68,7 @@ export default function LR_Kiosk_Explore({navigation, route}) {
 
 // 카테고리 컴포넌트
 const Category = props => {
-  state = {
-    animation: new Animated.Value(1),
-    animation_1: new Animated.Value(0),
-  };
-
-  // header animation
-  const animation = useRef(new Animated.Value(0)).current;
-
-  Animated.loop(
-    Animated.sequence([
-      Animated.timing(state.animation_1, {
-        toValue: 1.5,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-      Animated.timing(state.animation_1, {
-        toValue: 1,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-    ]),
-  ).start();
-
+  // console.log('props.state ' + props.catagoryRef);
   return (
     <View style={styles.category} ref={props.catagoryRef}>
       <TouchableOpacity>
@@ -94,17 +89,11 @@ const Category = props => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('LR_Kiosk_explore_category')}>
-        <Animated.View
-          style={{
-            opacity: state.animation,
-            transform: [{scale: state.animation_1}],
-          }}>
-          <Icon_FontAwesome
-            name="angle-right"
-            size={40}
-            style={[styles.category_icon, {color: '#FFC000'}]}
-          />
-        </Animated.View>
+        <Icon_FontAwesome
+          name="angle-right"
+          size={40}
+          style={styles.category_icon}
+        />
       </TouchableOpacity>
     </View>
   );

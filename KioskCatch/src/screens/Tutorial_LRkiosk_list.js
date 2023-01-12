@@ -50,6 +50,7 @@ export default function Tutorial_LRkiosk_list({navigation}) {
           style={styles.btn}
           onPress={() =>
             navigation.navigate('LR_Kiosk_Start', {
+              KioskState: KioskState,
               state: KioskState.stage[0],
             })
           }>
