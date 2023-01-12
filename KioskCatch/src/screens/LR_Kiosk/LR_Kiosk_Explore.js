@@ -43,6 +43,27 @@ export default function LR_Kiosk_Explore({navigation, route}) {
       <OrderList />
       <OrderListIcon />
       <FooterBtn />
+      <View style={{position: 'absolute'}}>
+        <View
+          style={{
+            height: 100,
+            backgroundColor: 'white',
+            borderColor: 'black',
+            borderWidth: 3,
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text
+            style={{
+              fontFamily: 'NanumSquare_acEB',
+              fontSize: 22,
+              color: 'black',
+            }}>
+            카테고리의 오른쪽 버튼을 누르세요
+          </Text>
+        </View>
+      </View>
     </View>
   );
 
