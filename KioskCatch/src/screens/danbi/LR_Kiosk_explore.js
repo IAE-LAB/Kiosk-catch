@@ -7,10 +7,14 @@ import {Text, View, Image, StyleSheet, TouchableOpacity, } from 'react-native';
 export default function LR_Kiosk_explore({navigation}) {
     return (
         <View style={styles.contents}>
+
+            {/* 좌우구조 상단 배경사진 */}
             <Image
                 source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
                 style={styles.bgImage}>
             </Image>
+
+            {/* 카테고리 */}
             <View style={styles.category}>
                 <TouchableOpacity>
                     <Icon_FontAwesome name="angle-left" size={40} style={styles.category_icon} />
@@ -29,7 +33,7 @@ export default function LR_Kiosk_explore({navigation}) {
                 </TouchableOpacity>
             </View>
 
-
+            {/* 메뉴 */}
             <View style={styles.menu}>
                 <View style={styles.menuRow}>
                     <TouchableOpacity style={styles.menuBtn}>
@@ -101,7 +105,7 @@ export default function LR_Kiosk_explore({navigation}) {
                 </View>
             </View>
 
-
+            {/* 이전&다음 버튼 */}
             <View style={styles.menu_LR}>
                 <TouchableOpacity style={styles.LR_btn}>
                     <Text style={styles.LR_text}>이전</Text>
@@ -117,7 +121,7 @@ export default function LR_Kiosk_explore({navigation}) {
                 </TouchableOpacity>
             </View>
 
-
+            {/* 장바구니 */}
             <View style={styles.cart}>
                 <View style={styles.cartInfo}>
                     <Text style={styles.cart_text}>총주문내역</Text>
@@ -143,8 +147,8 @@ export default function LR_Kiosk_explore({navigation}) {
                 <Icon_AntDesign name="up-square-o" size={35} style={{color: '#B8B8B8'}}/>
                 <Icon_AntDesign name="down-square-o" size={35} style={{color: '#B8B8B8'}}/>
             </View>
-            
 
+            {/* 하단 버튼 */}
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.backBtn}>
                     <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: '#BABABA', }}>이전</Text>
