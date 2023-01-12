@@ -30,86 +30,93 @@ export default function LR_Kiosk_explore_tutorial_1({navigation}) {
                     <Icon_FontAwesome name="angle-right" size={40} style={styles.category_icon} />
                 </TouchableOpacity>
             </View>
+
             <View style={styles.menu}>
-                <TouchableOpacity style={styles.menuBtn}>
-                    <Image
-                        source={require('KioskCatch/assets/img/digital_cafe_menu/digital_americano.jpg')}
-                        style={styles.menuImage}>
-                    </Image>
-                    <View style={{flexDirection: 'column'}}>
-                        <Text style={styles.menuTxt}>아메리카노</Text>
-                        <Text style={styles.menuTxt_highlight}>1,400</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuBtn}>
-                    <Image
-                        source={require('KioskCatch/assets/img/digital_cafe_menu/digital_cafe_latte.jpg')}
-                        style={styles.menuImage}>
-                    </Image>
-                    <View style={{flexDirection: 'column'}}>
-                        <Text style={styles.menuTxt}>카페라떼   </Text>
-                        <Text style={styles.menuTxt_highlight}>2,000</Text>
-                    </View>
-                </TouchableOpacity>
+                <View style={styles.menuRow}>
+                    <TouchableOpacity style={styles.menuBtn}>
+                        <Image
+                            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_americano.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt}>아메리카노</Text>
+                            <Text style={styles.menuTxt_highlight}>1,400</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.menuBtn}>
+                        <Image
+                            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_cafe_latte.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt}>카페라떼   </Text>
+                            <Text style={styles.menuTxt_highlight}>2,000</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.menuRow}>
+                    <TouchableOpacity style={styles.menuBtn}>
+                        <Image
+                            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso_conpa.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt}>에스프레소</Text>
+                            <Text style={styles.menuTxt}>콘파냐</Text>
+                            <Text style={styles.menuTxt_highlight}>2,000</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.menuBtn}>
+                        <Image
+                            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_caramel_latte.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt}>카라멜</Text>
+                            <Text style={styles.menuTxt}>카페라떼   </Text>
+                            <Text style={styles.menuTxt_highlight}>2,500</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.menuRow}>
+                    <TouchableOpacity style={styles.menuBtn}>
+                        <Image
+                            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_carameo_moca.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt}>카라멜모카</Text>
+                            <Text style={styles.menuTxt_highlight}>2,500</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.menuBtn}>
+                        <Image
+                            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso.jpg')}
+                            style={styles.menuImage}>
+                        </Image>
+                        <View style={{flexDirection: 'column'}}>
+                            <Text style={styles.menuTxt}>에스프레소</Text>
+                            <Text style={styles.menuTxt_highlight}>1,500</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </View>
-            <View style={styles.menu}>
-                <TouchableOpacity style={styles.menuBtn}>
-                    <Image
-                        source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso_conpa.jpg')}
-                        style={styles.menuImage}>
-                    </Image>
-                    <View style={{flexDirection: 'column'}}>
-                        <Text style={styles.menuTxt}>에스프레소</Text>
-                        <Text style={styles.menuTxt}>콘파냐</Text>
-                        <Text style={styles.menuTxt_highlight}>2,000</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuBtn}>
-                    <Image
-                        source={require('KioskCatch/assets/img/digital_cafe_menu/digital_caramel_latte.jpg')}
-                        style={styles.menuImage}>
-                    </Image>
-                    <View style={{flexDirection: 'column'}}>
-                        <Text style={styles.menuTxt}>카라멜</Text>
-                        <Text style={styles.menuTxt}>카페라떼   </Text>
-                        <Text style={styles.menuTxt_highlight}>2,500</Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.menu}>
-                <TouchableOpacity style={styles.menuBtn}>
-                    <Image
-                        source={require('KioskCatch/assets/img/digital_cafe_menu/digital_carameo_moca.jpg')}
-                        style={styles.menuImage}>
-                    </Image>
-                    <View style={{flexDirection: 'column'}}>
-                        <Text style={styles.menuTxt}>카라멜모카</Text>
-                        <Text style={styles.menuTxt_highlight}>2,500</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.menuBtn}>
-                    <Image
-                        source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso.jpg')}
-                        style={styles.menuImage}>
-                    </Image>
-                    <View style={{flexDirection: 'column'}}>
-                        <Text style={styles.menuTxt}>에스프레소</Text>
-                        <Text style={styles.menuTxt_highlight}>1,500</Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
+
             <View style={styles.menu_LR}>
                 <TouchableOpacity style={styles.LR_btn}>
                     <Text style={styles.LR_text}>이전</Text>
                 </TouchableOpacity>
-                <View style={styles.circle1} />
-                <View style={styles.circle2} />
+                <View style={styles.circle}>
+                    <View style={styles.circle1} />
+                    <View style={styles.circle2} />
+                </View>
                 <TouchableOpacity
                     style={styles.LR_btn}
                     onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}>
                     <Text style={styles.LR_text}>다음</Text>
                 </TouchableOpacity>
             </View>
+
             <View style={styles.cart}>
                 <View style={styles.cartInfo}>
                     <Text style={styles.cart_text}>총주문내역</Text>
@@ -125,19 +132,20 @@ export default function LR_Kiosk_explore_tutorial_1({navigation}) {
                 <View style={styles.orderInfo}>
                     <Text style={styles.order_text}></Text>
                 </View>
-                <View style={styles.line1} />
-                <View style={styles.line2} />
-                <View style={styles.line3} />
-                <TouchableOpacity>
-                    <Icon_AntDesign name="up-square-o" size={35} style={{position: 'absolute', top: -20, left: 353, color: '#B8B8B8'}} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Icon_AntDesign name="down-square-o" size={35} style={{position: 'absolute', top: 20, left: 353, color: '#B8B8B8'}} />
-                </TouchableOpacity>
+                <View style={styles.line}>
+                    <View style={styles.line1} />
+                    <View style={styles.line1} />
+                    <View style={styles.line1} />
+                </View>
             </View>
+            <View style={styles.orderList_icon}>
+                <Icon_AntDesign name="up-square-o" size={35} style={{color: '#B8B8B8'}}/>
+                <Icon_AntDesign name="down-square-o" size={35} style={{color: '#B8B8B8'}}/>
+            </View>
+            
             <View style={styles.footer}>
                 <TouchableOpacity style={styles.backBtn}>
-                    <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: '#BABABA',}}>이전</Text>
+                    <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: '#BABABA', }}>이전</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.cancelBtn}>
                     <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: '#3D3D4F',}}>취소하기</Text>
@@ -147,6 +155,8 @@ export default function LR_Kiosk_explore_tutorial_1({navigation}) {
                 </TouchableOpacity>
             </View>
 
+
+            {/* 튜토리얼 화면 */}
             <TouchableOpacity
                 style={styles.tutorial_contents}
                 onPress={() => navigation.navigate('LR_Kiosk_explore')}>
@@ -200,15 +210,17 @@ export default function LR_Kiosk_explore_tutorial_1({navigation}) {
 const styles = StyleSheet.create({
     contents: {
         flex: 1,
+        width: '100%',
+        height: '100%',
         backgroundColor: 'white',
     },
     bgImage: {
         width: '100%',
-        height: 110,
+        height: '16.1%',
     },
     category: {
         width: '100%',
-        height: 40,
+        height: '5.9%',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#005D2E',
@@ -221,8 +233,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     categoryBtn1: {
-        width: 100,
-        height: 40,
+        width: '25.5%',
+        height: '100%',
         backgroundColor: 'white',
         alignItems: 'center',
         justifyContent: 'center',
@@ -236,8 +248,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     categoryBtn2: {
-        width: 100,
-        height: 40,
+        width: '25.5%',
+        height: '100%',
         backgroundColor: '#005D2E',
         alignItems: 'center',
         justifyContent: 'center',
@@ -251,10 +263,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     menu: {
+        width: '100%',
+        height: '44.6%',
+        backgroundColor: 'white',
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
+        marginTop: 3,
+    },
+    menuRow: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        marginHorizontal: 10,
-        marginTop: 12,
+        marginTop: 8,
+        height: '30%',
+        width: '90%',
     },
     menuBtn: {
         flexDirection: 'row',
@@ -263,14 +285,13 @@ const styles = StyleSheet.create({
         borderColor: '#F0F0F0',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 90,
-        width: 170,
         borderRadius: 10,
         elevation: 10,
+        marginHorizontal: 15,
     },
     menuImage: {
-        width: 55,
-        height: 70,
+        width: '25%',
+        height: '70%',
         marginRight: 10,
         resizeMode: 'contain',
     },
@@ -286,38 +307,43 @@ const styles = StyleSheet.create({
     },
     menu_LR: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
         marginTop: 15,
-        marginHorizontal: 20,
+        width: '100%',
+        height: '4.5%',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     LR_btn: {
         backgroundColor: '#D3CBC0',
-        height: 30,
-        width: 95,
+        width: '25%',
+        height: '100%',
         borderRadius: 30,
         alignItems: 'center',
         justifyContent: 'center',
+        marginHorizontal: 33,
     },
     LR_text: {
         fontFamily: 'NanumSquare_acEB',
         fontSize: 18,
         color: 'black',
     },
+    circle: {
+        flexDirection: 'row',
+        height: '300%',
+        width: '23%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     circle1: {
-        position : 'relative',
-        top: 10,
-        left: 21,
-        height: 10,
-        width: 10,
+        height: '10%',
+        width: '10%',
         backgroundColor: '#005D2E',
         borderRadius: 10,
+        marginRight: 5,
     },
     circle2: {
-        position : 'relative',
-        top: 10,
-        right: 21,
-        height: 10,
-        width: 10,
+        height: '10%',
+        width: '10%',
         backgroundColor: 'white',
         borderWidth: 1,
         borderColor: '#005D2E',
@@ -326,7 +352,7 @@ const styles = StyleSheet.create({
     cart: {
         backgroundColor: '#654F43',
         flexDirection: 'row',
-        height: 30,
+        height: '4.4%',
         width: '100%',
         marginTop: 16,
         alignItems: 'center',
@@ -345,9 +371,11 @@ const styles = StyleSheet.create({
     },
     orderList: {
         flexDirection: 'column',
-        height: 30,
+        height: '4.4%',
         width: '100%',
+        //alignItems: 'center',
         marginTop: 6,
+        //justifyContent: 'space-between',
     },
     order_text: {
         fontFamily: 'NanumSquare_acB',
@@ -355,33 +383,31 @@ const styles = StyleSheet.create({
         color: 'black',
         marginLeft: 18,
     },
-   line1: {
-        position : 'absolute',
-        top: 25,
-        left: 13,
-        backgroundColor: '#B8B8B8',
-        height: 2,
-        width: 333,
+    line: {
+        width: '100%',
+        height: '200%',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
     },
-    line2: {
-        position : 'absolute',
-        top: 55,
-        left: 13,
+    line1: {
+        marginLeft: 13,
         backgroundColor: '#B8B8B8',
-        height: 2,
-        width: 333,
+        height: '3%',
+        width: '85%',
     },
-    line3: {
-        position : 'absolute',
-        top: 85,
-        left: 13,
-        backgroundColor: '#B8B8B8',
-        height: 2,
-        width: 333,
+    orderList_icon: {
+        width: '189%',
+        marginTop: -23,
+        color: '#B8B8B8',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     footer: {
         flexDirection: 'row',
-        marginTop: 60,
+        width: '100%',
+        height: '10%',
+        marginTop: -5,
+        alignItems: 'center',
         justifyContent: 'space-between',
     },
     backBtn: {
@@ -390,8 +416,8 @@ const styles = StyleSheet.create({
         borderColor: '#BABABA',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 125,
-        height: 37,
+        width: '32.7%',
+        height: '55%',
     },
     cancelBtn: {
         backgroundColor: 'white',
@@ -399,17 +425,18 @@ const styles = StyleSheet.create({
         borderColor: '#3D3D4F',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 130,
-        height: 37,
+        width: '32.7%',
+        height: '55%',
     },
     paymentBtn: {
         backgroundColor: '#3D3D4F',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 130,
-        height: 37,
+        width: '32.7%',
+        height: '55%',
     },
 
+    // 튜토리얼 화면
     tutorial_contents: {
         flex: 1,
         position: 'absolute',
