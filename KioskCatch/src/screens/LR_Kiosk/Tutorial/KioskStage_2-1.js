@@ -16,9 +16,9 @@ import {
 import styles from 'KioskCatch/src/style/LR_Kiosk/LR_Kiosk_Explore';
 
 export default KioskStage_2_1 = props => {
-  [offsetX, setoffsetX] = useState(0);
-  [offsetY, setoffsetY] = useState(0);
-  [tempHeight, setHeight] = useState(0);
+  var [offsetX, setoffsetX] = useState(0);
+  var [offsetY, setoffsetY] = useState(0);
+  var [tempHeight, setHeight] = useState(0);
 
   useEffect(() => {
     console.log('useEffect ');

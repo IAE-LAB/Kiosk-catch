@@ -53,25 +53,26 @@ export default function LR_Kiosk_Explore({navigation, route}) {
 const Category = props => {
   state = {
     animation: new Animated.Value(1),
+    animation_1: new Animated.Value(0),
   };
 
   // header animation
-  // const animation = useRef(new Animated.Value(0)).current;
-  Animated.sequence([
-    // Animated.delay(500),
-    // Animated.loop(
-    Animated.timing(state.animation, {
-      toValue: 0,
-      duration: 2000,
-      useNativeDriver: true,
-    }),
-    Animated.timing(state.animation, {
-      toValue: 1,
-      duration: 2000,
-      useNativeDriver: true,
-    }),
-    // ),
-  ]).start();
+  const animation = useRef(new Animated.Value(0)).current;
+
+  Animated.loop(
+    Animated.sequence([
+      Animated.timing(state.animation_1, {
+        toValue: 1.5,
+        duration: 1000,
+        useNativeDriver: true,
+      }),
+      Animated.timing(state.animation_1, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }),
+    ]),
+  ).start();
 
   return (
     <View style={styles.category} ref={props.catagoryRef}>
@@ -95,14 +96,13 @@ const Category = props => {
         onPress={() => navigation.navigate('LR_Kiosk_explore_category')}>
         <Animated.View
           style={{
-            borderWidth: 1,
-            borderColor: 'black',
             opacity: state.animation,
+            transform: [{scale: state.animation_1}],
           }}>
           <Icon_FontAwesome
             name="angle-right"
             size={40}
-            style={styles.category_icon}
+            style={[styles.category_icon, {color: '#FFC000'}]}
           />
         </Animated.View>
       </TouchableOpacity>
