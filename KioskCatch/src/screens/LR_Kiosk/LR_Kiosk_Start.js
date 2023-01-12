@@ -13,6 +13,8 @@ import {
 import StageHeader from 'KioskCatch/src/components/Kiosk/Stage';
 
 export default function LR_Kiosk({navigation, route}) {
+  const KioskState = route.params.KioskState;
+
   return (
     <View style={styles.contents}>
       <ImageBackground
@@ -22,7 +24,12 @@ export default function LR_Kiosk({navigation, route}) {
 
         <TouchableOpacity
           style={styles.background}
-          onPress={() => navigation.navigate('LR_Kiosk_Explore')}>
+          onPress={() =>
+            navigation.navigate('LR_Kiosk_Explore_Tutorial', {
+              KioskState: KioskState,
+              state: KioskState.stage[1],
+            })
+          }>
           <View style={styles.btn}>
             <View style={{flexDirection: 'row', marginBottom: 10}}>
               <Text style={styles.btn_text}>"</Text>
