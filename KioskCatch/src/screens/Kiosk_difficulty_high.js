@@ -97,7 +97,6 @@ const styles = StyleSheet.create({
     height: '16%',
     width: '90%',
     borderRadius: 17,
-    elevation: 10,
   },
   btn_text_1: {
     fontFamily: 'NanumSquare_acEB',
