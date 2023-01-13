@@ -12,6 +12,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
+  Dimensions,
 } from 'react-native';
 import styles from 'KioskCatch/src/style/LR_Kiosk/LR_Kiosk_Explore';
 
@@ -19,6 +20,8 @@ export default KioskStage_2_1 = props => {
   var [offsetX, setoffsetX] = useState(0);
   var [offsetY, setoffsetY] = useState(0);
   var [tempHeight, setHeight] = useState(0);
+
+  const {width, height} = Dimensions.get('window');
 
   useEffect(() => {
     console.log('useEffect ');
@@ -37,7 +40,7 @@ export default KioskStage_2_1 = props => {
       console.log(check);
       check++;
     });
-  });
+  }, [offsetX, offsetY, tempHeight]);
 
   return (
     <ImageBackground
@@ -52,13 +55,10 @@ export default KioskStage_2_1 = props => {
           })
         }>
         <View
-          // ref={props.state}
           style={[
             {
               top: offsetY,
               bottom: offsetX,
-              // top: 166 - 66,
-              // bottom: 392,
             },
           ]}>
           <View style={[styles.taskBox, {height: tempHeight}]}>
@@ -99,7 +99,7 @@ export default KioskStage_2_1 = props => {
             </View>
           </View>
         </View>
-        <Text style={styles.clickTxt}>설명 확인 후, 화면을 클릭해주세요</Text>
+        <Text style={[styles.clickTxt]}>설명 확인 후, 화면을 클릭해주세요</Text>
       </TouchableOpacity>
     </ImageBackground>
   );

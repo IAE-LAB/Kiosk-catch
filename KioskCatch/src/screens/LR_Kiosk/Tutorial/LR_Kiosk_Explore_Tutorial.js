@@ -5,7 +5,9 @@ import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon_MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon_Entypo from 'react-native-vector-icons/Entypo';
 import {useHeaderHeight} from '@react-navigation/elements';
+
 import KioskStage_2_1 from '../Tutorial/KioskStage_2-1';
+import KioskStage_2_2 from '../Tutorial/KioskStage_2-2';
 import StageHeader from 'KioskCatch/src/components/Kiosk/Stage';
 
 import {
@@ -22,9 +24,13 @@ export default function LR_Kiosk_Explore_Tutoial({navigation, route}) {
   const KioskState = route.params.KioskState;
 
   const CatagoryRef = useRef();
-  const TutorialRef = useRef();
+  const MenuRef = useRef();
+  const NextBtnRef = useRef();
+
   const headerHeight = useHeaderHeight();
   check = 0;
+
+  navigation.setOptions({title: route.params.state[1]});
 
   // setKioskState(KioskState => (KioskState = route.state));
   const getBoxMeasure = () => {
@@ -39,8 +45,8 @@ export default function LR_Kiosk_Explore_Tutoial({navigation, route}) {
         source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
         style={styles.bgImage}></Image>
       <Category catagoryRef={CatagoryRef} />
-      <Menu />
-      <MenuLR />
+      <Menu MenuRef={MenuRef} />
+      <MenuLR NextBtnRef={NextBtnRef} />
       <Cart />
       <OrderList />
       <OrderListIcon />
@@ -50,6 +56,16 @@ export default function LR_Kiosk_Explore_Tutoial({navigation, route}) {
         <KioskStage_2_1
           navigation={navigation}
           CatagoryRef={CatagoryRef}
+          headerHeight={headerHeight}
+          route={route}
+          KioskState={KioskState}
+        />
+      ) : null}
+      {route.params.state[0] === '2-2' ? (
+        <KioskStage_2_2
+          navigation={navigation}
+          MenuRef={MenuRef}
+          NextBtnRef={NextBtnRef}
           headerHeight={headerHeight}
           route={route}
           KioskState={KioskState}
@@ -98,9 +114,9 @@ const Category = props => {
     </View>
   );
 };
-const Menu = () => {
+const Menu = props => {
   return (
-    <View style={styles.menu}>
+    <View style={styles.menu} ref={props.MenuRef}>
       <View style={styles.menuRow}>
         <TouchableOpacity style={styles.menuBtn}>
           <Image
@@ -166,7 +182,7 @@ const Menu = () => {
     </View>
   );
 };
-const MenuLR = () => {
+const MenuLR = props => {
   return (
     <View style={styles.menu_LR}>
       <TouchableOpacity style={styles.LR_btn}>
@@ -178,7 +194,8 @@ const MenuLR = () => {
       </View>
       <TouchableOpacity
         style={styles.LR_btn}
-        onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}>
+        onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}
+        ref={props.NextBtnRef}>
         <Text style={styles.LR_text}>다음</Text>
       </TouchableOpacity>
     </View>

@@ -9,8 +9,8 @@ import Icon_MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommu
 import Icon_Entypo from 'react-native-vector-icons/Entypo';
 
 import {useHeaderHeight} from '@react-navigation/elements';
-import KioskStage_2_1 from './Tutorial/KioskStage_2-1';
-import StageHeader from 'KioskCatch/src/components/Kiosk/Stage';
+
+import TaskText from 'KioskCatch/src/components/Kiosk/TaskText';
 
 import {
   Text,
@@ -31,39 +31,50 @@ export default function LR_Kiosk_Explore({navigation, route}) {
   const headerHeight = useHeaderHeight();
   check = 0;
 
+  navigation.setOptions({title: route.params.state[1]});
+  console.log(route.params.state);
+
+  const animation = new Animated.Value(1);
+
+  Animated.loop(
+    Animated.sequence([
+      Animated.timing(animation, {
+        toValue: 1.5,
+        duration: 1000,
+        useNativeDriver: true,
+      }),
+      Animated.timing(animation, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }),
+    ]),
+  ).start();
+
   return (
     <View style={styles.contents}>
       <Image
         source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
         style={styles.bgImage}></Image>
-      <Category catagoryRef={CatagoryRef} />
+      <Category
+        catagoryRef={CatagoryRef}
+        navigation={navigation}
+        KioskState={KioskState}
+        state={route.params.state}
+        animation={animation}
+      />
       <Menu />
-      <MenuLR />
+      <MenuLR
+        state={route.params.state}
+        animation={animation}
+        navigation={navigation}
+        KioskState={KioskState}
+      />
       <Cart />
       <OrderList />
       <OrderListIcon />
       <FooterBtn />
-      <View style={{position: 'absolute'}}>
-        <View
-          style={{
-            height: 100,
-            backgroundColor: 'white',
-            borderColor: 'black',
-            borderWidth: 3,
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>
-          <Text
-            style={{
-              fontFamily: 'NanumSquare_acEB',
-              fontSize: 22,
-              color: 'black',
-            }}>
-            카테고리의 오른쪽 버튼을 누르세요
-          </Text>
-        </View>
-      </View>
+      <TaskText state={route.params.state} />
     </View>
   );
 
@@ -72,29 +83,9 @@ export default function LR_Kiosk_Explore({navigation, route}) {
 
 // 카테고리 컴포넌트
 const Category = props => {
-  state = {
-    animation: new Animated.Value(1),
-    animation_1: new Animated.Value(0),
-  };
-
   // header animation
-  const animation = useRef(new Animated.Value(0)).current;
 
-  Animated.loop(
-    Animated.sequence([
-      Animated.timing(state.animation_1, {
-        toValue: 1.5,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-      Animated.timing(state.animation_1, {
-        toValue: 1,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-    ]),
-  ).start();
-
+  console.log(props.state);
   return (
     <View style={styles.category} ref={props.catagoryRef}>
       <TouchableOpacity>
@@ -114,18 +105,30 @@ const Category = props => {
         <Text style={styles.category_text2}>베이커리</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate('LR_Kiosk_explore_category')}>
-        <Animated.View
-          style={{
-            opacity: state.animation,
-            transform: [{scale: state.animation_1}],
-          }}>
+        onPress={() =>
+          props.navigation.navigate('LR_Kiosk_explore_category', {
+            KioskState: props.KioskState,
+            state: ['2-1-2', '카테고리 확인'],
+          })
+        }>
+        {props.state[0] === '2-1' ? (
+          <Animated.View
+            style={{
+              transform: [{scale: props.animation}],
+            }}>
+            <Icon_FontAwesome
+              name="angle-right"
+              size={40}
+              style={[styles.category_icon, {color: '#FFC000'}]}
+            />
+          </Animated.View>
+        ) : (
           <Icon_FontAwesome
             name="angle-right"
             size={40}
-            style={[styles.category_icon, {color: '#FFC000'}]}
+            style={[styles.category_icon]}
           />
-        </Animated.View>
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -198,7 +201,7 @@ const Menu = () => {
     </View>
   );
 };
-const MenuLR = () => {
+const MenuLR = props => {
   return (
     <View style={styles.menu_LR}>
       <TouchableOpacity style={styles.LR_btn}>
@@ -208,11 +211,30 @@ const MenuLR = () => {
         <View style={styles.circle1} />
         <View style={styles.circle2} />
       </View>
-      <TouchableOpacity
-        style={styles.LR_btn}
-        onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}>
-        <Text style={styles.LR_text}>다음</Text>
-      </TouchableOpacity>
+      {props.state[0] === '2-2' ? (
+        <Animated.View
+          style={[
+            styles.LR_btn,
+            {
+              transform: [{scale: props.animation}],
+              backgroundColor: '#FFC000',
+            },
+          ]}>
+          <TouchableOpacity
+            onPress={() =>
+              props.navigation.navigate('LR_Kiosk_explore_menu', {
+                KioskState: props.KioskState,
+                state: ['2-2-1', '메뉴선택'],
+              })
+            }>
+            <Text style={styles.LR_text}>다음</Text>
+          </TouchableOpacity>
+        </Animated.View>
+      ) : (
+        <TouchableOpacity style={styles.LR_btn}>
+          <Text style={styles.LR_text}>다음</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

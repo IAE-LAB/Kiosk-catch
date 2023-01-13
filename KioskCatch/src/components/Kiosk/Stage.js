@@ -16,11 +16,12 @@ import Icon_MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommu
 // 단계를 나타내는 컴포넌트 헤더
 const Stage = props => {
   console.log('navigation ' + props.navigation);
+  console.log(props.state);
 
   // header title setup (stage name : props.state[1])
-  useEffect(() => {
-    props.navigation.setOptions({title: props.state[1]});
-  }, [props.navigation]);
+  // useEffect(() => {
+  //   props.navigation.setOptions({title: props.state[1]});
+  // }, [props.navigation]);
 
   // header animation
   const animation = useRef(new Animated.Value(0)).current;

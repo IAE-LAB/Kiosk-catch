@@ -304,9 +304,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     top: 300,
     justifyContent: 'flex-end',
-
-    borderWidth: 1,
-    borderColor: 'black',
   },
 });
 
