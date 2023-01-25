@@ -16,6 +16,7 @@ import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
 
 // 카테고리 컴포넌트
 export default Category = props => {
+ 
   const [userInput, setUserInput] = useState({
     state1: {
       category: styles.categoryBtn_Select,
@@ -31,65 +32,6 @@ export default Category = props => {
     },
   });
 
-  const state1ChangeHandler = e => {
-    setUserInput({
-      state1: {
-        category: styles.categoryBtn_Select,
-        category_text: styles.category_text_select,
-      },
-      state2: {
-        category: styles.categoryBtn,
-        category_text: styles.category_text,
-      },
-      state3: {
-        category: styles.categoryBtn,
-        category_text: styles.category_text,
-      },
-    });
-
-    console.log(userInput.state1.category);
-  };
-
-  const state2ChangeHandler = e => {
-    setUserInput({
-      state1: {
-        category: styles.categoryBtn,
-        category_text: styles.category_text,
-      },
-      state2: {
-        category: styles.categoryBtn_Select,
-        category_text: styles.category_text_select,
-      },
-      state3: {
-        category: styles.categoryBtn,
-        category_text: styles.category_text,
-      },
-    });
-  };
-
-  const state3ChangeHandler = e => {
-    setUserInput({
-      state1: {
-        category: styles.categoryBtn,
-        category_text: styles.category_text,
-      },
-      state2: {
-        category: styles.categoryBtn,
-        category_text: styles.category_text,
-      },
-      state3: {
-        category: styles.categoryBtn_Select,
-        category_text: styles.category_text_select,
-      },
-    });
-  };
-
-  // const amountChangeHandler = (e)=> {
-  //   setUserInput({...userInput,enteredAmount: e.target.value,});
-  // };
-  // const dateChangeHandler = (e)=> {
-  //    setUserInput({...userInput,enteredDate: e.target.value,});
-  // };
 
   console.log(props.state);
   return (
@@ -103,17 +45,17 @@ export default Category = props => {
       </TouchableOpacity>
       <TouchableOpacity
         style={userInput.state1.category}
-        onPress={() => state1ChangeHandler()}>
+        onPress={() => state1ChangeHandler(setUserInput)}>
         <Text style={userInput.state1.category_text}>커피</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={userInput.state2.category}
-        onPress={() => state2ChangeHandler()}>
+        onPress={() => state2ChangeHandler(setUserInput)}>
         <Text style={userInput.state2.category_text}>음료</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={userInput.state3.category}
-        onPress={() => state3ChangeHandler()}>
+        onPress={() => state3ChangeHandler(setUserInput)}>
         <Text style={userInput.state3.category_text}>베이커리</Text>
       </TouchableOpacity>
       <TouchableOpacity
@@ -144,4 +86,56 @@ export default Category = props => {
       </TouchableOpacity>
     </View>
   );
+};
+
+const state1ChangeHandler = (setUserInput) => {
+  setUserInput({
+    state1: {
+      category: styles.categoryBtn_Select,
+      category_text: styles.category_text_select,
+    },
+    state2: {
+      category: styles.categoryBtn,
+      category_text: styles.category_text,
+    },
+    state3: {
+      category: styles.categoryBtn,
+      category_text: styles.category_text,
+    },
+  });
+
+};
+
+const state2ChangeHandler = (setUserInput) => {
+  setUserInput({
+    state1: {
+      category: styles.categoryBtn,
+      category_text: styles.category_text,
+    },
+    state2: {
+      category: styles.categoryBtn_Select,
+      category_text: styles.category_text_select,
+    },
+    state3: {
+      category: styles.categoryBtn,
+      category_text: styles.category_text,
+    },
+  });
+};
+
+const state3ChangeHandler = (setUserInput) => {
+  setUserInput({
+    state1: {
+      category: styles.categoryBtn,
+      category_text: styles.category_text,
+    },
+    state2: {
+      category: styles.categoryBtn,
+      category_text: styles.category_text,
+    },
+    state3: {
+      category: styles.categoryBtn_Select,
+      category_text: styles.category_text_select,
+    },
+  });
 };

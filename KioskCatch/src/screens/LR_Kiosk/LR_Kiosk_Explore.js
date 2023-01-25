@@ -13,6 +13,8 @@ import {useHeaderHeight} from '@react-navigation/elements';
 import TaskText from 'KioskCatch/src/components/Kiosk/TaskText';
 
 import Category from 'KioskCatch/src/components/LRKiosk/Category';
+import Menu from 'KioskCatch/src/components/LRKiosk/Menu';
+
 
 import {
   Text,
@@ -83,75 +85,7 @@ export default function LR_Kiosk_Explore({navigation, route}) {
   // );
 }
 
-const Menu = () => {
-  return (
-    <View style={styles.menu}>
-      <View style={styles.menuRow}>
-        <TouchableOpacity style={styles.menuBtn}>
-          <Image
-            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_americano.jpg')}
-            style={styles.menuImage}></Image>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={styles.menuTxt}>아메리카노</Text>
-            <Text style={styles.menuTxt_highlight}>1,400</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menuBtn}>
-          <Image
-            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_cafe_latte.jpg')}
-            style={styles.menuImage}></Image>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={styles.menuTxt}>카페라떼 </Text>
-            <Text style={styles.menuTxt_highlight}>2,000</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.menuRow}>
-        <TouchableOpacity style={styles.menuBtn}>
-          <Image
-            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso_conpa.jpg')}
-            style={styles.menuImage}></Image>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={styles.menuTxt}>에스프레소</Text>
-            <Text style={styles.menuTxt}>콘파냐</Text>
-            <Text style={styles.menuTxt_highlight}>2,000</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menuBtn}>
-          <Image
-            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_caramel_latte.jpg')}
-            style={styles.menuImage}></Image>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={styles.menuTxt}>카라멜</Text>
-            <Text style={styles.menuTxt}>카페라떼 </Text>
-            <Text style={styles.menuTxt_highlight}>2,500</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.menuRow}>
-        <TouchableOpacity style={styles.menuBtn}>
-          <Image
-            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_carameo_moca.jpg')}
-            style={styles.menuImage}></Image>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={styles.menuTxt}>카라멜모카</Text>
-            <Text style={styles.menuTxt_highlight}>2,500</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menuBtn}>
-          <Image
-            source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso.jpg')}
-            style={styles.menuImage}></Image>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={styles.menuTxt}>에스프레소</Text>
-            <Text style={styles.menuTxt_highlight}>1,500</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-};
-const MenuLR = props => {
+ MenuLR = props => {
   return (
     <View style={styles.menu_LR}>
       <TouchableOpacity style={styles.LR_btn}>
