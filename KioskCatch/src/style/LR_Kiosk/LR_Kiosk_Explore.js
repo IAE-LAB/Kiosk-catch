@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  categoryBtn1: {
+  categoryBtn_Select: {
     width: '25.5%',
     height: '100%',
     backgroundColor: 'white',
@@ -34,13 +34,13 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  category_text1: {
+  category_text_select: {
     fontFamily: 'NanumSquare_acEB',
     fontSize: 22,
     color: 'black',
     alignItems: 'center',
   },
-  categoryBtn2: {
+  categoryBtn: {
     width: '25.5%',
     height: '100%',
     backgroundColor: '#005D2E',
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  category_text2: {
+  category_text: {
     fontFamily: 'NanumSquare_acEB',
     fontSize: 22,
     color: 'white',

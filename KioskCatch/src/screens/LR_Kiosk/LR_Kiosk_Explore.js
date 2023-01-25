@@ -12,6 +12,8 @@ import {useHeaderHeight} from '@react-navigation/elements';
 
 import TaskText from 'KioskCatch/src/components/Kiosk/TaskText';
 
+import Category from 'KioskCatch/src/components/LRKiosk/Category';
+
 import {
   Text,
   View,
@@ -81,58 +83,6 @@ export default function LR_Kiosk_Explore({navigation, route}) {
   // );
 }
 
-// 카테고리 컴포넌트
-const Category = props => {
-  // header animation
-
-  console.log(props.state);
-  return (
-    <View style={styles.category} ref={props.catagoryRef}>
-      <TouchableOpacity>
-        <Icon_FontAwesome
-          name="angle-left"
-          size={40}
-          style={styles.category_icon}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.categoryBtn1}>
-        <Text style={styles.category_text1}>커피</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.categoryBtn2}>
-        <Text style={styles.category_text2}>음료</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.categoryBtn2}>
-        <Text style={styles.category_text2}>베이커리</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() =>
-          props.navigation.navigate('LR_Kiosk_explore_category', {
-            KioskState: props.KioskState,
-            state: ['2-1-2', '카테고리 확인'],
-          })
-        }>
-        {props.state[0] === '2-1' ? (
-          <Animated.View
-            style={{
-              transform: [{scale: props.animation}],
-            }}>
-            <Icon_FontAwesome
-              name="angle-right"
-              size={40}
-              style={[styles.category_icon, {color: '#FFC000'}]}
-            />
-          </Animated.View>
-        ) : (
-          <Icon_FontAwesome
-            name="angle-right"
-            size={40}
-            style={[styles.category_icon]}
-          />
-        )}
-      </TouchableOpacity>
-    </View>
-  );
-};
 const Menu = () => {
   return (
     <View style={styles.menu}>
