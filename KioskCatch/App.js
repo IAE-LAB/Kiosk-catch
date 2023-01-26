@@ -24,6 +24,7 @@ import LR_Kiosk_explore from './src/screens/danbi/LR_Kiosk_explore';
 import LR_Kiosk_explore_category from './src/screens/danbi/LR_Kiosk_explore_category';
 import LR_Kiosk_explore_menu from './src/screens/danbi/LR_Kiosk_explore_menu';
 import LR_Kiosk_explore_option from './src/screens/danbi/LR_Kiosk_explore_option';
+import LR_Kiosk_explore_cart from './src/screens/danbi/LR_Kiosk_explore_cart';
 import LR_Kiosk_explore_tutorial_1 from './src/screens/danbi/LR_Kiosk_explore_tutorial_1';
 import LR_Kiosk_explore_tutorial_2 from './src/screens/danbi/LR_Kiosk_explore_tutorial_2';
 import Kiosk_update from './src/screens/danbi/Kiosk_update';
@@ -219,6 +220,17 @@ function App() {
           <Stack.Screen
             name="LR_Kiosk_explore_option"
             component={LR_Kiosk_explore_option}
+            options={{
+              title: '탐색단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="LR_Kiosk_explore_cart"
+            component={LR_Kiosk_explore_cart}
             options={{
               title: '탐색단계',
               headerTitleStyle: {

@@ -1,8 +1,20 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, } from 'react-native';
 
-const Popup = props => {
-    console.log('navigation ' + props.navigation);
+const OptionPopup = ({ closePopup }) => {
+    //console.log('navigation ' + props.navigation);
+
+    //const [color, setColor] = useState(color);
+    //const onClick = () => setColor(styles.setTemperatureBtn, styles.setTemperature_text);
+
+    const navigation = useNavigation();
+
+    const [active, setActive] = useState(false);
+    const handleClick = () => {
+        setActive(!active);
+    };
+
     return (
       <View style={styles.overlay}>
         <View style={styles.optionContainer}>
@@ -16,13 +28,21 @@ const Popup = props => {
 
                 {/*온도 선택*/}
                 <View style={styles.optionTemperature}>
-                    <TouchableOpacity style={styles.temperatureBtn}>
+                    <TouchableOpacity
+                    onPress={handleClick}
+                    style={[styles.temperatureBtn1, {backgroundColor : active ? "#654F43" : "#D3CBC0"}]}
+                    >
                         <Image
                             source={require('KioskCatch/assets/img/LR_kiosk/coffee-cup_hot.png')}
                             style={styles.optionImage_hot} />
-                        <Text style={styles.temperature_text}>HOT</Text>
+                        <Text 
+                        onClick={handleClick}
+                        style={[styles.temperature_text, {color : active ? "white" : "black"}]}>HOT</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.temperatureBtn}>
+                    <TouchableOpacity 
+                    onPress={handleClick}
+                    style={styles.temperatureBtn2}
+                    >
                         <Image
                             source={require('KioskCatch/assets/img/LR_kiosk/iced-coffee_ice.png')}
                             style={styles.optionImage_ice} />
@@ -32,7 +52,10 @@ const Popup = props => {
 
                 {/*사이즈 선택*/}
                 <View style={styles.optionSize}>
-                    <TouchableOpacity style={styles.sizeBtn}>
+                    <TouchableOpacity //style={styles.sizeBtn}
+                    onPress={handleClick}
+                    style={[styles.sizeBtn]}
+                    >
                         <Image
                             source={require('KioskCatch/assets/img/LR_kiosk/cup_size_s.png')}
                             style={styles.optionImage_size_1} />
@@ -59,10 +82,14 @@ const Popup = props => {
                 <View style={styles.optionBtn}>
                     <TouchableOpacity
                       style={styles.selectBtn_1}
-                      onClick = {() => { onClose(false) }}>
+                      onPress={closePopup}
+                      >
                         <Text style={styles.cancel_text}>취소하기</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.selectBtn_2}>
+                    <TouchableOpacity
+                    style={styles.selectBtn_2}
+                    onPress={() => navigation.navigate('LR_Kiosk_explore_cart')}
+                    >
                         <Text style={styles.select_text}>선택완료</Text>
                     </TouchableOpacity>
                 </View>
@@ -72,7 +99,7 @@ const Popup = props => {
     );
   };
 
-  export default Popup;
+  export default OptionPopup;
 
   const styles = StyleSheet.create({
     overlay: {
@@ -117,7 +144,7 @@ const Popup = props => {
       width: '100%',
       height: '23%',
   },
-  temperatureBtn: {
+  temperatureBtn1: {
       backgroundColor: '#D3CBC0',
       flexDirection: 'row',
       alignItems: 'center',
@@ -126,6 +153,15 @@ const Popup = props => {
       width: '35%',
       height: '100%',
   },
+  temperatureBtn2: {
+    backgroundColor: '#D3CBC0',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    borderRadius: 5,
+    width: '35%',
+    height: '100%',
+},
   optionImage_hot: {
       resizeMode: 'contain',
       width: '30%',
@@ -223,4 +259,20 @@ const Popup = props => {
       fontSize: 20,
       color: 'white',
   },
-  });
+
+
+  setTemperatureBtn: {
+      backgroundColor: '#654F43',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-evenly',
+      borderRadius: 5,
+      width: '35%',
+      height: '100%',
+  },
+  setTemperature_text: {
+      fontFamily: 'NanumSquare_acEB',
+      fontSize: 20,
+      color: 'white',
+  },
+});
