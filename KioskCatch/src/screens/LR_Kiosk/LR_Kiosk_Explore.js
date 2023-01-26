@@ -16,7 +16,6 @@ import Category from 'KioskCatch/src/components/LRKiosk/Category';
 import Menu from 'KioskCatch/src/components/LRKiosk/Menu';
 import MenuLR from 'KioskCatch/src/components/LRKiosk/MenuLR';
 
-
 import {
   Text,
   View,
@@ -27,7 +26,6 @@ import {
   Animated,
 } from 'react-native';
 import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
-
 
 export default function LR_Kiosk_Explore({navigation, route}) {
   const KioskState = route.params.KioskState;
@@ -42,7 +40,7 @@ export default function LR_Kiosk_Explore({navigation, route}) {
 
   const animation = new Animated.Value(1);
 
-  const [CategoryState, setCategoryState] = useState("coffee");
+  const [CategoryState, setCategoryState] = useState('coffee');
   const [PageState, setPageState] = useState(1);
   Animated.loop(
     Animated.sequence([
@@ -70,20 +68,18 @@ export default function LR_Kiosk_Explore({navigation, route}) {
         KioskState={KioskState}
         state={route.params.state}
         animation={animation}
+        CategoryState={CategoryState}
         setCategoryState={setCategoryState}
         setPageState={setPageState}
       />
-      <Menu 
-      CategoryState = {CategoryState} 
-      PageState = {PageState} 
-      />
+      <Menu CategoryState={CategoryState} PageState={PageState} />
       <MenuLR
         state={route.params.state}
         animation={animation}
         navigation={navigation}
         KioskState={KioskState}
-        CategoryState = {CategoryState} 
-        PageState = {PageState} 
+        CategoryState={CategoryState}
+        PageState={PageState}
         setPageState={setPageState}
       />
       <Cart />

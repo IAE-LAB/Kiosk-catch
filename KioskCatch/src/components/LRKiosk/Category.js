@@ -14,12 +14,8 @@ import {
 } from 'react-native';
 import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
 
-
-
-
 // 카테고리 컴포넌트
 export default Category = props => {
- 
   const [userInput, setUserInput] = useState({
     state1: {
       category: styles.categoryBtn_Select,
@@ -35,7 +31,6 @@ export default Category = props => {
     },
   });
 
-
   console.log(props.state);
   return (
     <View style={styles.category} ref={props.catagoryRef}>
@@ -46,52 +41,142 @@ export default Category = props => {
           style={styles.category_icon}
         />
       </TouchableOpacity>
-      <TouchableOpacity
-        style={userInput.state1.category}
-        onPress={() => state1ChangeHandler(setUserInput,props.setCategoryState,props.setPageState)}>
-        <Text style={userInput.state1.category_text}>커피</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={userInput.state2.category}
-        onPress={() => state2ChangeHandler(setUserInput,props.setCategoryState,props.setPageState)}>
-        <Text style={userInput.state2.category_text}>음료</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={userInput.state3.category}
-        onPress={() => state3ChangeHandler(setUserInput,props.setCategoryState,props.setPageState)}>
-        <Text style={userInput.state3.category_text}>차</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() =>
-          props.navigation.navigate('LR_Kiosk_explore_category', {
-            KioskState: props.KioskState,
-            state: ['2-1-2', '카테고리 확인'],
-          })
-        }>
-        {props.state[0] === '2-1' ? (
-          <Animated.View
-            style={{
-              transform: [{scale: props.animation}],
-            }}>
-            <Icon_FontAwesome
-              name="angle-right"
-              size={40}
-              style={[styles.category_icon, {color: '#FFC000'}]}
-            />
-          </Animated.View>
-        ) : (
-          <Icon_FontAwesome
-            name="angle-right"
-            size={40}
-            style={[styles.category_icon]}
-          />
-        )}
-      </TouchableOpacity>
+      {props.CategoryState === 'coffee' ||
+      props.CategoryState === 'beverage' ||
+      props.CategoryState === 'tea' ? (
+        <>
+          <TouchableOpacity
+            style={userInput.state1.category}
+            onPress={() =>
+              state1ChangeHandler(
+                setUserInput,
+                props.setCategoryState,
+                props.setPageState,
+              )
+            }>
+            <Text style={userInput.state1.category_text}>커피</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={userInput.state2.category}
+            onPress={() =>
+              state2ChangeHandler(
+                setUserInput,
+                props.setCategoryState,
+                props.setPageState,
+              )
+            }>
+            <Text style={userInput.state2.category_text}>음료</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={userInput.state3.category}
+            onPress={() =>
+              state3ChangeHandler(
+                setUserInput,
+                props.setCategoryState,
+                props.setPageState,
+              )
+            }>
+            <Text style={userInput.state3.category_text}>차</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              props.navigation.navigate('LR_Kiosk_explore_category', {
+                KioskState: props.KioskState,
+                state: ['2-1-2', '카테고리 확인'],
+              })
+            }>
+            {props.state[0] === '2-1' ? (
+              <Animated.View
+                style={{
+                  transform: [{scale: props.animation}],
+                }}>
+                <Icon_FontAwesome
+                  name="angle-right"
+                  size={40}
+                  style={[styles.category_icon, {color: '#FFC000'}]}
+                />
+              </Animated.View>
+            ) : (
+              <Icon_FontAwesome
+                name="angle-right"
+                size={40}
+                style={[styles.category_icon]}
+              />
+            )}
+          </TouchableOpacity>
+        </>
+      ) : null}
+
+      {props.CategoryState === 'bakery' ||
+      props.CategoryState === 'snack' ||
+      props.CategoryState === 'icecream' ? (
+        <>
+          <TouchableOpacity
+            style={userInput.state1.category}
+            onPress={() =>
+              state1ChangeHandler(
+                setUserInput,
+                props.setCategoryState,
+                props.setPageState,
+              )
+            }>
+            <Text style={userInput.state1.category_text}>커피</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={userInput.state2.category}
+            onPress={() =>
+              state2ChangeHandler(
+                setUserInput,
+                props.setCategoryState,
+                props.setPageState,
+              )
+            }>
+            <Text style={userInput.state2.category_text}>음료</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={userInput.state3.category}
+            onPress={() =>
+              state3ChangeHandler(
+                setUserInput,
+                props.setCategoryState,
+                props.setPageState,
+              )
+            }>
+            <Text style={userInput.state3.category_text}>차</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              props.navigation.navigate('LR_Kiosk_explore_category', {
+                KioskState: props.KioskState,
+                state: ['2-1-2', '카테고리 확인'],
+              })
+            }>
+            {props.state[0] === '2-1' ? (
+              <Animated.View
+                style={{
+                  transform: [{scale: props.animation}],
+                }}>
+                <Icon_FontAwesome
+                  name="angle-right"
+                  size={40}
+                  style={[styles.category_icon, {color: '#FFC000'}]}
+                />
+              </Animated.View>
+            ) : (
+              <Icon_FontAwesome
+                name="angle-right"
+                size={40}
+                style={[styles.category_icon]}
+              />
+            )}
+          </TouchableOpacity>
+        </>
+      ) : null}
     </View>
   );
 };
 
-const state1ChangeHandler = (setUserInput, setCategoryState,setPageState) => {
+const state1ChangeHandler = (setUserInput, setCategoryState, setPageState) => {
   setUserInput({
     state1: {
       category: styles.categoryBtn_Select,
@@ -106,11 +191,11 @@ const state1ChangeHandler = (setUserInput, setCategoryState,setPageState) => {
       category_text: styles.category_text,
     },
   });
-  setCategoryState("coffee");
+  setCategoryState('coffee');
   setPageState(1);
 };
 
-const state2ChangeHandler = (setUserInput, setCategoryState,setPageState) => {
+const state2ChangeHandler = (setUserInput, setCategoryState, setPageState) => {
   setUserInput({
     state1: {
       category: styles.categoryBtn,
@@ -125,11 +210,11 @@ const state2ChangeHandler = (setUserInput, setCategoryState,setPageState) => {
       category_text: styles.category_text,
     },
   });
-  setCategoryState("beverage");
+  setCategoryState('beverage');
   setPageState(1);
 };
 
-const state3ChangeHandler = (setUserInput, setCategoryState,setPageState) => {
+const state3ChangeHandler = (setUserInput, setCategoryState, setPageState) => {
   setUserInput({
     state1: {
       category: styles.categoryBtn,
@@ -144,6 +229,6 @@ const state3ChangeHandler = (setUserInput, setCategoryState,setPageState) => {
       category_text: styles.category_text_select,
     },
   });
-  setCategoryState("tea");
+  setCategoryState('tea');
   setPageState(1);
 };
