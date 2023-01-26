@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   LR_btn: {
     backgroundColor: '#D3CBC0',
     width: '25%',
-    height: '100%',
+    height: '130%',
     borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#005D2E',
     borderRadius: 10,
+    marginRight: 5,
   },
   cart: {
     backgroundColor: '#654F43',

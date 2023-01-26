@@ -14,6 +14,7 @@ import TaskText from 'KioskCatch/src/components/Kiosk/TaskText';
 
 import Category from 'KioskCatch/src/components/LRKiosk/Category';
 import Menu from 'KioskCatch/src/components/LRKiosk/Menu';
+import MenuLR from 'KioskCatch/src/components/LRKiosk/MenuLR';
 
 
 import {
@@ -26,6 +27,7 @@ import {
   Animated,
 } from 'react-native';
 import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
+
 
 export default function LR_Kiosk_Explore({navigation, route}) {
   const KioskState = route.params.KioskState;
@@ -40,6 +42,8 @@ export default function LR_Kiosk_Explore({navigation, route}) {
 
   const animation = new Animated.Value(1);
 
+  const [CategoryState, setCategoryState] = useState("coffee");
+  const [PageState, setPageState] = useState(1);
   Animated.loop(
     Animated.sequence([
       Animated.timing(animation, {
@@ -66,13 +70,21 @@ export default function LR_Kiosk_Explore({navigation, route}) {
         KioskState={KioskState}
         state={route.params.state}
         animation={animation}
+        setCategoryState={setCategoryState}
+        setPageState={setPageState}
       />
-      <Menu />
+      <Menu 
+      CategoryState = {CategoryState} 
+      PageState = {PageState} 
+      />
       <MenuLR
         state={route.params.state}
         animation={animation}
         navigation={navigation}
         KioskState={KioskState}
+        CategoryState = {CategoryState} 
+        PageState = {PageState} 
+        setPageState={setPageState}
       />
       <Cart />
       <OrderList />
@@ -85,43 +97,6 @@ export default function LR_Kiosk_Explore({navigation, route}) {
   // );
 }
 
- MenuLR = props => {
-  return (
-    <View style={styles.menu_LR}>
-      <TouchableOpacity style={styles.LR_btn}>
-        <Text style={styles.LR_text}>이전</Text>
-      </TouchableOpacity>
-      <View style={styles.circle}>
-        <View style={styles.circle1} />
-        <View style={styles.circle2} />
-      </View>
-      {props.state[0] === '2-2' ? (
-        <Animated.View
-          style={[
-            styles.LR_btn,
-            {
-              transform: [{scale: props.animation}],
-              backgroundColor: '#FFC000',
-            },
-          ]}>
-          <TouchableOpacity
-            onPress={() =>
-              props.navigation.navigate('LR_Kiosk_explore_menu', {
-                KioskState: props.KioskState,
-                state: ['2-2-1', '메뉴선택'],
-              })
-            }>
-            <Text style={styles.LR_text}>다음</Text>
-          </TouchableOpacity>
-        </Animated.View>
-      ) : (
-        <TouchableOpacity style={styles.LR_btn}>
-          <Text style={styles.LR_text}>다음</Text>
-        </TouchableOpacity>
-      )}
-    </View>
-  );
-};
 const Cart = () => {
   return (
     <View style={styles.cart}>

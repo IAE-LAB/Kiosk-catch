@@ -1,10 +1,17 @@
-{
+
+
+export default Menu => {
+    return(test);
+}
+
+
+const test = {
     "category" : ["커피","베이커리","구움과자","생과일주스","차(Tea)","스무디","아이스크림"],
     "coffee" : [
         {
             "text" : "아메리카노",
             "price" : "1,400",
-            "img" : "KioskCatch/assets/img/digital_cafe_menu/digital_americano.jpg"
+            "img" : require("KioskCatch/assets/img/digital_cafe_menu/digital_americano.jpg")
         },
         {
             "text" : "카페라떼",
@@ -73,3 +80,4 @@
         }
     ]
 }
+    

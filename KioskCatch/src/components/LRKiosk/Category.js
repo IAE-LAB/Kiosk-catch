@@ -14,6 +14,9 @@ import {
 } from 'react-native';
 import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
 
+
+
+
 // 카테고리 컴포넌트
 export default Category = props => {
  
@@ -45,18 +48,18 @@ export default Category = props => {
       </TouchableOpacity>
       <TouchableOpacity
         style={userInput.state1.category}
-        onPress={() => state1ChangeHandler(setUserInput)}>
+        onPress={() => state1ChangeHandler(setUserInput,props.setCategoryState,props.setPageState)}>
         <Text style={userInput.state1.category_text}>커피</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={userInput.state2.category}
-        onPress={() => state2ChangeHandler(setUserInput)}>
+        onPress={() => state2ChangeHandler(setUserInput,props.setCategoryState,props.setPageState)}>
         <Text style={userInput.state2.category_text}>음료</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={userInput.state3.category}
-        onPress={() => state3ChangeHandler(setUserInput)}>
-        <Text style={userInput.state3.category_text}>베이커리</Text>
+        onPress={() => state3ChangeHandler(setUserInput,props.setCategoryState,props.setPageState)}>
+        <Text style={userInput.state3.category_text}>차</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() =>
@@ -88,7 +91,7 @@ export default Category = props => {
   );
 };
 
-const state1ChangeHandler = (setUserInput) => {
+const state1ChangeHandler = (setUserInput, setCategoryState,setPageState) => {
   setUserInput({
     state1: {
       category: styles.categoryBtn_Select,
@@ -103,10 +106,11 @@ const state1ChangeHandler = (setUserInput) => {
       category_text: styles.category_text,
     },
   });
-
+  setCategoryState("coffee");
+  setPageState(1);
 };
 
-const state2ChangeHandler = (setUserInput) => {
+const state2ChangeHandler = (setUserInput, setCategoryState,setPageState) => {
   setUserInput({
     state1: {
       category: styles.categoryBtn,
@@ -121,9 +125,11 @@ const state2ChangeHandler = (setUserInput) => {
       category_text: styles.category_text,
     },
   });
+  setCategoryState("beverage");
+  setPageState(1);
 };
 
-const state3ChangeHandler = (setUserInput) => {
+const state3ChangeHandler = (setUserInput, setCategoryState,setPageState) => {
   setUserInput({
     state1: {
       category: styles.categoryBtn,
@@ -138,4 +144,6 @@ const state3ChangeHandler = (setUserInput) => {
       category_text: styles.category_text_select,
     },
   });
+  setCategoryState("tea");
+  setPageState(1);
 };
