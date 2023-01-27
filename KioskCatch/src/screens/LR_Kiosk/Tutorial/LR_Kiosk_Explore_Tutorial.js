@@ -36,7 +36,7 @@ export default function LR_Kiosk_Explore_Tutoial({navigation, route}) {
   const getBoxMeasure = () => {
     temp = {x: 0, y: 0};
 
-    console.log('getBoxMeasure');
+    // console.log('getBoxMeasure');
   };
 
   return (

@@ -81,12 +81,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 10,
     marginHorizontal: 15,
+    width: '50%',
   },
   menuImage: {
-    width: '25%',
-    height: '70%',
+    width: '40%',
+    height: '80%',
     marginRight: 10,
-    resizeMode: 'contain',
+    resizeMode: 'center',
   },
   menuTxt: {
     fontFamily: 'NanumSquare_acB',
@@ -265,13 +266,9 @@ const styles = StyleSheet.create({
   },
   tutorial_category_icon: {
     color: '#FFC000',
-    marginLeft: 363,
   },
   tutorial_pointer_icon: {
     color: '#FFC000',
-    position: 'relative',
-    top: 60,
-    left: 300,
     transform: [{rotate: '35deg'}],
   },
   taskBubble: {

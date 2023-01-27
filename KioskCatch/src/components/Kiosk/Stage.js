@@ -43,12 +43,13 @@ const Stage = props => {
     <Animated.View
       style={[styles.headerContainer, {transform: [{translateY: animation}]}]}>
       {/* stage header component / props.state[0] is stage number */}
-      <StageHeader_set state={props.state[0]}></StageHeader_set>
+      <StageHeader_set state={props.state}></StageHeader_set>
     </Animated.View>
   );
 };
 
 const StageHeader_set = props => {
+  console.log(props.state);
   return (
     <View>
       {/***** stage_header_(1)시작 단계 *****/}

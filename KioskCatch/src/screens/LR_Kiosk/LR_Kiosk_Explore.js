@@ -16,6 +16,8 @@ import Category from 'KioskCatch/src/components/LRKiosk/Category';
 import Menu from 'KioskCatch/src/components/LRKiosk/Menu';
 import MenuLR from 'KioskCatch/src/components/LRKiosk/MenuLR';
 
+import TutorialHandler from 'KioskCatch/src/components/LRKiosk/TutorialHandler';
+
 import {
   Text,
   View,
@@ -28,14 +30,17 @@ import {
 import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
 
 export default function LR_Kiosk_Explore({navigation, route}) {
-  const KioskState = route.params.KioskState;
+  // KioskState = route.params.KioskState;
 
+  var [KioskState, SetKioskState] = useState(route.params.state);
   const CatagoryRef = useRef();
   const TutorialRef = useRef();
   const headerHeight = useHeaderHeight();
+  const MenuRef = useRef();
+  const NextBtnRef = useRef();
   check = 0;
 
-  navigation.setOptions({title: route.params.state[1]});
+  navigation.setOptions({title: KioskState[1]});
   console.log(route.params.state);
 
   const animation = new Animated.Value(1);
@@ -65,32 +70,48 @@ export default function LR_Kiosk_Explore({navigation, route}) {
       <Category
         catagoryRef={CatagoryRef}
         navigation={navigation}
-        KioskState={KioskState}
-        state={route.params.state}
+        KioskState={KioskState[0]}
+        SetKioskState={SetKioskState}
         animation={animation}
         CategoryState={CategoryState}
         setCategoryState={setCategoryState}
         setPageState={setPageState}
       />
-      <Menu CategoryState={CategoryState} PageState={PageState} />
+      <Menu
+        CategoryState={CategoryState}
+        PageState={PageState}
+        MenuRef={MenuRef}
+      />
       <MenuLR
         state={route.params.state}
         animation={animation}
         navigation={navigation}
-        KioskState={KioskState}
+        KioskState={KioskState[0]}
         CategoryState={CategoryState}
         PageState={PageState}
         setPageState={setPageState}
+        NextBtnRef={NextBtnRef}
       />
       <Cart />
       <OrderList />
       <OrderListIcon />
       <FooterBtn />
-      <TaskText state={route.params.state} />
+      {/* 튜토리얼 화면 */}
+      <TutorialHandler
+        navigation={navigation}
+        CatagoryRef={CatagoryRef}
+        headerHeight={headerHeight}
+        route={route}
+        KioskState={KioskState[0]}
+        SetKioskState={SetKioskState}
+        MenuRef={MenuRef}
+        NextBtnRef={NextBtnRef}
+      />
+      {KioskState[0] === '2-1T' ? (
+        <TaskText KioskState={KioskState[0]} />
+      ) : null}
     </View>
   );
-
-  // );
 }
 
 const Cart = () => {

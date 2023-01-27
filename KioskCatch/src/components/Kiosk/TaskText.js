@@ -30,19 +30,19 @@ export default TaskText = props => {
             color={'#FFC000'}
             style={{marginRight: 10}}
           />
-          {props.state[0] === '2-1' ? (
+          {props.KioskState === '2-1T' ? (
             <Text style={style.text}>카테고리의 다음 버튼을 누르세요</Text>
           ) : null}
-          {props.state[0] === '2-1-2' ? (
+          {props.KioskState === '2-1-2' ? (
             <Text style={style.text}>카테고리의 이전 버튼을 누르세요</Text>
           ) : null}
-          {props.state[0] === '2-2' ? (
+          {props.KioskState === '2-2' ? (
             <Text style={style.text}>다음 버튼을 누르세요</Text>
           ) : null}
-          {props.state[0] === '2-2-1' ? (
+          {props.KioskState === '2-2-1' ? (
             <Text style={style.text}>말차라떼를 선택하세요</Text>
           ) : null}
-          {props.state[0] === '2-3' ? (
+          {props.KioskState === '2-3' ? (
             <Text style={style.text}>Hot을 선택하세요</Text>
           ) : null}
         </View>
