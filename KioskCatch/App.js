@@ -29,6 +29,8 @@ import LR_Kiosk_explore_tutorial_1 from './src/screens/danbi/LR_Kiosk_explore_tu
 import LR_Kiosk_explore_tutorial_2 from './src/screens/danbi/LR_Kiosk_explore_tutorial_2';
 import Kiosk_update from './src/screens/danbi/Kiosk_update';
 
+import CB_Kiosk_Explore from './src/screens/danbi/CB_Kiosk_Explore';
+
 const Stack = createStackNavigator();
 
 function App() {
@@ -279,6 +281,17 @@ function App() {
             component={CB_Kiosk_Start}
             options={{
               title: '시작단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Explore"
+            component={CB_Kiosk_Explore}
+            options={{
+              title: '탐색단계',
               headerTitleStyle: {
                 fontWeight: 'bold',
                 fontSize: 20,
