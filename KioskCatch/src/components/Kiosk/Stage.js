@@ -16,11 +16,12 @@ import Icon_MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommu
 // 단계를 나타내는 컴포넌트 헤더
 const Stage = props => {
   console.log('navigation ' + props.navigation);
+  console.log(props.state);
 
   // header title setup (stage name : props.state[1])
-  useEffect(() => {
-    props.navigation.setOptions({title: props.state[1]});
-  }, [props.navigation]);
+  // useEffect(() => {
+  //   props.navigation.setOptions({title: props.state[1]});
+  // }, [props.navigation]);
 
   // header animation
   const animation = useRef(new Animated.Value(0)).current;
@@ -42,12 +43,13 @@ const Stage = props => {
     <Animated.View
       style={[styles.headerContainer, {transform: [{translateY: animation}]}]}>
       {/* stage header component / props.state[0] is stage number */}
-      <StageHeader_set state={props.state[0]}></StageHeader_set>
+      <StageHeader_set state={props.state}></StageHeader_set>
     </Animated.View>
   );
 };
 
 const StageHeader_set = props => {
+  console.log(props.state);
   return (
     <View>
       {/***** stage_header_(1)시작 단계 *****/}

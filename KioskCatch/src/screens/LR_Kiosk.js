@@ -15,7 +15,7 @@ export default function LR_Kiosk({navigation}) {
       <ImageBackground
         source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
         style={styles.bgImage}>
-        {/* <View style={styles.stagebtn}>
+        <View style={styles.stagebtn}>
           <TouchableOpacity style={styles.stageStart}>
             <Text style={styles.stage_text}>시작</Text>
             <Icon_MaterialCommunityIcons
@@ -48,10 +48,10 @@ export default function LR_Kiosk({navigation}) {
               style={{color: '#9CA3AF', alignItems: 'center'}}
             />
           </TouchableOpacity>
-        </View> */}
-        {/* <View style={styles.hairline1} />
+        </View>
+        <View style={styles.hairline1} />
         <View style={styles.hairline2} />
-        <View style={styles.hairline3} /> */}
+        <View style={styles.hairline3} />
         <TouchableOpacity
           style={styles.btn}
           onPress={() => navigation.navigate('LR_Kiosk_explore_tutorial_1')}>

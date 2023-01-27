@@ -13,6 +13,8 @@ import {
 import StageHeader from 'KioskCatch/src/components/Kiosk/Stage';
 
 export default function LR_Kiosk({navigation, route}) {
+  var [KioskState, SetKioskState] = useState(route.params.state);
+
   return (
     <View style={styles.contents}>
       <ImageBackground
@@ -22,7 +24,12 @@ export default function LR_Kiosk({navigation, route}) {
 
         <TouchableOpacity
           style={styles.background}
-          onPress={() => navigation.navigate('LR_Kiosk_Explore')}>
+          onPress={() =>
+            navigation.navigate('LR_Kiosk_Explore', {
+              KioskState: KioskState,
+              state: ['2-1', '카테고리 확인'],
+            })
+          }>
           <View style={styles.btn}>
             <View style={{flexDirection: 'row', marginBottom: 10}}>
               <Text style={styles.btn_text}>"</Text>
@@ -37,7 +44,7 @@ export default function LR_Kiosk({navigation, route}) {
           </View>
         </TouchableOpacity>
         <StageHeader
-          state={route.params.state}
+          state={KioskState[0]}
           navigation={navigation}
           style={{zIndex: 1}}
         />

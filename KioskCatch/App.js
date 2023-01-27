@@ -1,6 +1,15 @@
 import * as React from 'react';
+import {
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import Icon_Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Main from './src/screens/Main';
 import Kiosk_practical from './src/screens/Kiosk_practical';
@@ -16,8 +25,10 @@ import LR_Kiosk from './src/screens/LR_Kiosk';
 import CB_Kiosk from './src/screens/CB_Kiosk';
 
 import CB_Kiosk_Start from './src/screens/CB_Kiosk/CB_Kiosk_Start';
+import CB_Kiosk_Explore from './src/screens/CB_Kiosk/CB_Kiosk_Explore';
 
 import LR_Kiosk_Start from './src/screens/LR_Kiosk/LR_Kiosk_Start';
+import LR_Kiosk_Explore_Tutorial from './src/screens/LR_Kiosk/Tutorial/LR_Kiosk_Explore_Tutorial';
 import LR_Kiosk_Explore from './src/screens/LR_Kiosk/LR_Kiosk_Explore';
 
 import LR_Kiosk_explore from './src/screens/danbi/LR_Kiosk_explore';
@@ -44,16 +55,16 @@ function App() {
         />
         <Stack.Group>
           <Stack.Screen
-              name="Kiosk_practical"
-              component={Kiosk_practical}
-              options={{
-                title: '실전 키오스크 이용하기',
-                headerTitleStyle: {
-                  fontWeight: 'bold',
-                  fontSize: 20,
-                },
-              }}
-            />
+            name="Kiosk_practical"
+            component={Kiosk_practical}
+            options={{
+              title: '실전 키오스크 이용하기',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
           <Stack.Screen
             name="Kiosk_difficulty_high"
             component={Kiosk_difficulty_high}
@@ -155,6 +166,29 @@ function App() {
           <Stack.Screen
             name="LR_Kiosk_Start"
             component={LR_Kiosk_Start}
+            options={{
+              title: '시작단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+              // headerRight: () => (
+              //   <View>
+              //     <TouchableOpacity>
+              //       <Icon_Ionicons
+              //         name="md-menu"
+              //         size={32}
+              //         style={{marginRight: 13, color: '#000000'}}
+              //       />
+              //     </TouchableOpacity>
+              //   </View>
+              // ),
+            }}
+          />
+
+          <Stack.Screen
+            name="LR_Kiosk_Explore_Tutorial"
+            component={LR_Kiosk_Explore_Tutorial}
             options={{
               title: '시작단계',
               headerTitleStyle: {
@@ -287,6 +321,7 @@ function App() {
               },
             }}
           />
+
           <Stack.Screen
             name="CB_Kiosk_Explore"
             component={CB_Kiosk_Explore}

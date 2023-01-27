@@ -18,6 +18,7 @@ const KioskState = {
   stage: [
     ['1-1', '시작'],
     ['2-1', '카테고리 확인'],
+    ['2-1-2', '카테고리 확인'],
     ['2-2', '메뉴 선택'],
     ['2-3', '옵션 선택'],
     ['2-4', '옵션 선택'],
@@ -49,7 +50,8 @@ export default function Tutorial_LRkiosk_list({navigation}) {
         <TouchableOpacity
           style={styles.btn}
           onPress={() =>
-            navigation.navigate('LR_Kiosk', {
+            navigation.navigate('LR_Kiosk_Start', {
+              KioskState: KioskState,
               state: KioskState.stage[0],
             })
           }>
