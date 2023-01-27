@@ -4,9 +4,12 @@ import Icon_FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
-import Popup from 'KioskCatch/src/components/Kiosk/Popup';
+import LR_Kiosk_Tutorial_3 from 'KioskCatch/src/components/Kiosk/LR_Kiosk_Tutorial_3';
+import OptionPopup from 'KioskCatch/src/components/Kiosk/OptionPopup';
 
 export default function LR_Kiosk_explore_menu({navigation}) {
+  const [open, setOpen] = useState(false);
+
   return (
     <View style={styles.contents}>
       {/* 좌우구조 상단 배경사진 */}
@@ -51,7 +54,8 @@ export default function LR_Kiosk_explore_menu({navigation}) {
         <View style={styles.menuRow}>
           <TouchableOpacity
             style={styles.menuBtn}
-            onPress={() => navigation.navigate('LR_Kiosk_explore_option')}>
+            //onPress={() => navigation.navigate('LR_Kiosk_explore_option')}
+            onPress={() => setOpen(true)}>
             <Image
               source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.jpg')}
               style={styles.menuImage}></Image>
@@ -209,6 +213,8 @@ export default function LR_Kiosk_explore_menu({navigation}) {
           </Text>
         </TouchableOpacity>
       </View>
+
+      {open ? <OptionPopup closePopup={() => setOpen(false)} /> : null}
     </View>
   );
 }

@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import 'react-native-gesture-handler';
 import Icon_FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
-import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import Icon_Entypo from 'react-native-vector-icons/Entypo';
+import Icon_Feather from 'react-native-vector-icons/Feather';
+import {Text, View, Image, StyleSheet, TouchableOpacity, } from 'react-native';
+
+//import OptionChangePopup from 'KioskCatch/src/components/Kiosk/OptionChangePopup';
+//import QuantityPopup from 'KioskCatch/src/components/Kiosk/QuantityPopup';
+import PaymentPopup from 'KioskCatch/src/components/Kiosk/PaymentPopup';
 
 export default function LR_Kiosk_explore_cart({navigation}) {
+    const [open, setOpen] = useState(false);
+
     return (
         <View style={styles.contents}>
 
@@ -116,7 +124,8 @@ export default function LR_Kiosk_explore_cart({navigation}) {
                 </View>
                 <TouchableOpacity
                     style={styles.LR_btn}
-                    onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}>
+                    //onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}
+                    >
                     <Text style={styles.LR_text}>다음</Text>
                 </TouchableOpacity>
             </View>
@@ -127,15 +136,33 @@ export default function LR_Kiosk_explore_cart({navigation}) {
                     <Text style={styles.cart_text}>총주문내역</Text>
                 </View>
                 <View style={styles.cartInfo2}>
-                    <Text style={styles.cart_text}>0 개</Text>
+                    <Text style={styles.cart_text}>1 개</Text>
                 </View>
                 <View style={styles.cartInfo}>
-                    <Text style={styles.cart_text}>0</Text>
+                    <Text style={styles.cart_text}>2,500</Text>
                 </View>
             </View>
             <View style={styles.orderList}>
                 <View style={styles.orderInfo}>
-                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
+                    <Text style={styles.order_text}>말차라떼</Text>
+                    <View style={styles.order_option}>
+                        <Text style={styles.order_text}>1</Text>
+                        <TouchableOpacity style={styles.orderBtn} onPress={() => setOpen(true)}>
+                            <Icon_Entypo name="select-arrows" size={20} style={styles.order_icon} />
+                            <Text style={styles.order_text}>수량</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.order_option}>
+                        <Text style={styles.order_text}>2,500</Text>
+                        <TouchableOpacity style={styles.orderBtn} onPress={() => setOpen(true)}>
+                            <Icon_Feather name="plus" size={20} style={styles.order_icon} />
+                            <Text style={styles.order_text}>옵션</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.orderBtn2}>
+                            <Icon_Feather name="x" size={20} style={styles.order_icon} />
+                            <Text style={styles.order_text}>삭제</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <View style={styles.orderInfo}>
                     {/* <Text style={styles.order_text}>말차라떼</Text> */}
@@ -157,10 +184,14 @@ export default function LR_Kiosk_explore_cart({navigation}) {
                 <TouchableOpacity style={styles.cancelBtn}>
                     <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: '#3D3D4F',}}>취소하기</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.paymentBtn}>
+                <TouchableOpacity style={styles.paymentBtn} onPress={() => setOpen(true)}>
                     <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: 'white',}}>결제하기</Text>
                 </TouchableOpacity>
             </View>
+
+            {/* {open ? <OptionChangePopup closePopup={() => setOpen(false)} /> : null} */}
+            {/* {open ? <QuantityPopup closePopup={() => setOpen(false)} /> : null} */}
+            {open ? <PaymentPopup closePopup={() => setOpen(false)} /> : null}
         </View>
     );
 }
@@ -325,16 +356,43 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         width: '97%',
         height: '30%',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         borderBottomColor: '#B8B8B8',
         borderBottomWidth: 2,
         marginLeft: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
     },
     order_text: {
         fontFamily: 'NanumSquare_acB',
         fontSize: 18,
         color: 'black',
-        marginLeft: 7,
+        marginRight: 3,
+    },
+    order_option: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    orderBtn: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: 'black',
+        borderRadius: 3,
+        borderWidth: 1,
+    },
+    orderBtn2: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: 'black',
+        borderRadius: 3,
+        borderWidth: 1,
+        marginLeft: 3,
+    },
+    order_icon: {
+        color: 'black',
     },
     orderList_icon: {
         width: '11%',
