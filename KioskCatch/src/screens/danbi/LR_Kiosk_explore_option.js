@@ -4,7 +4,7 @@ import Icon_FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
-export default function LR_Kiosk_explore_option({navigation, route}) {
+export default function LR_Kiosk_explore_option({navigation}) {
   return (
     <View style={styles.contents}>
       {/* 좌우구조 상단 배경사진 */}
@@ -274,8 +274,7 @@ export default function LR_Kiosk_explore_option({navigation, route}) {
             <View style={styles.optionBtn}>
               <TouchableOpacity
                 style={styles.selectBtn_1}
-                // onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}
-              >
+                onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}>
                 <Text style={styles.cancel_text}>취소하기</Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -287,7 +286,6 @@ export default function LR_Kiosk_explore_option({navigation, route}) {
           </View>
         </View>
       </View>
-      <TaskText state={route.params.state} />
     </View>
   );
 }

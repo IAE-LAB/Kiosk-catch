@@ -2,40 +2,11 @@ import React, {useState} from 'react';
 import 'react-native-gesture-handler';
 import Icon_FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
-import {
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  Animated,
-} from 'react-native';
+import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 import Popup from 'KioskCatch/src/components/Kiosk/Popup';
 
-export default function LR_Kiosk_explore_menu({navigation, route}) {
-  const KioskState = route.params.KioskState;
-
-  navigation.setOptions({title: route.params.state[1]});
-  console.log(route.params);
-
-  const animation = new Animated.Value(1);
-
-  Animated.loop(
-    Animated.sequence([
-      Animated.timing(animation, {
-        toValue: 1.5,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-      Animated.timing(animation, {
-        toValue: 1,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-    ]),
-  ).start();
-
+export default function LR_Kiosk_explore_menu({navigation}) {
   return (
     <View style={styles.contents}>
       {/* 좌우구조 상단 배경사진 */}
@@ -78,33 +49,17 @@ export default function LR_Kiosk_explore_menu({navigation, route}) {
       {/* 메뉴 */}
       <View style={styles.menu}>
         <View style={styles.menuRow}>
-          <Animated.View
-            style={[
-              {
-                transform: [{scale: animation}],
-              },
-            ]}>
-            <TouchableOpacity
-              style={[
-                styles.menuBtn,
-                {flex: 1, borderColor: '#FFC000', borderWidth: 5},
-              ]}
-              onPress={() =>
-                navigation.navigate('LR_Kiosk_explore_option', {
-                  KioskState: KioskState,
-                  state: KioskState.stage[3],
-                })
-              }>
-              <Image
-                source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.jpg')}
-                style={styles.menuImage}></Image>
-              <View style={{flexDirection: 'column'}}>
-                <Text style={styles.menuTxt}>말차라떼 </Text>
-                <Text style={styles.menuTxt_highlight}>2,500</Text>
-              </View>
-            </TouchableOpacity>
-          </Animated.View>
-
+          <TouchableOpacity
+            style={styles.menuBtn}
+            onPress={() => navigation.navigate('LR_Kiosk_explore_option')}>
+            <Image
+              source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.jpg')}
+              style={styles.menuImage}></Image>
+            <View style={{flexDirection: 'column'}}>
+              <Text style={styles.menuTxt}>말차라떼 </Text>
+              <Text style={styles.menuTxt_highlight}>2,500</Text>
+            </View>
+          </TouchableOpacity>
           <TouchableOpacity
             style={styles.menuBtn}
             onPress={() => navigation.navigate('Kiosk_update')}>
@@ -117,11 +72,11 @@ export default function LR_Kiosk_explore_menu({navigation, route}) {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={[styles.menuRow]}>
+        <View style={styles.menuRow}>
           <TouchableOpacity style={styles.menuBtn_2}>
             <Image
               //source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso_conpa.jpg')}
-              style={[styles.menuImage]}></Image>
+              style={styles.menuImage}></Image>
             <View style={{flexDirection: 'column'}}>
               <Text style={styles.menuTxt_2}>에스프레소</Text>
               <Text style={styles.menuTxt_2}>콘파냐</Text>
@@ -254,7 +209,6 @@ export default function LR_Kiosk_explore_menu({navigation, route}) {
           </Text>
         </TouchableOpacity>
       </View>
-      <TaskText state={route.params.state} />
     </View>
   );
 }
@@ -329,12 +283,11 @@ const styles = StyleSheet.create({
     marginTop: 3,
   },
   menuRow: {
-    flex: 1,
     flexDirection: 'row',
-    //justifyContent: 'space-evenly',
+    justifyContent: 'space-evenly',
     marginTop: 8,
-    //height: '30%',
-    //width: '90%',
+    height: '30%',
+    width: '90%',
   },
   menuBtn: {
     flexDirection: 'row',

@@ -2,36 +2,9 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import Icon_FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
-import {
-  Text,
-  View,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  Animated,
-} from 'react-native';
+import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
-export default function LR_Kiosk_explore_category({navigation, route}) {
-  const KioskState = route.params.KioskState;
-  const animation = new Animated.Value(1);
-  console.log(route.params);
-  navigation.setOptions({title: route.params.state[1]});
-
-  Animated.loop(
-    Animated.sequence([
-      Animated.timing(animation, {
-        toValue: 1.5,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-      Animated.timing(animation, {
-        toValue: 1,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-    ]),
-  ).start();
-
+export default function LR_Kiosk_explore_category({navigation}) {
   return (
     <View style={styles.contents}>
       {/* 좌우구조 상단 배경사진 */}
@@ -42,22 +15,12 @@ export default function LR_Kiosk_explore_category({navigation, route}) {
       {/* 카테고리 */}
       <View style={styles.category}>
         <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('LR_Kiosk_Explore_Tutorial', {
-              KioskState: KioskState,
-              state: KioskState.stage[2],
-            })
-          }>
-          <Animated.View
-            style={{
-              transform: [{scale: animation}],
-            }}>
-            <Icon_FontAwesome
-              name="angle-left"
-              size={40}
-              style={[styles.category_icon, {color: '#FFC000'}]}
-            />
-          </Animated.View>
+          onPress={() => navigation.navigate('LR_Kiosk_explore_tutorial_2')}>
+          <Icon_FontAwesome
+            name="angle-left"
+            size={40}
+            style={styles.category_icon}
+          />
         </TouchableOpacity>
         <TouchableOpacity style={styles.categoryBtn1}>
           <Text style={styles.category_text1}>아이스크림</Text>
@@ -240,7 +203,6 @@ export default function LR_Kiosk_explore_category({navigation, route}) {
           </Text>
         </TouchableOpacity>
       </View>
-      <TaskText state={route.params.state} />
     </View>
   );
 }
