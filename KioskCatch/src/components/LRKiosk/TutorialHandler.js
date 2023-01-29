@@ -23,6 +23,7 @@ export default TutorialHandler = props => {
           headerHeight={props.headerHeight}
           route={props.route}
           KioskState={props.KioskState}
+          SetKioskState={props.SetKioskState}
         />
       ) : null}
       <StageHeader

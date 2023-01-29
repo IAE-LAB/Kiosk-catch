@@ -28,6 +28,8 @@ export default KioskStage_2_2 = props => {
 
   const {width, height} = Dimensions.get('window');
 
+  var [Opacity, setOpacity] = useState(Ostyles.opTrue);
+
   useEffect(() => {
     console.log('useEffect ');
     props.MenuRef.current.measureInWindow((x, y, width, height) => {
@@ -50,15 +52,13 @@ export default KioskStage_2_2 = props => {
   return (
     <ImageBackground
       source={require('KioskCatch/assets/img/kiosk/blackbackG.png')}
-      style={styles.blackImg}>
+      style={[styles.blackImg, Opacity]}>
       <TouchableOpacity
         style={{width: width, height: height}}
-        onPress={() =>
-          props.navigation.navigate('LR_Kiosk_Explore', {
-            state: props.route.params.state,
-            KioskState: props.KioskState,
-          })
-        }>
+        onPress={() => {
+          setOpacity(Ostyles.opFalse);
+          props.SetKioskState(['2-2T', '메뉴 선택']);
+        }}>
         <View
           style={{
             position: 'relative',
@@ -117,7 +117,7 @@ const MenuKR_Tutorial = props => {
       <View style={styles.LR_btn}>
         <Text style={styles.LR_text}>이전</Text>
       </View>
-      <View style={styles.circle}>
+      <View style={[styles.circle, {opacity: 0}]}>
         <View style={styles.circle1} />
         <View style={styles.circle2} />
       </View>
@@ -256,3 +256,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
 });
+const Ostyles = {
+  opTrue: {
+    opacity: 100,
+  },
+  opFalse: {
+    opacity: 0,
+  },
+};

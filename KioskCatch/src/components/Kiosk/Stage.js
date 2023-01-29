@@ -56,6 +56,8 @@ const StageHeader_set = props => {
       {props.state === '1-1' ? <StageHeader_start /> : null}
       {/***** stage_header_(2)탐색 단계 *****/}
       {props.state === '2-1' ? <StageHeader_explore /> : null}
+      {/* 외래어 알려주기 */}
+      {props.state === '2-3' ? <StageHeader_explore /> : null}
       {/***** stage_header_(3)주문 단계 *****/}
       {props.state === '3-1' ? <StageHeader_order /> : null}
       {/***** stage_header_(4)결제 단계 *****/}
