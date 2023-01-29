@@ -83,6 +83,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     width: '50%',
   },
+  menuBtnCom: {
+    flex: 1,
+    flexDirection: 'row',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   menuImage: {
     width: '40%',
     height: '80%',

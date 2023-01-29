@@ -33,17 +33,6 @@ export default Category = props => {
 
   var [CaText, SetCaText] = useState(['커피', '음료', '차']);
 
-  // const catagory1 = ['커피', '음료', '차'];
-  // const catagory2 = ['빵', '과자', '빙수'];
-
-  temp = [];
-
-  // props.stage === 'coffee' ||
-  // props.CategoryState === 'beverage' ||
-  // props.CategoryState === 'tea'
-  //   ? (temp = catagory1)
-  //   : (temp = catagory2);
-
   const CategoryList = CaText.map((val, index) =>
     CatagoryText(
       val,
@@ -68,11 +57,24 @@ export default Category = props => {
             SetCaText,
           )
         }>
-        <Icon_FontAwesome
-          name="angle-left"
-          size={40}
-          style={styles.category_icon}
-        />
+        {props.KioskState === '2-1-2' ? (
+          <Animated.View
+            style={{
+              transform: [{scale: props.animation}],
+            }}>
+            <Icon_FontAwesome
+              name="angle-left"
+              size={40}
+              style={[styles.category_icon, {color: '#FFC000'}]}
+            />
+          </Animated.View>
+        ) : (
+          <Icon_FontAwesome
+            name="angle-left"
+            size={40}
+            style={styles.category_icon}
+          />
+        )}
       </TouchableOpacity>
       {CategoryList}
       <TouchableOpacity
@@ -115,6 +117,7 @@ const PrevBtn = (
   setPageState,
   SetCaText,
 ) => {
+  if (KioskState === '2-1-2') SetKioskState(['2-2', '메뉴 선택']);
   SetCaText(['커피', '음료', '차']);
   setCategoryState('coffee');
   setPageState(1);

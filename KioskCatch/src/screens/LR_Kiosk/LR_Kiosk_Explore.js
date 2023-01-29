@@ -18,6 +18,8 @@ import MenuLR from 'KioskCatch/src/components/LRKiosk/MenuLR';
 
 import TutorialHandler from 'KioskCatch/src/components/LRKiosk/TutorialHandler';
 
+import Popup from 'KioskCatch/src/components/Kiosk/Popup';
+
 import {
   Text,
   View,
@@ -47,6 +49,9 @@ export default function LR_Kiosk_Explore({navigation, route}) {
 
   const [CategoryState, setCategoryState] = useState('coffee');
   const [PageState, setPageState] = useState(1);
+
+  var [visibleOption, SetvisibleOption] = useState(false);
+
   Animated.loop(
     Animated.sequence([
       Animated.timing(animation, {
@@ -81,12 +86,18 @@ export default function LR_Kiosk_Explore({navigation, route}) {
         CategoryState={CategoryState}
         PageState={PageState}
         MenuRef={MenuRef}
+        animation={animation}
+        KioskState={KioskState[0]}
+        SetKioskState={SetKioskState}
+        visibleOption={visibleOption}
+        SetvisibleOption={SetvisibleOption}
       />
       <MenuLR
         state={route.params.state}
         animation={animation}
         navigation={navigation}
         KioskState={KioskState[0]}
+        SetKioskState={SetKioskState}
         CategoryState={CategoryState}
         PageState={PageState}
         setPageState={setPageState}
@@ -107,9 +118,13 @@ export default function LR_Kiosk_Explore({navigation, route}) {
         MenuRef={MenuRef}
         NextBtnRef={NextBtnRef}
       />
-      {KioskState[0] === '2-1T' ? (
-        <TaskText KioskState={KioskState[0]} />
-      ) : null}
+      <TaskText KioskState={KioskState[0]} />
+      {visibleOption && (
+        <Popup
+          visibleOption={visibleOption}
+          SetvisibleOption={SetvisibleOption}
+        />
+      )}
     </View>
   );
 }
