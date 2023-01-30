@@ -24,7 +24,7 @@ export default TaskText = props => {
       {props.KioskState === '2-1T' ||
       props.KioskState === '2-1-2' ||
       props.KioskState === '2-2T' ||
-      props.KioskState === '2-2-1' ? (
+      props.KioskState === '2-2-1T' ? (
         <Animated.View
           style={{position: 'absolute', transform: [{translateY: animation}]}}>
           <View style={[style.container, {width: width}]}>
@@ -44,7 +44,7 @@ export default TaskText = props => {
               {props.KioskState === '2-2T' ? (
                 <Text style={style.text}>다음 버튼을 누르세요</Text>
               ) : null}
-              {props.KioskState === '2-2-1' ? (
+              {props.KioskState === '2-2-1T' ? (
                 <Text style={style.text}>말차라떼를 선택하세요</Text>
               ) : null}
               {props.KioskState === '2-3' ? (

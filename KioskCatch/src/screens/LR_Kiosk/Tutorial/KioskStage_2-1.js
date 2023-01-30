@@ -17,9 +17,12 @@ import {
 import styles from 'KioskCatch/src/style/LR_Kiosk/LR_Kiosk_Explore';
 
 export default KioskStage_2_1 = props => {
-  var [offsetX, setoffsetX] = useState(0);
-  var [offsetY, setoffsetY] = useState(0);
-  var [tempHeight, setHeight] = useState(0);
+  var [Parameter, setParameter] = useState({
+    offsetX: 0,
+    offsetY: 0,
+    offsetWidth: 0,
+    offsetHeight: 0,
+  });
 
   var [Opacity, setOpacity] = useState(Ostyles.opTrue);
 
@@ -34,17 +37,20 @@ export default KioskStage_2_1 = props => {
 
       const tempX = x;
       const tempY = y - props.headerHeight;
-      // if (check <= 2) {
-      setoffsetX(offsetX => (offsetX = tempX));
-      setoffsetY(offsetY => (offsetY = tempY));
-      setHeight(tempHeight => (tempHeight = height));
-      // }
-      console.log('offsetX ' + x);
-      console.log('offsetY ' + y);
-      console.log(check);
-      check++;
+
+      setParameter({
+        offsetX: tempX,
+        offsetY: tempY,
+        offsetWidth: width,
+        offsetHeight: height,
+      });
     });
-  }, [offsetX, offsetY, tempHeight]);
+  }, [
+    Parameter.offsetX,
+    Parameter.offsetY,
+    Parameter.offsetHeight,
+    Parameter.offsetWidth,
+  ]);
   return (
     <ImageBackground
       source={require('KioskCatch/assets/img/kiosk/blackbackG.png')}
@@ -65,12 +71,16 @@ export default KioskStage_2_1 = props => {
         <View
           style={[
             {
-              top: offsetY,
-              bottom: offsetX,
+              top: Parameter.offsetY,
+              left: Parameter.offsetX,
             },
           ]}>
           <View style={[{position: 'relative'}]}>
-            <View style={[styles.taskBox, {height: tempHeight, padding: 2}]}>
+            <View
+              style={[
+                styles.taskBox,
+                {height: Parameter.offsetHeight, padding: 2},
+              ]}>
               {/* <Icon_FontAwesome
                 name="angle-right"
                 size={40}
