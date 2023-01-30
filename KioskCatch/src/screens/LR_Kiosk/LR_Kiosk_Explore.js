@@ -37,9 +37,11 @@ export default function LR_Kiosk_Explore({navigation, route}) {
   var [KioskState, SetKioskState] = useState(route.params.state);
   const CatagoryRef = useRef();
   const TutorialRef = useRef();
+  const OptionRef = useRef();
+  const MenuLRRef = useRef();
   const headerHeight = useHeaderHeight();
   const MenuRef = useRef();
-  const NextBtnRef = useRef();
+  const MenuSelectRef = useRef();
   check = 0;
 
   navigation.setOptions({title: KioskState[1]});
@@ -50,7 +52,7 @@ export default function LR_Kiosk_Explore({navigation, route}) {
   const [CategoryState, setCategoryState] = useState('coffee');
   const [PageState, setPageState] = useState(1);
 
-  var [visibleOption, SetvisibleOption] = useState(false);
+  var [visibleOption, SetvisibleOption] = useState(0);
 
   Animated.loop(
     Animated.sequence([
@@ -68,45 +70,12 @@ export default function LR_Kiosk_Explore({navigation, route}) {
   ).start();
 
   return (
-    <View style={styles.contents}>
-      <Image
-        source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
-        style={styles.bgImage}></Image>
-      <Category
-        catagoryRef={CatagoryRef}
-        navigation={navigation}
-        KioskState={KioskState[0]}
-        SetKioskState={SetKioskState}
-        animation={animation}
-        CategoryState={CategoryState}
-        setCategoryState={setCategoryState}
-        setPageState={setPageState}
-      />
-      <Menu
-        CategoryState={CategoryState}
-        PageState={PageState}
-        MenuRef={MenuRef}
-        animation={animation}
-        KioskState={KioskState[0]}
-        SetKioskState={SetKioskState}
+    <View style={{flex: 1, width: '100%', height: '100%'}}>
+      <Popup
         visibleOption={visibleOption}
         SetvisibleOption={SetvisibleOption}
+        OptionRef={OptionRef}
       />
-      <MenuLR
-        state={route.params.state}
-        animation={animation}
-        navigation={navigation}
-        KioskState={KioskState[0]}
-        SetKioskState={SetKioskState}
-        CategoryState={CategoryState}
-        PageState={PageState}
-        setPageState={setPageState}
-        NextBtnRef={NextBtnRef}
-      />
-      <Cart />
-      <OrderList />
-      <OrderListIcon />
-      <FooterBtn />
       {/* 튜토리얼 화면 */}
       <TutorialHandler
         navigation={navigation}
@@ -116,15 +85,61 @@ export default function LR_Kiosk_Explore({navigation, route}) {
         KioskState={KioskState[0]}
         SetKioskState={SetKioskState}
         MenuRef={MenuRef}
-        NextBtnRef={NextBtnRef}
+        OptionRef={OptionRef}
+        style={{zIndex: 100}}
+        MenuSelectRef={MenuSelectRef}
+        MenuLRRef={MenuLRRef}
       />
-      <TaskText KioskState={KioskState[0]} />
-      {visibleOption && (
-        <Popup
+      <View style={styles.contents}>
+        <Image
+          source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
+          style={styles.bgImage}></Image>
+        <Category
+          catagoryRef={CatagoryRef}
+          navigation={navigation}
+          KioskState={KioskState[0]}
+          SetKioskState={SetKioskState}
+          animation={animation}
+          CategoryState={CategoryState}
+          setCategoryState={setCategoryState}
+          setPageState={setPageState}
+        />
+        <Menu
+          CategoryState={CategoryState}
+          PageState={PageState}
+          MenuRef={MenuRef}
+          animation={animation}
+          KioskState={KioskState[0]}
+          SetKioskState={SetKioskState}
           visibleOption={visibleOption}
           SetvisibleOption={SetvisibleOption}
+          MenuSelectRef={MenuSelectRef}
         />
-      )}
+        <MenuLR
+          state={route.params.state}
+          animation={animation}
+          navigation={navigation}
+          KioskState={KioskState[0]}
+          SetKioskState={SetKioskState}
+          CategoryState={CategoryState}
+          PageState={PageState}
+          setPageState={setPageState}
+          MenuLRRef={MenuLRRef}
+        />
+        <Cart />
+        <OrderList />
+        <OrderListIcon />
+        <FooterBtn />
+
+        <TaskText KioskState={KioskState[0]} />
+        {/* {visibleOption && (
+  <Popup
+    visibleOption={visibleOption}
+    SetvisibleOption={SetvisibleOption}
+    OptionRef={OptionRef}
+  />
+)} */}
+      </View>
     </View>
   );
 }

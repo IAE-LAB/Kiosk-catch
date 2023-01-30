@@ -31,7 +31,7 @@ export default MenuLR = props => {
         </Text>
       </TouchableOpacity>
       <Circle CategoryState={props.CategoryState} PageState={props.PageState} />
-      {props.KioskState === '2-2T' ? (
+      {props.KioskState === '2-2T' || props.KioskState === '2-2' ? (
         <Animated.View
           style={[
             styles.LR_btn,

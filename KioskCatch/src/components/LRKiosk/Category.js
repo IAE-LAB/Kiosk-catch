@@ -44,7 +44,6 @@ export default Category = props => {
     ),
   );
 
-  // console.log(props.state);
   return (
     <View style={styles.category} ref={props.catagoryRef}>
       <TouchableOpacity

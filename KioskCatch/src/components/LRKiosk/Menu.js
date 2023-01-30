@@ -18,7 +18,7 @@ import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
 export default Menu = props => {
   // console.log(props.CategoryState +"   "+props.PageState);
   return (
-    <View style={styles.menu} ref={props.MenuRef}>
+    <View style={[styles.menu]} ref={props.MenuRef}>
       {props.CategoryState === 'coffee' ? (
         <>
           {props.PageState === 1 ? <CoffeeComponent1 /> : null}
@@ -28,6 +28,7 @@ export default Menu = props => {
               animation={props.animation}
               SetKioskState={props.SetKioskState}
               SetvisibleOption={props.SetvisibleOption}
+              MenuSelectRef={props.MenuSelectRef}
             />
           ) : null}
           {props.PageState === 3 ? <CoffeeComponent3 /> : null}
@@ -171,7 +172,7 @@ const CoffeeComponent2 = props => {
         </TouchableOpacity>
       </View>
       <View style={styles.menuRow}>
-        {props.KioskState === '2-2-1' ? (
+        {props.KioskState === '2-2-1' || props.KioskState === '2-2-1T' ? (
           <Animated.View
             style={[
               styles.menuBtn,
@@ -184,8 +185,9 @@ const CoffeeComponent2 = props => {
               style={styles.menuBtnCom}
               onPress={() => {
                 props.SetKioskState(['2-3', '옵션 선택']);
-                props.SetvisibleOption(true);
-              }}>
+                props.SetvisibleOption(1);
+              }}
+              ref={props.MenuSelectRef}>
               <Image
                 source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.png')}
                 style={[styles.menuImage]}></Image>

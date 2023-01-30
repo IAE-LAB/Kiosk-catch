@@ -57,13 +57,21 @@ const StageHeader_set = props => {
       {/***** stage_header_(2)탐색 단계 *****/}
       {props.state === '2-1' ? <StageHeader_explore /> : null}
       {/* 외래어 알려주기 */}
-      {props.state === '2-3' ? <StageHeader_explore /> : null}
+      {props.state === '2-3' ? <StageHeader_Temperature /> : null}
       {/***** stage_header_(3)주문 단계 *****/}
       {props.state === '3-1' ? <StageHeader_order /> : null}
       {/***** stage_header_(4)결제 단계 *****/}
       {props.state === '4-1' ? <StageHeader_Pay /> : null}
       {/***** stage_header_(5)결제 완료 단계 *****/}
       {props.state === '4-6' ? <StageHeader_complete /> : null}
+    </View>
+  );
+};
+/***** stage_header_(5)결제 완료 단계 *****/
+const StageHeader_Temperature = () => {
+  return (
+    <View style={styles.stage_header}>
+      <Text style={styles.stage_header_tittle_text}>외래어풀이</Text>
     </View>
   );
 };
@@ -259,11 +267,18 @@ const StageHeader_complete = () => {
 };
 
 const styles = StyleSheet.create({
+  stage_header_tittle_text: {
+    fontFamily: 'NanumSquare_acEB',
+    fontSize: 20,
+    color: 'black',
+    borderBottomWidth: 1,
+    borderBottomColor: '#E02649',
+  },
   headerContainer: {
     width: '100%',
     height: 94,
     position: 'absolute',
-    zIndex: 1,
+    zIndex: 100,
   },
   stage_header: {
     flexDirection: 'row',
