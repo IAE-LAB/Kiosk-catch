@@ -29,8 +29,6 @@ export default KioskStage_2_2_1 = props => {
   useEffect(() => {
     // console.log('props.OptionRef.current' + props.OptionRef.current);
     props.MenuSelectRef.current.measureInWindow((x, y, width, height) => {
-      console.log('-----------MenuRef----------------');
-
       var tempX = x;
       var tempY = y - props.headerHeight;
       setParameter({
@@ -63,7 +61,7 @@ export default KioskStage_2_2_1 = props => {
             {
               // position: 'relative',
               top: Parameter.offsetY,
-              left: Parameter.offsetX,
+              right: Parameter.offsetX,
               height: Parameter.offsetHeight,
               width: Parameter.offsetWidth,
             },

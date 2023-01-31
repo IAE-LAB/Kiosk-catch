@@ -7,6 +7,7 @@ import Icon_FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
 import Icon_MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon_Entypo from 'react-native-vector-icons/Entypo';
+import Icon_Feather from 'react-native-vector-icons/Feather';
 
 import {useHeaderHeight} from '@react-navigation/elements';
 
@@ -38,10 +39,12 @@ export default function LR_Kiosk_Explore({navigation, route}) {
   const CatagoryRef = useRef();
   const TutorialRef = useRef();
   const OptionRef = useRef();
+  const OptionSizeRef = useRef();
   const MenuLRRef = useRef();
   const headerHeight = useHeaderHeight();
   const MenuRef = useRef();
   const MenuSelectRef = useRef();
+  const MenuListRef = useRef();
   check = 0;
 
   navigation.setOptions({title: KioskState[1]});
@@ -53,6 +56,7 @@ export default function LR_Kiosk_Explore({navigation, route}) {
   const [PageState, setPageState] = useState(1);
 
   var [visibleOption, SetvisibleOption] = useState(0);
+  var [SelectMenu, SetSelectMenu] = useState('');
 
   Animated.loop(
     Animated.sequence([
@@ -75,6 +79,11 @@ export default function LR_Kiosk_Explore({navigation, route}) {
         visibleOption={visibleOption}
         SetvisibleOption={SetvisibleOption}
         OptionRef={OptionRef}
+        animation={animation}
+        KioskState={KioskState[0]}
+        SetKioskState={SetKioskState}
+        OptionSizeRef={OptionSizeRef}
+        SelectMenu={SelectMenu}
       />
       {/* 튜토리얼 화면 */}
       <TutorialHandler
@@ -89,7 +98,10 @@ export default function LR_Kiosk_Explore({navigation, route}) {
         style={{zIndex: 100}}
         MenuSelectRef={MenuSelectRef}
         MenuLRRef={MenuLRRef}
+        OptionSizeRef={OptionSizeRef}
+        MenuListRef={MenuListRef}
       />
+      <TaskText KioskState={KioskState[0]} />
       <View style={styles.contents}>
         <Image
           source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
@@ -114,6 +126,8 @@ export default function LR_Kiosk_Explore({navigation, route}) {
           visibleOption={visibleOption}
           SetvisibleOption={SetvisibleOption}
           MenuSelectRef={MenuSelectRef}
+          SelectMenu={SelectMenu}
+          SetSelectMenu={SetSelectMenu}
         />
         <MenuLR
           state={route.params.state}
@@ -126,49 +140,91 @@ export default function LR_Kiosk_Explore({navigation, route}) {
           setPageState={setPageState}
           MenuLRRef={MenuLRRef}
         />
-        <Cart />
-        <OrderList />
+        <Cart KioskState={KioskState[0]} SetKioskState={SetKioskState} />
+        <OrderList
+          KioskState={KioskState[0]}
+          SetKioskState={SetKioskState}
+          MenuListRef={MenuListRef}
+        />
         <OrderListIcon />
         <FooterBtn />
-
-        <TaskText KioskState={KioskState[0]} />
-        {/* {visibleOption && (
-  <Popup
-    visibleOption={visibleOption}
-    SetvisibleOption={SetvisibleOption}
-    OptionRef={OptionRef}
-  />
-)} */}
       </View>
     </View>
   );
 }
 
-const Cart = () => {
+const Cart = props => {
   return (
     <View style={styles.cart}>
-      <View style={styles.cartInfo}>
-        <Text style={styles.cart_text}>총주문내역</Text>
-      </View>
-      <View style={styles.cartInfo2}>
-        <Text style={styles.cart_text}>0 개</Text>
-      </View>
-      <View style={styles.cartInfo}>
-        <Text style={styles.cart_text}>0</Text>
-      </View>
+      {props.KioskState === '3-1' ? (
+        <>
+          <View style={styles.cartInfo}>
+            <Text style={styles.cart_text}>주문내역</Text>
+          </View>
+          <View style={styles.cartInfo2}>
+            <Text style={styles.cart_text}>1 개</Text>
+          </View>
+          <View style={styles.cartInfo}>
+            <Text style={styles.cart_text}>3,200원</Text>
+          </View>
+        </>
+      ) : (
+        <>
+          <View style={styles.cartInfo}>
+            <Text style={styles.cart_text}>주문내역</Text>
+          </View>
+          <View style={styles.cartInfo2}>
+            <Text style={styles.cart_text}>0 개</Text>
+          </View>
+          <View style={styles.cartInfo}>
+            <Text style={styles.cart_text}>0</Text>
+          </View>
+        </>
+      )}
     </View>
   );
 };
-const OrderList = () => {
+const OrderList = props => {
   return (
-    <View style={styles.orderList}>
+    <View style={styles.orderList} ref={props.MenuListRef}>
       <View style={styles.orderInfo}>
-        <Text style={styles.order_text}></Text>
+        {props.KioskState === '3-1' || props.KioskState === '3-1T' ? (
+          <>
+            <Text style={styles.order_text}>말차라떼</Text>
+            <View style={styles.order_option}>
+              <Text style={styles.order_text}>1</Text>
+              <TouchableOpacity
+                style={styles.orderBtn}
+                onPress={() => setOpen_option(true)}>
+                <Icon_Entypo
+                  name="select-arrows"
+                  size={20}
+                  style={styles.order_icon}
+                />
+                <Text style={styles.order_text}>수량</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.order_option}>
+              <Text style={styles.order_text}>3,200</Text>
+              <TouchableOpacity
+                style={styles.orderBtn}
+                onPress={() => setOpen_option(true)}>
+                <Icon_Feather name="plus" size={20} style={styles.order_icon} />
+                <Text style={styles.order_text}>옵션</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.orderBtn2}>
+                <Icon_Feather name="x" size={20} style={styles.order_icon} />
+                <Text style={styles.order_text}>삭제</Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        ) : null}
       </View>
-      <View style={styles.line}>
-        <View style={styles.line1} />
-        <View style={styles.line1} />
-        <View style={styles.line1} />
+      <View style={styles.orderInfo}>
+        {/* <Text style={styles.order_text}>말차라떼</Text> */}
+      </View>
+      <View style={styles.orderInfo}>
+        {/* <Text style={styles.order_text}>말차라떼</Text> */}
       </View>
     </View>
   );

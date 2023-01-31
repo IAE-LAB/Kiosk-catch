@@ -15,7 +15,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-export default KioskStage_2_2_1 = props => {
+export default KioskStage_3_1 = props => {
   var [Parameter, setParameter] = useState({
     offsetX: 0,
     offsetY: 0,
@@ -24,22 +24,22 @@ export default KioskStage_2_2_1 = props => {
   });
 
   const {width, height} = Dimensions.get('window');
+  let cartHeight = height * 0.14;
+  console.log(cartHeight);
 
   var [Opacity, setOpacity] = useState(Ostyles.opTrue);
 
   useEffect(() => {
-    // console.log('props.OptionRef.current' + props.OptionRef.current);
-    props.OptionRef.current.measureInWindow((x, y, width, height) => {
-      console.log('-----------MenuRef----------------');
-
+    console.log('useEffect ');
+    props.MenuRef.current.measureInWindow((x, y, width, height) => {
       var tempX = x;
-      var tempY = y - props.headerHeight;
+      var tempY = y - props.headerHeight + height + cartHeight;
 
       setParameter({
         offsetX: tempX,
         offsetY: tempY,
         offsetWidth: width,
-        offsetHeight: height,
+        offsetHeight: cartHeight,
       });
     });
   }, [
@@ -57,7 +57,7 @@ export default KioskStage_2_2_1 = props => {
         style={{width: width, height: height}}
         onPress={() => {
           setOpacity(Ostyles.opFalse);
-          props.SetKioskState(['2-3T', '옵션 선택']);
+          props.SetKioskState(['3-1T', '옵션변경']);
         }}>
         <View
           style={{
@@ -70,7 +70,7 @@ export default KioskStage_2_2_1 = props => {
             style={[
               styles.taskBox,
               {
-                height: Parameter.offsetHeight,
+                height: Parameter.offsetHeight + 15,
                 width: Parameter.offsetWidth,
               },
             ]}>
@@ -81,7 +81,7 @@ export default KioskStage_2_2_1 = props => {
                   fontSize: 25,
                   color: 'white',
                 }}>
-                옵션
+                장바구니
               </Text>
             </View>
 
@@ -92,12 +92,17 @@ export default KioskStage_2_2_1 = props => {
                 style={styles.taskBubbleTail_icon}
               />
               <View style={styles.taskIofo}>
-                <Text style={styles.taskTxt}>선택 메뉴의 기본 옵션으로</Text>
-                <Text style={styles.taskTxt}>온도와 사이즈가 제공돼요</Text>
+                <Text style={styles.taskTxt}>
+                  선택한 메뉴가 맞는지 확인 후,
+                </Text>
+                <Text style={styles.taskTxt}>
+                  옵션 버튼을 눌러 원하는 항목으로
+                </Text>
+                <Text style={styles.taskTxt}>변경할 수 있어요</Text>
               </View>
             </View>
           </View>
-          {/* <MenuKR_Tutorial /> */}
+          <MenuKR_Tutorial />
         </View>
 
         <Text style={[styles.clickTxt]}>설명 확인 후, 화면을 클릭해주세요</Text>
@@ -117,7 +122,7 @@ const MenuKR_Tutorial = props => {
         <View style={styles.circle1} />
         <View style={styles.circle2} />
       </View>
-      <View style={styles.LR_btn}>
+      <View style={styles.LR_btn} ref={props.NextBtnRef}>
         <Text style={styles.LR_text}>다음</Text>
       </View>
     </View>
@@ -172,7 +177,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   blackImg: {
-    zIndex: 50,
+    zIndex: 1,
     position: 'absolute',
     width: '100%',
     height: '100%',
@@ -196,8 +201,8 @@ const styles = StyleSheet.create({
     top: -35,
   },
   taskBox: {
-    width: '100%',
-    height: 318,
+    // width: '100%',
+    // height: 318,
     borderColor: '#FFC000',
     borderWidth: 5,
     alignContent: 'center',
@@ -219,14 +224,15 @@ const styles = StyleSheet.create({
     transform: [{rotate: '90deg'}],
   },
   taskBubble: {
+    position: 'relative',
     alignItems: 'center',
-    top: -250,
+    top: -150,
   },
   taskBubbleTail_icon: {
     color: 'white',
-    top: 95,
+    top: 103,
     left: 125,
-    transform: [{rotate: '-90deg'}],
+    transform: [{rotate: '-80deg'}],
   },
   taskIofo: {
     backgroundColor: 'white',
@@ -248,7 +254,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFC000',
     textAlign: 'center',
-    top: 160,
+    top: 100,
     justifyContent: 'flex-end',
   },
 });

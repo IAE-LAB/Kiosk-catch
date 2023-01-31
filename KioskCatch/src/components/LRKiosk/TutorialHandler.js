@@ -2,6 +2,8 @@ import 'react-native-gesture-handler';
 import StageHeader from 'KioskCatch/src/components/Kiosk/Stage';
 import KioskStage_2_2_1 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_2-2-1';
 import KioskStage_2_3 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_2-3';
+import KioskStage_2_3_1 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_2-3-1';
+import KioskStage_3_1 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_3-1';
 export default TutorialHandler = props => {
   return (
     <>
@@ -48,6 +50,30 @@ export default TutorialHandler = props => {
           KioskState={props.KioskState}
           SetKioskState={props.SetKioskState}
           OptionRef={props.OptionRef}
+        />
+      ) : null}
+      {props.KioskState === '2-3-1' ? (
+        <KioskStage_2_3_1
+          navigation={props.navigation}
+          headerHeight={props.headerHeight}
+          route={props.route}
+          KioskState={props.KioskState}
+          SetKioskState={props.SetKioskState}
+          OptionRef={props.OptionRef}
+          OptionSizeRef={props.OptionSizeRef}
+        />
+      ) : null}
+      {props.KioskState === '3-1' ? (
+        <KioskStage_3_1
+          navigation={props.navigation}
+          // OptionRef={props.OptionRef}
+          headerHeight={props.headerHeight}
+          route={props.route}
+          KioskState={props.KioskState}
+          MenuRef={props.MenuRef}
+          SetKioskState={props.SetKioskState}
+          MenuSelectRef={props.MenuSelectRef}
+          MenuListRef={props.MenuListRef}
         />
       ) : null}
       <StageHeader

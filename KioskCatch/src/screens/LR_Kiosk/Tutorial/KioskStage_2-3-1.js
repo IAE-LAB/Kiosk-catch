@@ -15,7 +15,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-export default KioskStage_2_2_1 = props => {
+export default KioskStage_2_3_1 = props => {
   var [Parameter, setParameter] = useState({
     offsetX: 0,
     offsetY: 0,
@@ -29,7 +29,7 @@ export default KioskStage_2_2_1 = props => {
 
   useEffect(() => {
     // console.log('props.OptionRef.current' + props.OptionRef.current);
-    props.OptionRef.current.measureInWindow((x, y, width, height) => {
+    props.OptionSizeRef.current.measureInWindow((x, y, width, height) => {
       console.log('-----------MenuRef----------------');
 
       var tempX = x;
@@ -57,7 +57,7 @@ export default KioskStage_2_2_1 = props => {
         style={{width: width, height: height}}
         onPress={() => {
           setOpacity(Ostyles.opFalse);
-          props.SetKioskState(['2-3T', '옵션 선택']);
+          props.SetKioskState(['2-3-1T', '옵션 선택']);
         }}>
         <View
           style={{
@@ -92,8 +92,8 @@ export default KioskStage_2_2_1 = props => {
                 style={styles.taskBubbleTail_icon}
               />
               <View style={styles.taskIofo}>
-                <Text style={styles.taskTxt}>선택 메뉴의 기본 옵션으로</Text>
-                <Text style={styles.taskTxt}>온도와 사이즈가 제공돼요</Text>
+                <Text style={styles.taskTxt}>대부분의 기본(보통) 사이즈는</Text>
+                <Text style={styles.taskTxt}>레귤러라고 할 수 있어요</Text>
               </View>
             </View>
           </View>
@@ -220,12 +220,12 @@ const styles = StyleSheet.create({
   },
   taskBubble: {
     alignItems: 'center',
-    top: -250,
+    top: -150,
   },
   taskBubbleTail_icon: {
     color: 'white',
     top: 95,
-    left: 125,
+    left: 0,
     transform: [{rotate: '-90deg'}],
   },
   taskIofo: {
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFC000',
     textAlign: 'center',
-    top: 160,
+    top: 380,
     justifyContent: 'flex-end',
   },
 });
