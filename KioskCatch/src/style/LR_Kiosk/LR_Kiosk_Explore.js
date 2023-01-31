@@ -171,12 +171,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'white',
   },
+  orderContents: {
+    // backgroundColor: 'yellow',
+    width: '100%',
+    height: '14%',
+    flexDirection: 'row',
+  },
   orderList: {
     flexDirection: 'column',
-    height: '14%',
+    height: '100%',
     width: '89%',
     justifyContent: 'space-evenly',
-    //backgroundColor: 'red',
+    // backgroundColor: 'red',
   },
   orderInfo: {
     backgroundColor: 'white',
@@ -222,14 +228,13 @@ const styles = StyleSheet.create({
   },
   orderList_icon: {
     width: '11%',
-    marginLeft: 349.5,
-    height: '13.95%',
-    marginTop: -94.9,
+    height: '100%',
     color: '#B8B8B8',
     alignItems: 'center',
     justifyContent: 'center',
-    //backgroundColor: 'blue',
+    // backgroundColor: 'blue',
   },
+
   footer: {
     flexDirection: 'row',
     width: '100%',
@@ -262,6 +267,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '32.7%',
     height: '55%',
+  },
+  orderContents: {
+    // backgroundColor: 'yellow',
+    width: '100%',
+    height: '14%',
+    flexDirection: 'row',
   },
   /**************************************************************************/
   //   튜토리얼 화면

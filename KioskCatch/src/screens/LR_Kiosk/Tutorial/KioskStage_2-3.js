@@ -14,6 +14,7 @@ import {
   ImageBackground,
   Dimensions,
 } from 'react-native';
+const {width, height} = Dimensions.get('window');
 
 export default KioskStage_2_2_1 = props => {
   var [Parameter, setParameter] = useState({
@@ -22,8 +23,6 @@ export default KioskStage_2_2_1 = props => {
     offsetWidth: 0,
     offsetHeight: 0,
   });
-
-  const {width, height} = Dimensions.get('window');
 
   var [Opacity, setOpacity] = useState(Ostyles.opTrue);
 
@@ -220,7 +219,7 @@ const styles = StyleSheet.create({
   },
   taskBubble: {
     alignItems: 'center',
-    top: -250,
+    top: -150,
   },
   taskBubbleTail_icon: {
     color: 'white',
