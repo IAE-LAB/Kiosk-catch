@@ -1,7 +1,7 @@
 import React, {useRef, useState, useEffect} from 'react';
 import 'react-native-gesture-handler';
 
-import * as Animatable from 'react-native-animatable';
+// import * as Animatable from 'react-native-animatable';
 
 import Icon_FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';

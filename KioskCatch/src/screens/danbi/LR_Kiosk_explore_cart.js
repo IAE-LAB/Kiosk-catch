@@ -6,15 +6,22 @@ import Icon_Entypo from 'react-native-vector-icons/Entypo';
 import Icon_Feather from 'react-native-vector-icons/Feather';
 import {Text, View, Image, StyleSheet, TouchableOpacity, } from 'react-native';
 
-//import OptionChangePopup from 'KioskCatch/src/components/Kiosk/OptionChangePopup';
-//import QuantityPopup from 'KioskCatch/src/components/Kiosk/QuantityPopup';
+import LR_Kiosk_Tutorial_Cart from 'KioskCatch/src/components/Kiosk/LR_Kiosk_Tutorial_Cart';
+import OptionPopup from 'KioskCatch/src/components/Kiosk/OptionPopup';
+import PackagingPopup from 'KioskCatch/src/components/Kiosk/PackagingPopup';
 import PaymentPopup from 'KioskCatch/src/components/Kiosk/PaymentPopup';
+import LR_Kiosk_Tutorial_Complete from '../../components/Kiosk/LR_Kiosk_Tutorial_Complete';
 
 export default function LR_Kiosk_explore_cart({navigation}) {
-    const [open, setOpen] = useState(false);
+    const [open1, setOpen_tutorial_cart] = useState(true);
+    const [open2, setOpen_option] = useState(false);
+    const [open3, setOpen_packaging] = useState(false);
+    const [open4, setOpen_payment] = useState(false);
 
     return (
-        <View style={styles.contents}>
+        <View style={styles.contents}
+        // open={useState(true)}
+        >
 
             {/* 좌우구조 상단 배경사진 */}
             <Image
@@ -142,38 +149,43 @@ export default function LR_Kiosk_explore_cart({navigation}) {
                     <Text style={styles.cart_text}>2,500</Text>
                 </View>
             </View>
-            <View style={styles.orderList}>
-                <View style={styles.orderInfo}>
-                    <Text style={styles.order_text}>말차라떼</Text>
-                    <View style={styles.order_option}>
-                        <Text style={styles.order_text}>1</Text>
-                        <TouchableOpacity style={styles.orderBtn} onPress={() => setOpen(true)}>
-                            <Icon_Entypo name="select-arrows" size={20} style={styles.order_icon} />
-                            <Text style={styles.order_text}>수량</Text>
-                        </TouchableOpacity>
+            {/* 장바구니 리스트 */}
+            <View style={styles.orderContents}>
+                <View style={styles.orderList}>
+                    <View style={styles.orderInfo}>
+                        <Text style={styles.order_text}>말차라떼</Text>
+                        <View style={styles.order_option}>
+                            <Text style={styles.order_text}>1</Text>
+                            <TouchableOpacity style={styles.orderBtn} onPress={() => setOpen_option(true)}>
+                                <Icon_Entypo name="select-arrows" size={20} style={styles.order_icon} />
+                                <Text style={styles.order_text}>수량</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.order_option}>
+                            <Text style={styles.order_text}>2,500</Text>
+                            <TouchableOpacity style={styles.orderBtn} onPress={() => setOpen_option(true)}>
+                                <Icon_Feather name="plus" size={20} style={styles.order_icon} />
+                                <Text style={styles.order_text}>옵션</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.orderBtn2}>
+                                <Icon_Feather name="x" size={20} style={styles.order_icon} />
+                                <Text style={styles.order_text}>삭제</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style={styles.order_option}>
-                        <Text style={styles.order_text}>2,500</Text>
-                        <TouchableOpacity style={styles.orderBtn} onPress={() => setOpen(true)}>
-                            <Icon_Feather name="plus" size={20} style={styles.order_icon} />
-                            <Text style={styles.order_text}>옵션</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.orderBtn2}>
-                            <Icon_Feather name="x" size={20} style={styles.order_icon} />
-                            <Text style={styles.order_text}>삭제</Text>
-                        </TouchableOpacity>
+                    <View style={styles.orderInfo}>
+                        {/* <Text style={styles.order_text}>말차라떼</Text> */}
+                    </View>
+                    <View style={styles.orderInfo}>
+                        {/* <Text style={styles.order_text}>말차라떼</Text> */}
                     </View>
                 </View>
-                <View style={styles.orderInfo}>
-                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
+
+                {/* 위아래 버튼 */}
+                <View style={styles.orderList_icon}>
+                    <Icon_AntDesign name="up-square-o" size={35} style={{color: '#B8B8B8'}}/>
+                    <Icon_AntDesign name="down-square-o" size={35} style={{color: '#B8B8B8'}}/>
                 </View>
-                <View style={styles.orderInfo}>
-                    {/* <Text style={styles.order_text}>말차라떼</Text> */}
-                </View>
-            </View>
-            <View style={styles.orderList_icon}>
-                <Icon_AntDesign name="up-square-o" size={35} style={{color: '#B8B8B8'}}/>
-                <Icon_AntDesign name="down-square-o" size={35} style={{color: '#B8B8B8'}}/>
             </View>
 
             {/* 하단 버튼 */}
@@ -184,14 +196,16 @@ export default function LR_Kiosk_explore_cart({navigation}) {
                 <TouchableOpacity style={styles.cancelBtn}>
                     <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: '#3D3D4F',}}>취소하기</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.paymentBtn} onPress={() => setOpen(true)}>
+                <TouchableOpacity style={styles.paymentBtn} onPress={() => setOpen_packaging(true)}>
                     <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: 'white',}}>결제하기</Text>
                 </TouchableOpacity>
             </View>
 
-            {/* {open ? <OptionChangePopup closePopup={() => setOpen(false)} /> : null} */}
-            {/* {open ? <QuantityPopup closePopup={() => setOpen(false)} /> : null} */}
-            {open ? <PaymentPopup closePopup={() => setOpen(false)} /> : null}
+            {open1 ? <LR_Kiosk_Tutorial_Cart closePopup={() => setOpen_tutorial_cart(false)} /> : null}
+            {open2 ? <OptionPopup closePopup={() => setOpen_option(false)} /> : null}
+            {open3 ? <PackagingPopup closePopup={() => setOpen_packaging(false)} /> : null}
+            {open4 ? <PaymentPopup closePopup={() => setOpen_payment(false)} /> : null}
+            
         </View>
     );
 }
@@ -345,12 +359,18 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white',
     },
+    orderContents: {
+        // backgroundColor: 'yellow',
+        width: '100%',
+        height: '14%',
+        flexDirection: 'row',
+    },
     orderList: {
         flexDirection: 'column',
-        height: '14%',
+        height: '100%',
         width: '89%',
         justifyContent: 'space-evenly',
-        //backgroundColor: 'red',
+        // backgroundColor: 'red',
     },
     orderInfo: {
         backgroundColor: 'white',
@@ -396,13 +416,11 @@ const styles = StyleSheet.create({
     },
     orderList_icon: {
         width: '11%',
-        marginLeft: 349.5,
-        height: '13.95%',
-        marginTop: -94.9,
+        height: '100%',
         color: '#B8B8B8',
         alignItems: 'center',
         justifyContent: 'center',
-        //backgroundColor: 'blue',
+        // backgroundColor: 'blue',
     },
     footer: {
         flexDirection: 'row',

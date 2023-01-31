@@ -50,7 +50,7 @@ export default function Tutorial_LRkiosk_list({navigation}) {
         <TouchableOpacity
           style={styles.btn}
           onPress={() =>
-            navigation.navigate('LR_Kiosk_Start', {
+            navigation.navigate('LR_Kiosk_explore_tutorial_1', {
               KioskState: KioskState,
               state: KioskState.stage[0],
             })

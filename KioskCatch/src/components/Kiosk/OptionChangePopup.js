@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet, TouchableOpacity, } from 'react-native';
 
+import LR_Kiosk_Tutorial_OptionChange from 'KioskCatch/src/components/Kiosk/LR_Kiosk_Tutorial_OptionChange';
+
 const OptionChangePopup = ({ closePopup }) => {
     //console.log('navigation ' + props.navigation);
 
@@ -9,6 +11,7 @@ const OptionChangePopup = ({ closePopup }) => {
     //const onClick = () => setColor(styles.setTemperatureBtn, styles.setTemperature_text);
 
     const navigation = useNavigation();
+    const [open1, setOpen_tutorial] = useState(true);
 
     // const [active, setActive] = useState(false);
     // const handleClick = () => {
@@ -129,6 +132,7 @@ const OptionChangePopup = ({ closePopup }) => {
             </View>
           </View>
         </View>
+        {open1 ? <LR_Kiosk_Tutorial_OptionChange /> : null}
       </View>
     );
   };

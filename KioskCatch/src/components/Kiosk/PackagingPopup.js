@@ -4,22 +4,22 @@ import { View, Text, StyleSheet, TouchableOpacity, Image, } from 'react-native';
 import Icon_MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
 
-import LR_Kiosk_Tutorial_Payment from 'KioskCatch/src/components/Kiosk/LR_Kiosk_Tutorial_Payment';
-import PaymentCoupon from 'KioskCatch/src/components/Kiosk/PaymentCoupon';
+import LR_Kiosk_Tutorial_Packaging from 'KioskCatch/src/components/Kiosk/LR_Kiosk_Tutorial_Packaging';
+import PaymentPopup from 'KioskCatch/src/components/Kiosk/PaymentPopup';
 
-const PaymentPopup = ({ closePopup }) => {
+const PackagingPopup = ({ closePopup }) => {
     //console.log('navigation ' + props.navigation);
 
     const navigation = useNavigation();
-    const [open1, setOpen_tutorial_payment] = useState(true);
-    const [open, setOpen] = useState(false);
+    const [open1, setOpen_tutorial_packaging] = useState(true);
+    const [open, setOpen] = useState(false)
 
     return (
       <View style={styles.overlay}>
         <View style={styles.optionContainer}>
             {/*제목*/}
             <View style={styles.optionTitle}>
-                <Text style={styles.optionTitleText}>결제방법을 선택해주세요</Text>
+                <Text style={styles.optionTitleText}>포장방법을 선택해주세요</Text>
             </View>
 
             {/*내용*/}
@@ -46,19 +46,12 @@ const PaymentPopup = ({ closePopup }) => {
                 {/*결제 선택*/}
                 <View style={styles.optionPayment}>
                     <TouchableOpacity style={styles.paymentBtn}>
-                        <Icon_MaterialCommunityIcons name="credit-card-outline" size={40} style={{color: '#6A3B07'}} />
-                        <Text style={styles.pay_text}>신용카드</Text>
-                        <Text style={styles.pay_text}> </Text>
+                        <Icon_MaterialCommunityIcons name="package-variant" size={50} style={{color: '#6A3B07'}} />
+                        <Text style={styles.pay_text}>테이크 아웃</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.paymentBtn}>
-                        <Icon_MaterialCommunityIcons name="ticket-percent-outline" size={40} style={{color: '#6A3B07'}} />
-                        <Text style={styles.pay_text}>모바일</Text>
-                        <Text style={styles.pay_text}>쿠폰</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.paymentBtn}>
-                        <Icon_MaterialCommunityIcons name="barcode" size={40} style={{color: '#6A3B07'}} />
-                        <Text style={styles.pay_text}>포인트</Text>
-                        <Text style={styles.pay_text}>사용</Text>
+                        <Icon_MaterialCommunityIcons name="store" size={50} style={{color: '#6A3B07'}} />
+                        <Text style={styles.pay_text}>매장</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -71,19 +64,20 @@ const PaymentPopup = ({ closePopup }) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                     style={styles.selectBtn_2} onPress={() => setOpen(true)}>
-                        <Text style={styles.select_text}>선택완료</Text>
+                        <Text style={styles.select_text}>다음으로</Text>
                     </TouchableOpacity>
                 </View>
             </View>
         </View>
 
-        {open1 ? <LR_Kiosk_Tutorial_Payment closePopup={() => setOpen_tutorial_payment(false)} /> : null}
-        {open ? <PaymentCoupon closePopup={() => setOpen(false)} /> : null}
+        {open1 ? <LR_Kiosk_Tutorial_Packaging closePopup={() => setOpen_tutorial_packaging(false)} /> : null}
+        {open ? <PaymentPopup closePopup={() => setOpen(false)} /> : null}
+
       </View>
     );
   };
 
-  export default PaymentPopup;
+  export default PackagingPopup;
 
   const styles = StyleSheet.create({
     overlay: {
@@ -94,7 +88,6 @@ const PaymentPopup = ({ closePopup }) => {
       backgroundColor: 'rgba(0, 0, 0, 0.36)',
       alignItems: 'center',
       justifyContent: 'center',
-      zIndex: 1,
   },
   optionContainer: {
       width: '90%',
@@ -170,7 +163,7 @@ const PaymentPopup = ({ closePopup }) => {
       alignItems: 'center',
       justifyContent: 'center',
       borderRadius: 5,
-      width: '28%',
+      width: '33%',
       height: '100%',
       //marginHorizontal: -25,
   },

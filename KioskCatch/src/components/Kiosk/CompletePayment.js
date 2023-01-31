@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image, } from 'react-native';
 import Icon_MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
 
+import LR_Kiosk_Tutorial_Complete from 'KioskCatch/src/components/Kiosk/LR_Kiosk_Tutorial_Complete';
 import PaymentCoupon from 'KioskCatch/src/components/Kiosk/PaymentCoupon';
 
 const CompletePayment = ({ closePopup }) => {
@@ -13,6 +14,7 @@ const CompletePayment = ({ closePopup }) => {
     //const onClick = () => setColor(styles.setTemperatureBtn, styles.setTemperature_text);
 
     const navigation = useNavigation();
+    const [open1, setOpen_tutorial_Complete] = useState(true);
     const [open, setOpen] = useState(false);
 
     // const [active, setActive] = useState(false);
@@ -66,6 +68,7 @@ const CompletePayment = ({ closePopup }) => {
                   </View>
               </View>
           </View>
+          {open1 ? <LR_Kiosk_Tutorial_Complete closePopup={() => setOpen_tutorial_Complete(false)} /> : null}
           {open ? <PaymentCoupon closePopup={() => setOpen(false)} /> : null}
         </View>
       );

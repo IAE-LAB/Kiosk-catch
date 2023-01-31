@@ -4,7 +4,6 @@ import Icon_FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
-import LR_Kiosk_Tutorial_3 from 'KioskCatch/src/components/Kiosk/LR_Kiosk_Tutorial_3';
 import OptionPopup from 'KioskCatch/src/components/Kiosk/OptionPopup';
 
 export default function LR_Kiosk_explore_menu({navigation}) {
