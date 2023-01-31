@@ -145,9 +145,15 @@ export default function LR_Kiosk_Explore({navigation, route}) {
           KioskState={KioskState[0]}
           SetKioskState={SetKioskState}
           MenuListRef={MenuListRef}
+          animation={animation}
+          SetvisibleOption={SetvisibleOption}
         />
-        <OrderListIcon />
-        <FooterBtn />
+
+        <FooterBtn
+          KioskState={KioskState[0]}
+          SetKioskState={SetKioskState}
+          animation={animation}
+        />
       </View>
     </View>
   );
@@ -186,46 +192,87 @@ const Cart = props => {
 };
 const OrderList = props => {
   return (
-    <View style={styles.orderList} ref={props.MenuListRef}>
-      <View style={styles.orderInfo}>
-        {props.KioskState === '3-1' || props.KioskState === '3-1T' ? (
-          <>
-            <Text style={styles.order_text}>말차라떼</Text>
-            <View style={styles.order_option}>
-              <Text style={styles.order_text}>1</Text>
-              <TouchableOpacity
-                style={styles.orderBtn}
-                onPress={() => setOpen_option(true)}>
-                <Icon_Entypo
-                  name="select-arrows"
-                  size={20}
-                  style={styles.order_icon}
-                />
-                <Text style={styles.order_text}>수량</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.order_option}>
-              <Text style={styles.order_text}>3,200</Text>
-              <TouchableOpacity
-                style={styles.orderBtn}
-                onPress={() => setOpen_option(true)}>
-                <Icon_Feather name="plus" size={20} style={styles.order_icon} />
-                <Text style={styles.order_text}>옵션</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.orderBtn2}>
-                <Icon_Feather name="x" size={20} style={styles.order_icon} />
-                <Text style={styles.order_text}>삭제</Text>
-              </TouchableOpacity>
-            </View>
-          </>
-        ) : null}
+    <View style={styles.orderContents}>
+      <View style={styles.orderList} ref={props.MenuListRef}>
+        <View style={styles.orderInfo}>
+          {props.KioskState === '3-1' ||
+          props.KioskState === '3-1T' ||
+          props.KioskState === '3-1-1' ||
+          props.KioskState === '3-1-2' ||
+          props.KioskState === '3-2' ? (
+            <>
+              <Text style={styles.order_text}>말차라떼</Text>
+              <View style={styles.order_option}>
+                <Text style={styles.order_text}>1</Text>
+                <TouchableOpacity
+                  style={styles.orderBtn}
+                  onPress={() => props.SetvisibleOption(1)}>
+                  <Icon_Entypo
+                    name="select-arrows"
+                    size={20}
+                    style={styles.order_icon}
+                  />
+                  <Text style={styles.order_text}>수량</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.order_option}>
+                <Text style={styles.order_text}>3,200</Text>
+                {props.KioskState === '3-1T' ? (
+                  <Animated.View
+                    style={[
+                      styles.orderBtn,
+                      {
+                        transform: [{scale: props.animation}],
+                        backgroundColor: '#FFC000',
+                      },
+                    ]}>
+                    <TouchableOpacity
+                      style={styles.orderBtn}
+                      onPress={() => {
+                        props.SetvisibleOption(1);
+                        props.SetKioskState(['3-1-1', '옵션변경']);
+                      }}>
+                      <Icon_Feather
+                        name="plus"
+                        size={20}
+                        style={styles.order_icon}
+                      />
+                      <Text style={styles.order_text}>옵션</Text>
+                    </TouchableOpacity>
+                  </Animated.View>
+                ) : (
+                  <TouchableOpacity
+                    style={styles.orderBtn}
+                    onPress={() => {
+                      props.SetvisibleOption(1);
+                      props.SetKioskState(['3-1-1', '옵션변경']);
+                    }}>
+                    <Icon_Feather
+                      name="plus"
+                      size={20}
+                      style={styles.order_icon}
+                    />
+
+                    <Text style={styles.order_text}>옵션</Text>
+                  </TouchableOpacity>
+                )}
+
+                <TouchableOpacity style={styles.orderBtn2}>
+                  <Icon_Feather name="x" size={20} style={styles.order_icon} />
+                  <Text style={styles.order_text}>삭제</Text>
+                </TouchableOpacity>
+              </View>
+            </>
+          ) : null}
+        </View>
+        <View style={styles.orderInfo}>
+          {/* <Text style={styles.order_text}>말차라떼</Text> */}
+        </View>
+        <View style={styles.orderInfo}>
+          {/* <Text style={styles.order_text}>말차라떼</Text> */}
+        </View>
       </View>
-      <View style={styles.orderInfo}>
-        {/* <Text style={styles.order_text}>말차라떼</Text> */}
-      </View>
-      <View style={styles.orderInfo}>
-        {/* <Text style={styles.order_text}>말차라떼</Text> */}
-      </View>
+      <OrderListIcon />
     </View>
   );
 };
@@ -241,7 +288,7 @@ const OrderListIcon = () => {
     </View>
   );
 };
-const FooterBtn = () => {
+const FooterBtn = props => {
   return (
     <View style={styles.footer}>
       <TouchableOpacity style={styles.backBtn}>
@@ -264,16 +311,41 @@ const FooterBtn = () => {
           취소하기
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.paymentBtn}>
-        <Text
-          style={{
-            fontFamily: 'NanumSquare_acEB',
-            fontSize: 22,
-            color: 'white',
-          }}>
-          결제하기
-        </Text>
-      </TouchableOpacity>
+      {props.KioskState == '3-2' ? (
+        <Animated.View
+          style={[
+            styles.paymentBtn,
+            {
+              transform: [{scale: props.animation}],
+            },
+          ]}>
+          <TouchableOpacity
+            style={[
+              styles.paymentBtn,
+              {backgroundColor: '#FFC000', width: '100%', height: '100%'},
+            ]}>
+            <Text
+              style={{
+                fontFamily: 'NanumSquare_acEB',
+                fontSize: 22,
+                color: 'white',
+              }}>
+              결제하기
+            </Text>
+          </TouchableOpacity>
+        </Animated.View>
+      ) : (
+        <TouchableOpacity style={styles.paymentBtn}>
+          <Text
+            style={{
+              fontFamily: 'NanumSquare_acEB',
+              fontSize: 22,
+              color: 'white',
+            }}>
+            결제하기
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

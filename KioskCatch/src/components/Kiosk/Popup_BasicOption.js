@@ -67,15 +67,43 @@ const Content = props => {
       {/*온도 선택*/}
       <View style={styles.optionTemperature}>
         {/********** HOT **********/}
-        <TouchableOpacity
-          style={userTempInput.hot.temperatureBtn}
-          onPress={() => SelectHot(userTempInput, setuserTempInput, styles)}>
-          <Image
-            source={userTempInput.hot.img}
-            style={styles.optionImage_hot}
-          />
-          <Text style={userTempInput.hot.temperature_text}>HOT</Text>
-        </TouchableOpacity>
+        {props.KioskState === '3-1-1' ? (
+          <Animated.View
+            style={[
+              userTempInput.hot.temperatureBtn,
+              {
+                transform: [{scale: props.animation}],
+              },
+            ]}>
+            <TouchableOpacity
+              style={[
+                userTempInput.hot.temperatureBtn,
+                {backgroundColor: '#FFC000', width: '100%'},
+              ]}
+              onPress={() => {
+                SelectHot(userTempInput, setuserTempInput, styles);
+                props.SetKioskState(['3-1-2', '옵션변경']);
+              }}>
+              <Image
+                source={userTempInput.hot.img}
+                style={styles.optionImage_hot}
+              />
+
+              <Text style={userTempInput.hot.temperature_text}>HOT</Text>
+            </TouchableOpacity>
+          </Animated.View>
+        ) : (
+          <TouchableOpacity
+            style={userTempInput.hot.temperatureBtn}
+            onPress={() => SelectHot(userTempInput, setuserTempInput, styles)}>
+            <Image
+              source={userTempInput.hot.img}
+              style={styles.optionImage_hot}
+            />
+            <Text style={userTempInput.hot.temperature_text}>HOT</Text>
+          </TouchableOpacity>
+        )}
+
         {/********** ICE **********/}
         {props.KioskState === '2-3T' ? (
           <Animated.View
@@ -130,7 +158,7 @@ const Content = props => {
             스몰
           </Text>
           <Text style={[styles.size_text_2, userSizeInput.small.text_color]}>
-            5,700
+            2,700
           </Text>
         </TouchableOpacity>
         {/*********** Regular **********/}
@@ -161,7 +189,7 @@ const Content = props => {
               </Text>
               <Text
                 style={[styles.size_text_2, userSizeInput.regular.text_color]}>
-                6,200
+                3,200
               </Text>
             </TouchableOpacity>
           </Animated.View>
@@ -181,7 +209,7 @@ const Content = props => {
             </Text>
             <Text
               style={[styles.size_text_2, userSizeInput.regular.text_color]}>
-              6,200
+              3,200
             </Text>
           </TouchableOpacity>
         )}
@@ -198,7 +226,7 @@ const Content = props => {
             라지
           </Text>
           <Text style={[styles.size_text_2, userSizeInput.large.text_color]}>
-            6,700
+            3,700
           </Text>
         </TouchableOpacity>
       </View>
@@ -212,7 +240,7 @@ const Content = props => {
           }}>
           <Text style={[styles.cancel_text, {fontSize: 18}]}>취소하기</Text>
         </TouchableOpacity>
-        {props.KioskState === '2-3-2T' ? (
+        {props.KioskState === '2-3-2T' || props.KioskState === '3-1-2' ? (
           <Animated.View
             style={[
               styles.selectBtn_2,
@@ -227,7 +255,9 @@ const Content = props => {
               ]}
               onPress={() => {
                 props.SetvisibleOption(0);
-                props.SetKioskState(['3-1', '장바구니']);
+                props.KioskState === '3-1-2'
+                  ? props.SetKioskState(['3-2', '장바구니'])
+                  : props.SetKioskState(['3-1', '장바구니']);
               }}>
               <Text style={[styles.select_text, {fontSize: 18}]}>선택완료</Text>
             </TouchableOpacity>
@@ -280,9 +310,10 @@ const SelectIce = (userTempInput, setuserTempInput, styles) => {
 // Hot Select Fuction
 const SelectHot = (userTempInput, setuserTempInput, styles) => {
   if (
-    JSON.stringify(userTempInput.ice.temperature_text) ===
+    JSON.stringify(userTempInput.hot.temperature_text) ===
     JSON.stringify(styles.temperature_text)
   ) {
+    console.log('true');
     setuserTempInput({
       hot: {
         img: require('KioskCatch/assets/img/LR_kiosk/coffee-cup_hot_w.png'),
@@ -296,7 +327,6 @@ const SelectHot = (userTempInput, setuserTempInput, styles) => {
       },
     });
   } else {
-    console.log('flase');
     setuserTempInput({
       hot: {
         img: require('KioskCatch/assets/img/LR_kiosk/coffee-cup_hot.png'),

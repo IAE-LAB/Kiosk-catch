@@ -50,7 +50,11 @@ export default TaskText = props => {
       props.KioskState === '2-2-1T' ||
       props.KioskState === '2-3T' ||
       props.KioskState === '2-3-1T' ||
-      props.KioskState === '2-3-2T' ? (
+      props.KioskState === '2-3-2T' ||
+      props.KioskState === '3-1T' ||
+      props.KioskState === '3-1-1' ||
+      props.KioskState === '3-1-2' ||
+      props.KioskState === '3-2' ? (
         <Animated.View
           style={{
             position: 'absolute',
@@ -66,25 +70,41 @@ export default TaskText = props => {
                 style={{marginRight: 10}}
               />
               {props.KioskState === '2-1T' ? (
-                <Text style={style.text}>카테고리의 다음 버튼을 누르세요</Text>
+                <Text style={style.text}>
+                  카테고리의 "다음" 버튼을 누르세요
+                </Text>
               ) : null}
               {props.KioskState === '2-1-2' ? (
-                <Text style={style.text}>카테고리의 이전 버튼을 누르세요</Text>
+                <Text style={style.text}>
+                  카테고리의 "이전" 버튼을 누르세요
+                </Text>
               ) : null}
               {props.KioskState === '2-2T' ? (
                 <Text style={style.text}>"다음" 버튼을 누르세요</Text>
               ) : null}
               {props.KioskState === '2-2-1T' ? (
-                <Text style={style.text}>말차라떼를 선택하세요</Text>
+                <Text style={style.text}>"말차라떼"를 선택하세요</Text>
               ) : null}
               {props.KioskState === '2-3T' ? (
-                <Text style={style.text}>ICE(차가운음료)를 선택하세요</Text>
+                <Text style={style.text}>"ICE(차가운음료)"를 선택하세요</Text>
               ) : null}
               {props.KioskState === '2-3-1T' ? (
-                <Text style={style.text}>레귤러(보통 크기)를 선택하세요</Text>
+                <Text style={style.text}>"레귤러(보통 크기)"를 선택하세요</Text>
               ) : null}
               {props.KioskState === '2-3-2T' ? (
                 <Text style={style.text}>"선택완료" 버튼을 누르세요</Text>
+              ) : null}
+              {props.KioskState === '3-1T' ? (
+                <Text style={style.text}>"옵션" 버튼을 누르세요</Text>
+              ) : null}
+              {props.KioskState === '3-1-1' ? (
+                <Text style={style.text}>"HOT(따뜻한음료)"으로 변경하세요</Text>
+              ) : null}
+              {props.KioskState === '3-1-2' ? (
+                <Text style={style.text}>"선택완료" 버튼을 누르세요</Text>
+              ) : null}
+              {props.KioskState === '3-2' ? (
+                <Text style={style.text}>"결제하기" 버튼을 누르세요</Text>
               ) : null}
             </View>
           </View>
