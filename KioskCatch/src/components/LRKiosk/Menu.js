@@ -29,6 +29,7 @@ export default Menu = props => {
               SetKioskState={props.SetKioskState}
               SetvisibleOption={props.SetvisibleOption}
               MenuSelectRef={props.MenuSelectRef}
+              SetSelectMenu={props.SetSelectMenu}
             />
           ) : null}
           {props.PageState === 3 ? <CoffeeComponent3 /> : null}
@@ -186,6 +187,7 @@ const CoffeeComponent2 = props => {
               onPress={() => {
                 props.SetKioskState(['2-3', '옵션 선택']);
                 props.SetvisibleOption(1);
+                props.SetSelectMenu('말차라떼');
               }}
               ref={props.MenuSelectRef}>
               <Image

@@ -30,8 +30,6 @@ export default KioskStage_2_2 = props => {
   useEffect(() => {
     console.log('useEffect ');
     props.MenuRef.current.measureInWindow((x, y, width, height) => {
-      console.log('-----------MenuRef----------------');
-
       var tempX = x;
       var tempY = y - props.headerHeight;
 
@@ -42,7 +40,12 @@ export default KioskStage_2_2 = props => {
         offsetHeight: height,
       });
     });
-  });
+  }, [
+    Parameter.offsetX,
+    Parameter.offsetY,
+    Parameter.offsetHeight,
+    Parameter.offsetWidth,
+  ]);
 
   return (
     <ImageBackground

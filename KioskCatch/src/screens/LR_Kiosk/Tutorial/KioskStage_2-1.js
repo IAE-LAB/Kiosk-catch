@@ -33,8 +33,6 @@ export default KioskStage_2_1 = props => {
   useEffect(() => {
     console.log('useEffect ');
     props.CatagoryRef.current.measureInWindow((x, y, width, height) => {
-      console.log('---------------------------');
-
       const tempX = x;
       const tempY = y - props.headerHeight;
 
