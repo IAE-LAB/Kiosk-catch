@@ -27,25 +27,6 @@ export default Popup = props => {
       temperatureBtn: styles.temperatureBtn,
     },
   });
-  const [userSizeInput, setuserSizeInput] = useState({
-    small: {
-      img: require('KioskCatch/assets/img/LR_kiosk/cup_size_s.png'),
-      sizeBtn: styles.sizeBtn,
-      text_color: styles.cancel_text,
-    },
-    regular: {
-      img: require('KioskCatch/assets/img/LR_kiosk/cup_size_m.png'),
-      sizeBtn: styles.sizeBtn,
-      text_color: styles.cancel_text,
-    },
-    large: {
-      img: require('KioskCatch/assets/img/LR_kiosk/cup_size_l.png'),
-      sizeBtn: styles.sizeBtn,
-      text_color: styles.cancel_text,
-    },
-  });
-
-  const [userPage, setUserPage] = useState(1);
 
   return (
     <>
