@@ -8,15 +8,17 @@ import {Text, View, Image, StyleSheet, TouchableOpacity, } from 'react-native';
 
 import LR_Kiosk_Tutorial_Cart from 'KioskCatch/src/components/Kiosk/LR_Kiosk_Tutorial_Cart';
 import OptionPopup from 'KioskCatch/src/components/Kiosk/OptionPopup';
-import PackagingPopup from 'KioskCatch/src/components/Kiosk/PackagingPopup';
-import PaymentPopup from 'KioskCatch/src/components/Kiosk/PaymentPopup';
-import LR_Kiosk_Tutorial_Complete from '../../components/Kiosk/LR_Kiosk_Tutorial_Complete';
+import OrderListPopup from 'KioskCatch/src/components/Kiosk/OrderListPopup';
+// import PackagingPopup from 'KioskCatch/src/components/Kiosk/PackagingPopup';
+// import PaymentPopup from 'KioskCatch/src/components/Kiosk/PaymentPopup';
+// import LR_Kiosk_Tutorial_Complete from '../../components/Kiosk/LR_Kiosk_Tutorial_Complete';
 
 export default function LR_Kiosk_explore_cart({navigation}) {
     const [open1, setOpen_tutorial_cart] = useState(true);
     const [open2, setOpen_option] = useState(false);
-    const [open3, setOpen_packaging] = useState(false);
-    const [open4, setOpen_payment] = useState(false);
+    const [open3, setOpen_orderList] = useState(false);
+    // const [open3, setOpen_packaging] = useState(false);
+    // const [open4, setOpen_payment] = useState(false);
 
     return (
         <View style={styles.contents}
@@ -196,15 +198,16 @@ export default function LR_Kiosk_explore_cart({navigation}) {
                 <TouchableOpacity style={styles.cancelBtn}>
                     <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: '#3D3D4F',}}>취소하기</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.paymentBtn} onPress={() => setOpen_packaging(true)}>
+                <TouchableOpacity style={styles.paymentBtn} onPress={() => setOpen_orderList(true)}>
                     <Text style={{fontFamily: 'NanumSquare_acEB', fontSize: 22, color: 'white',}}>결제하기</Text>
                 </TouchableOpacity>
             </View>
 
             {open1 ? <LR_Kiosk_Tutorial_Cart closePopup={() => setOpen_tutorial_cart(false)} /> : null}
             {open2 ? <OptionPopup closePopup={() => setOpen_option(false)} /> : null}
-            {open3 ? <PackagingPopup closePopup={() => setOpen_packaging(false)} /> : null}
-            {open4 ? <PaymentPopup closePopup={() => setOpen_payment(false)} /> : null}
+            {open3 ? <OrderListPopup closePopup={() => setOpen_orderList(false)} /> : null}
+            {/* {open3 ? <PackagingPopup closePopup={() => setOpen_packaging(false)} /> : null} */}
+            {/* {open4 ? <PaymentPopup closePopup={() => setOpen_payment(false)} /> : null} */}
             
         </View>
     );

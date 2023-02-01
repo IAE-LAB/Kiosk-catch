@@ -8,9 +8,6 @@ import LR_Kiosk_Tutorial_Packaging from 'KioskCatch/src/components/Kiosk/LR_Kios
 import PaymentPopup from 'KioskCatch/src/components/Kiosk/PaymentPopup';
 
 const PackagingPopup = ({ closePopup }) => {
-    //console.log('navigation ' + props.navigation);
-
-    const navigation = useNavigation();
     const [open1, setOpen_tutorial_packaging] = useState(true);
     const [open, setOpen] = useState(false)
 
@@ -88,6 +85,7 @@ const PackagingPopup = ({ closePopup }) => {
       backgroundColor: 'rgba(0, 0, 0, 0.36)',
       alignItems: 'center',
       justifyContent: 'center',
+      zIndex: 1,
   },
   optionContainer: {
       width: '90%',
