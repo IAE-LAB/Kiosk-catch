@@ -52,10 +52,12 @@ export default function LR_Kiosk_Explore({navigation, route}) {
 
   const animation = new Animated.Value(1);
 
-  const [CategoryState, setCategoryState] = useState('coffee');
-  const [PageState, setPageState] = useState(1);
+  const [CategoryState, setCategoryState] = useState(
+    route.params.CategoryState,
+  );
+  const [PageState, setPageState] = useState(route.params.PageState);
 
-  var [visibleOption, SetvisibleOption] = useState(0);
+  var [visibleOption, SetvisibleOption] = useState(route.params.visibleOption);
   var [SelectMenu, SetSelectMenu] = useState('');
 
   Animated.loop(
@@ -72,7 +74,7 @@ export default function LR_Kiosk_Explore({navigation, route}) {
       }),
     ]),
   ).start();
-
+  // console.log('AAAA' + visibleOption.final);
   return (
     <View style={{flex: 1, width: '100%', height: '100%'}}>
       <Popup
@@ -84,6 +86,7 @@ export default function LR_Kiosk_Explore({navigation, route}) {
         SetKioskState={SetKioskState}
         OptionSizeRef={OptionSizeRef}
         SelectMenu={SelectMenu}
+        navigation={navigation}
       />
       {/* 튜토리얼 화면 */}
       <TutorialHandler
@@ -153,6 +156,7 @@ export default function LR_Kiosk_Explore({navigation, route}) {
           KioskState={KioskState[0]}
           SetKioskState={SetKioskState}
           animation={animation}
+          SetvisibleOption={SetvisibleOption}
         />
       </View>
     </View>
@@ -199,14 +203,33 @@ const OrderList = props => {
           props.KioskState === '3-1T' ||
           props.KioskState === '3-1-1' ||
           props.KioskState === '3-1-2' ||
-          props.KioskState === '3-2' ? (
+          props.KioskState === '3-2' ||
+          props.KioskState === '3-2T' ||
+          props.KioskState === '3-3' ||
+          props.KioskState === '3-3T' ||
+          props.KioskState === '3-3-1' ||
+          props.KioskState === '4-1' ||
+          props.KioskState === '4-1T' ||
+          props.KioskState === '4-1-1' ||
+          props.KioskState === '4-2' ||
+          props.KioskState === '4-3' ||
+          props.KioskState === '4-2T' ||
+          props.KioskState === '4-3T' ||
+          props.KioskState === '4-1(order)' ? (
             <>
               <Text style={styles.order_text}>말차라떼</Text>
               <View style={styles.order_option}>
                 <Text style={styles.order_text}>1</Text>
                 <TouchableOpacity
                   style={styles.orderBtn}
-                  onPress={() => props.SetvisibleOption(1)}>
+                  onPress={() =>
+                    props.SetvisibleOption({
+                      basicOption: 1,
+                      order: 0,
+                      takeoutOption: 0,
+                      payment: 0,
+                    })
+                  }>
                   <Icon_Entypo
                     name="select-arrows"
                     size={20}
@@ -229,7 +252,11 @@ const OrderList = props => {
                     <TouchableOpacity
                       style={styles.orderBtn}
                       onPress={() => {
-                        props.SetvisibleOption(1);
+                        props.SetvisibleOption({
+                          basicOption: 1,
+                          takeoutOption: 0,
+                          payment: 0,
+                        });
                         props.SetKioskState(['3-1-1', '옵션변경']);
                       }}>
                       <Icon_Feather
@@ -241,12 +268,7 @@ const OrderList = props => {
                     </TouchableOpacity>
                   </Animated.View>
                 ) : (
-                  <TouchableOpacity
-                    style={styles.orderBtn}
-                    onPress={() => {
-                      props.SetvisibleOption(1);
-                      props.SetKioskState(['3-1-1', '옵션변경']);
-                    }}>
+                  <TouchableOpacity style={styles.orderBtn}>
                     <Icon_Feather
                       name="plus"
                       size={20}
@@ -323,7 +345,16 @@ const FooterBtn = props => {
             style={[
               styles.paymentBtn,
               {backgroundColor: '#FFC000', width: '100%', height: '100%'},
-            ]}>
+            ]}
+            onPress={() => {
+              props.SetvisibleOption({
+                basicOption: 0,
+                order: 0,
+                takeoutOption: 1,
+                payment: 0,
+              });
+              props.SetKioskState(['3-3', '식사 장소 선택']);
+            }}>
             <Text
               style={{
                 fontFamily: 'NanumSquare_acEB',

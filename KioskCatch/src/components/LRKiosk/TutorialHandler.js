@@ -4,6 +4,10 @@ import KioskStage_2_2_1 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStag
 import KioskStage_2_3 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_2-3';
 import KioskStage_2_3_1 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_2-3-1';
 import KioskStage_3_1 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_3-1';
+import KioskStage_3_3 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_3-3';
+import KioskStage_4_1 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_4-1';
+import KioskStage_4_2 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_4-2';
+import KioskStage_4_3 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_4-3';
 export default TutorialHandler = props => {
   return (
     <>
@@ -74,6 +78,46 @@ export default TutorialHandler = props => {
           SetKioskState={props.SetKioskState}
           MenuSelectRef={props.MenuSelectRef}
           MenuListRef={props.MenuListRef}
+        />
+      ) : null}
+      {props.KioskState === '3-3' ? (
+        <KioskStage_3_3
+          navigation={props.navigation}
+          headerHeight={props.headerHeight}
+          route={props.route}
+          KioskState={props.KioskState}
+          SetKioskState={props.SetKioskState}
+          OptionRef={props.OptionRef}
+        />
+      ) : null}
+      {props.KioskState === '4-1' ? (
+        <KioskStage_4_1
+          navigation={props.navigation}
+          headerHeight={props.headerHeight}
+          route={props.route}
+          KioskState={props.KioskState}
+          SetKioskState={props.SetKioskState}
+          OptionRef={props.OptionRef}
+        />
+      ) : null}
+      {props.KioskState === '4-2' ? (
+        <KioskStage_4_2
+          navigation={props.navigation}
+          headerHeight={props.headerHeight}
+          route={props.route}
+          KioskState={props.KioskState}
+          SetKioskState={props.SetKioskState}
+          OptionRef={props.OptionRef}
+        />
+      ) : null}
+      {props.KioskState === '4-3' ? (
+        <KioskStage_4_3
+          navigation={props.navigation}
+          headerHeight={props.headerHeight}
+          route={props.route}
+          KioskState={props.KioskState}
+          SetKioskState={props.SetKioskState}
+          OptionRef={props.OptionRef}
         />
       ) : null}
       <StageHeader

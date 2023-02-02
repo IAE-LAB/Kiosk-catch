@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 const {width, height} = Dimensions.get('window');
 
-export default KioskStage_2_3 = props => {
+export default KioskStage_2_2_1 = props => {
   var [Parameter, setParameter] = useState({
     offsetX: 0,
     offsetY: 0,
@@ -80,7 +80,7 @@ export default KioskStage_2_3 = props => {
                   fontSize: 25,
                   color: 'white',
                 }}>
-                옵션
+                주문 확인
               </Text>
             </View>
 
@@ -91,8 +91,8 @@ export default KioskStage_2_3 = props => {
                 style={styles.taskBubbleTail_icon}
               />
               <View style={styles.taskIofo}>
-                <Text style={styles.taskTxt}>선택 메뉴의 기본 옵션으로</Text>
-                <Text style={styles.taskTxt}>온도와 사이즈가 제공돼요</Text>
+                <Text style={styles.taskTxt}>결제를 하기전</Text>
+                <Text style={styles.taskTxt}>다시한번 주문을 확인해요</Text>
               </View>
             </View>
           </View>
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
   },
   taskBubble: {
     alignItems: 'center',
-    top: -220,
+    top: -230,
   },
   taskBubbleTail_icon: {
     color: 'white',
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFC000',
     textAlign: 'center',
-    top: 210,
+    top: 220,
     justifyContent: 'flex-end',
   },
 });

@@ -9,6 +9,7 @@ import {
   Alert,
   TouchableOpacity,
   Animated,
+  ScrollView,
 } from 'react-native';
 import 'react-native-gesture-handler';
 import Icon_MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -145,7 +146,7 @@ const KioskState = {
 
 export default function Tutorial_CBkiosk_list({navigation}) {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {/* 키오스크 시작하기 버튼 */}
       <View style={{alignItems: 'center', height: 280, marginTop: -20}}>
         <Image
@@ -233,7 +234,7 @@ export default function Tutorial_CBkiosk_list({navigation}) {
         <Text style={styles.stage_text_highlight}>결제</Text>
         <Text style={styles.stage_text}>하기</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 
