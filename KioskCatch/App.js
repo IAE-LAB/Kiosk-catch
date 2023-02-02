@@ -31,12 +31,12 @@ import LR_Kiosk_Start from './src/screens/LR_Kiosk/LR_Kiosk_Start';
 import LR_Kiosk_Explore_Tutorial from './src/screens/LR_Kiosk/Tutorial/LR_Kiosk_Explore_Tutorial';
 import LR_Kiosk_Explore from './src/screens/LR_Kiosk/LR_Kiosk_Explore';
 
-import LR_Kiosk_explore from './src/screens/danbi/LR_Kiosk_explore';
-import LR_Kiosk_explore_category from './src/screens/danbi/LR_Kiosk_explore_category';
-import LR_Kiosk_explore_menu from './src/screens/danbi/LR_Kiosk_explore_menu';
-import LR_Kiosk_explore_option from './src/screens/danbi/LR_Kiosk_explore_option';
-import LR_Kiosk_explore_tutorial_1 from './src/screens/danbi/LR_Kiosk_explore_tutorial_1';
-import LR_Kiosk_explore_tutorial_2 from './src/screens/danbi/LR_Kiosk_explore_tutorial_2';
+// import LR_Kiosk_explore from './src/screens/danbi/LR_Kiosk_explore';
+// import LR_Kiosk_explore_category from './src/screens/danbi/LR_Kiosk_explore_category';
+// import LR_Kiosk_explore_menu from './src/screens/danbi/LR_Kiosk_explore_menu';
+// import LR_Kiosk_explore_option from './src/screens/danbi/LR_Kiosk_explore_option';
+// import LR_Kiosk_explore_tutorial_1 from './src/screens/danbi/LR_Kiosk_explore_tutorial_1';
+// import LR_Kiosk_explore_tutorial_2 from './src/screens/danbi/LR_Kiosk_explore_tutorial_2';
 import Kiosk_update from './src/screens/danbi/Kiosk_update';
 
 const Stack = createStackNavigator();
@@ -217,7 +217,7 @@ function App() {
               },
             }}
           />
-          <Stack.Screen
+          {/* <Stack.Screen
             name="LR_Kiosk_explore"
             component={LR_Kiosk_explore}
             options={{
@@ -227,8 +227,8 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="LR_Kiosk_explore_category"
             component={LR_Kiosk_explore_category}
             options={{
@@ -238,8 +238,8 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="LR_Kiosk_explore_menu"
             component={LR_Kiosk_explore_menu}
             options={{
@@ -249,8 +249,8 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="LR_Kiosk_explore_option"
             component={LR_Kiosk_explore_option}
             options={{
@@ -260,8 +260,8 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="LR_Kiosk_explore_tutorial_1"
             component={LR_Kiosk_explore_tutorial_1}
             options={{
@@ -271,8 +271,8 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="LR_Kiosk_explore_tutorial_2"
             component={LR_Kiosk_explore_tutorial_2}
             options={{
@@ -282,7 +282,7 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
+          /> */}
         </Stack.Group>
         <Stack.Group>
           <Stack.Screen
