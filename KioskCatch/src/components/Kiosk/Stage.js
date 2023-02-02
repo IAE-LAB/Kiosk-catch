@@ -21,13 +21,17 @@ const Stage = props => {
 
   // header animation
   const animation = useRef(new Animated.Value(0)).current;
-  props.state === '2-3T' || props.state === '2-3-1T'
+  props.state === '2-3T' ||
+  props.state === '2-3-1T' ||
+  props.state === '3-3T' ||
+  props.state === '4-1T' ||
+  props.state === '4-2T'
     ? Animated.sequence([
-        // Animated.timing(animation, {
-        //   toValue: -300,
-        //   duration: 500,
-        //   useNativeDriver: true,
-        // }),
+        Animated.timing(animation, {
+          toValue: -300,
+          duration: 500,
+          useNativeDriver: true,
+        }),
         Animated.timing(animation, {
           toValue: 0,
           duration: 500,
@@ -77,14 +81,197 @@ const StageHeader_set = props => {
       {/* 외래어 알려주기 - 사이즈*/}
       {props.state === '2-3-1T' ? <StageHeader_Size /> : null}
       {/***** stage_header_(3)주문 단계 *****/}
-      {props.state === '3-1' ? <StageHeader_order /> : null}
+      {props.state === '3-1' || props.state === '3-3' ? (
+        <StageHeader_order />
+      ) : null}
+      {/* 외래어 알려주기 - 사이즈*/}
+      {props.state === '3-3T' ? <StageHeader_TakeOut /> : null}
       {/***** stage_header_(4)결제 단계 *****/}
       {props.state === '4-1' ? <StageHeader_Pay /> : null}
+      {/***** stage_header_(3)주문 단계 *****/}
+      {props.state === '4-1T' ? <StageHeader_Cupon /> : null}
+      {/***** stage_header_(3)주문 단계 *****/}
+      {props.state === '4-2T' ? <StageHeader_Fianl /> : null}
       {/***** stage_header_(5)결제 완료 단계 *****/}
-      {props.state === '4-6' ? <StageHeader_complete /> : null}
+      {props.state === '4-3' ? <StageHeader_complete /> : null}
     </View>
   );
 };
+
+/***** 외래어 알려주기-결제 *****/
+const StageHeader_Fianl = () => {
+  return (
+    <View
+      style={[
+        styles.stage_header_word,
+        {
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: 130,
+        },
+      ]}>
+      <View style={{flexDirection: 'column'}}>
+        <Text style={styles.stage_header_tittle_text}>외래어풀이 : 결제</Text>
+        <View style={[styles.rowContainer, {marginTop: 10}]}>
+          <View style={[styles.stage_word_text_container, {width: 90}]}>
+            <Text style={[styles.stage_word_tittle_text]}>바코드</Text>
+          </View>
+          <Icon_FontAwesome5
+            name="long-arrow-alt-right"
+            size={22}
+            color="#E02649"
+            style={styles.icon_style}
+          />
+          <View>
+            <Text
+              style={[
+                styles.stage_word_tittle_text,
+                {
+                  color: '#E02649',
+                  fontSize: 20,
+                },
+              ]}>
+              컴퓨터가
+            </Text>
+            <Text
+              style={[
+                styles.stage_word_tittle_text,
+                {
+                  color: '#E02649',
+                  fontSize: 20,
+                },
+              ]}>
+              판독할 수 있도록
+            </Text>
+            <Text
+              style={[
+                styles.stage_word_tittle_text,
+                {
+                  color: '#E02649',
+                  fontSize: 20,
+                },
+              ]}>
+              고안된 코드
+            </Text>
+          </View>
+          {/* <Image
+            source={require('KioskCatch/assets/img/kiosk/ice.png')}
+            style={styles.IconImage}></Image> */}
+        </View>
+      </View>
+    </View>
+  );
+};
+
+/***** 외래어 알려주기-결제 *****/
+const StageHeader_Cupon = () => {
+  return (
+    <View
+      style={[
+        styles.stage_header_word,
+        {
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: 130,
+        },
+      ]}>
+      <View style={{flexDirection: 'column'}}>
+        <Text style={styles.stage_header_tittle_text}>외래어풀이 : 결제</Text>
+        <View style={[styles.rowContainer, {marginTop: 10}]}>
+          <View style={[styles.stage_word_text_container, {width: 120}]}>
+            <Text style={[styles.stage_word_tittle_text]}>모바일쿠폰</Text>
+          </View>
+          <Icon_FontAwesome5
+            name="long-arrow-alt-right"
+            size={22}
+            color="#E02649"
+            style={styles.icon_style}
+          />
+          <View>
+            <Text
+              style={[
+                styles.stage_word_tittle_text,
+                {
+                  color: '#E02649',
+                  fontSize: 20,
+                },
+              ]}>
+              휴대용 등의 모바일
+            </Text>
+            <Text
+              style={[
+                styles.stage_word_tittle_text,
+                {
+                  color: '#E02649',
+                  fontSize: 20,
+                },
+              ]}>
+              기기로 내려 받아
+            </Text>
+            <Text
+              style={[
+                styles.stage_word_tittle_text,
+                {
+                  color: '#E02649',
+                  fontSize: 20,
+                },
+              ]}>
+              사용하는 상품권
+            </Text>
+          </View>
+          {/* <Image
+            source={require('KioskCatch/assets/img/kiosk/ice.png')}
+            style={styles.IconImage}></Image> */}
+        </View>
+      </View>
+    </View>
+  );
+};
+
+/***** 외래어 알려주기-포장하기 *****/
+const StageHeader_TakeOut = () => {
+  return (
+    <View
+      style={[
+        styles.stage_header_word,
+        {
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: 90,
+        },
+      ]}>
+      <View style={{flexDirection: 'column'}}>
+        <Text style={[styles.stage_header_tittle_text, {width: 220}]}>
+          외래어풀이 : 포장하기
+        </Text>
+        <View style={[styles.rowContainer, {marginTop: 10}]}>
+          <View style={[styles.stage_word_text_container, {width: 120}]}>
+            <Text style={[styles.stage_word_tittle_text]}>테이크아웃</Text>
+          </View>
+          <Icon_FontAwesome5
+            name="long-arrow-alt-right"
+            size={22}
+            color="#E02649"
+            style={styles.icon_style}
+          />
+          <Text
+            style={[
+              styles.stage_word_tittle_text,
+              {
+                color: '#E02649',
+              },
+            ]}>
+            포장하기
+          </Text>
+          {/* <Image
+            source={require('KioskCatch/assets/img/kiosk/ice.png')}
+            style={styles.IconImage}></Image> */}
+        </View>
+      </View>
+    </View>
+  );
+};
+
 /***** 외래어 알려주기-사이즈 *****/
 const StageHeader_Size = () => {
   return (
@@ -455,8 +642,8 @@ const styles = StyleSheet.create({
     zIndex: 100,
   },
   icon_style: {
-    marginLeft: 25,
-    marginRight: 25,
+    marginLeft: 20,
+    marginRight: 20,
   },
   icon_style_size: {
     marginLeft: 10,

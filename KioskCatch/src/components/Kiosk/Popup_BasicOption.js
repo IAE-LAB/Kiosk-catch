@@ -15,7 +15,7 @@ export default Popup_BasicOption = props => {
   let styles = props.styles;
 
   return (
-    <View style={styles.overlay}>
+    <View style={styles.overlay1}>
       <View style={[styles.optionContainer]} ref={props.OptionRef}>
         {/*제목*/}
         <View style={styles.optionTitle}>
@@ -88,7 +88,6 @@ const Content = props => {
                 source={userTempInput.hot.img}
                 style={styles.optionImage_hot}
               />
-
               <Text style={userTempInput.hot.temperature_text}>HOT</Text>
             </TouchableOpacity>
           </Animated.View>
@@ -236,7 +235,12 @@ const Content = props => {
         <TouchableOpacity
           style={styles.selectBtn_1}
           onPress={() => {
-            props.SetvisibleOption(0);
+            props.SetvisibleOption({
+              basicOption: 0,
+              order: 0,
+              takeoutOption: 0,
+              payment: 0,
+            });
           }}>
           <Text style={[styles.cancel_text, {fontSize: 18}]}>취소하기</Text>
         </TouchableOpacity>
@@ -254,7 +258,12 @@ const Content = props => {
                 {backgroundColor: '#FFC000', width: '100%'},
               ]}
               onPress={() => {
-                props.SetvisibleOption(0);
+                props.SetvisibleOption({
+                  basicOption: 0,
+                  order: 0,
+                  takeoutOption: 0,
+                  payment: 0,
+                });
                 props.KioskState === '3-1-2'
                   ? props.SetKioskState(['3-2', '장바구니'])
                   : props.SetKioskState(['3-1', '장바구니']);

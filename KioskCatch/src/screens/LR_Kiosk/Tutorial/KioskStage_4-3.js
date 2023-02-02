@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 const {width, height} = Dimensions.get('window');
 
-export default KioskStage_2_3 = props => {
+export default KioskStage_2_2_1 = props => {
   var [Parameter, setParameter] = useState({
     offsetX: 0,
     offsetY: 0,
@@ -56,7 +56,7 @@ export default KioskStage_2_3 = props => {
         style={{width: width, height: height}}
         onPress={() => {
           setOpacity(Ostyles.opFalse);
-          props.SetKioskState(['2-3T', '옵션 선택']);
+          props.SetKioskState(['4-3T', '결제 완료']);
         }}>
         <View
           style={{
@@ -80,7 +80,7 @@ export default KioskStage_2_3 = props => {
                   fontSize: 25,
                   color: 'white',
                 }}>
-                옵션
+                결제 방법
               </Text>
             </View>
 
@@ -91,8 +91,12 @@ export default KioskStage_2_3 = props => {
                 style={styles.taskBubbleTail_icon}
               />
               <View style={styles.taskIofo}>
-                <Text style={styles.taskTxt}>선택 메뉴의 기본 옵션으로</Text>
-                <Text style={styles.taskTxt}>온도와 사이즈가 제공돼요</Text>
+                <Text style={styles.taskTxt}>
+                  축하합니다! 결제가 완료되었어요
+                </Text>
+                <Text style={styles.taskTxt}>
+                  확인 버튼을 눌러 홈으로 돌아가요
+                </Text>
               </View>
             </View>
           </View>
@@ -219,7 +223,7 @@ const styles = StyleSheet.create({
   },
   taskBubble: {
     alignItems: 'center',
-    top: -220,
+    top: -230,
   },
   taskBubbleTail_icon: {
     color: 'white',
@@ -247,7 +251,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFC000',
     textAlign: 'center',
-    top: 210,
+    top: 220,
     justifyContent: 'flex-end',
   },
 });

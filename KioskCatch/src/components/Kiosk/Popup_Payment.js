@@ -11,23 +11,28 @@ import {
 import Icon_MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
 
-// import LR_Kiosk_Tutorial_Packaging from 'KioskCatch/src/components/Kiosk/LR_Kiosk_Tutorial_Packaging';
-// import PaymentPopup from 'KioskCatch/src/components/Kiosk/PaymentPopup';
+// import LR_Kiosk_Tutorial_Payment from 'KioskCatch/src/components/Kiosk/LR_Kiosk_Tutorial_Payment';
+// import PaymentCoupon from 'KioskCatch/src/components/Kiosk/PaymentCoupon';
 
-export default PackagingPopup = props => {
+const PaymentPopup = props => {
   //console.log('navigation ' + props.navigation);
 
   const navigation = useNavigation();
-  const [open1, setOpen_tutorial_packaging] = useState(true);
+  const [open1, setOpen_tutorial_payment] = useState(true);
   const [open, setOpen] = useState(false);
 
   let [userTempInput, setuserTempInput] = useState({
-    takeout: {
+    card: {
       icon: styles.icon,
       text: styles.pay_text,
       backgroundColor: styles.paymentBtn,
     },
-    cafe: {
+    cupon: {
+      icon: styles.icon,
+      text: styles.pay_text,
+      backgroundColor: styles.paymentBtn,
+    },
+    point: {
       icon: styles.icon,
       text: styles.pay_text,
       backgroundColor: styles.paymentBtn,
@@ -35,20 +40,20 @@ export default PackagingPopup = props => {
   });
 
   return (
-    <View style={props.styles.overlay2}>
-      <View style={styles.optionContainer}>
+    <View style={props.styles.overlay_payment}>
+      <View style={styles.optionContainer} ref={props.OptionRef}>
         {/*제목*/}
         <View style={styles.optionTitle}>
-          <Text style={styles.optionTitleText}>포장방법을 선택해주세요</Text>
+          <Text style={styles.optionTitleText}>결제방법을 선택해주세요</Text>
         </View>
 
         {/*내용*/}
         <View style={styles.optionContents}>
           {/*결제 정보*/}
-          {/* <View style={styles.optionAmount}>
+          <View style={styles.optionAmount}>
             <TouchableOpacity style={styles.amountInfo}>
               <Text style={styles.amount_text_1}>전체금액</Text>
-              <Text style={styles.amount_text_2}>2,500 원</Text>
+              <Text style={styles.amount_text_2}>3,200 원</Text>
             </TouchableOpacity>
             <Icon_AntDesign
               name="minuscircleo"
@@ -66,77 +71,80 @@ export default PackagingPopup = props => {
             />
             <TouchableOpacity style={styles.amountInfo}>
               <Text style={styles.amount_text_1}>결제금액</Text>
-              <Text style={styles.amount_text_3}>2,500 원</Text>
+              <Text style={styles.amount_text_3}>3,200 원</Text>
             </TouchableOpacity>
-          </View> */}
+          </View>
 
           {/*결제 선택*/}
           <View style={styles.optionPayment}>
-            {props.KioskState === '3-3T' ? (
+            <TouchableOpacity style={styles.paymentBtn}>
+              <Icon_MaterialCommunityIcons
+                name="credit-card-outline"
+                size={40}
+                style={{color: '#6A3B07'}}
+              />
+              <Text style={styles.pay_text}>신용카드</Text>
+              <Text style={styles.pay_text}> </Text>
+            </TouchableOpacity>
+            {props.KioskState === '4-1T' ? (
               <Animated.View
                 style={[
-                  userTempInput.takeout.backgroundColor,
+                  userTempInput.cupon.backgroundColor,
                   {
                     transform: [{scale: props.animation}],
                   },
                 ]}>
                 <TouchableOpacity
                   style={[
-                    userTempInput.takeout.backgroundColor,
+                    userTempInput.cupon.backgroundColor,
                     {backgroundColor: '#FFC000', width: '100%'},
                   ]}
                   onPress={() => {
-                    props.SetKioskState(['3-3-1', '식사 장소 선택']);
-                    SetChangeColor('takeout', userTempInput, setuserTempInput);
+                    props.SetKioskState(['4-1-1', '결제 방식 선택']);
+                    SetChangeColor('cupon', userTempInput, setuserTempInput);
                   }}>
                   <Icon_MaterialCommunityIcons
-                    name="package-variant"
-                    size={50}
-                    style={userTempInput.takeout.icon}
+                    name="ticket-percent-outline"
+                    size={40}
+                    style={userTempInput.cupon.icon}
                   />
-
-                  <Text style={[userTempInput.takeout.text]}>테이크 아웃</Text>
+                  <Text style={[userTempInput.cupon.text]}>모바일</Text>
+                  <Text style={[userTempInput.cupon.text]}>쿠폰</Text>
                 </TouchableOpacity>
               </Animated.View>
             ) : (
               <TouchableOpacity
-                style={[userTempInput.takeout.backgroundColor]}
-                onPress={() =>
-                  SetChangeColor('takeout', userTempInput, setuserTempInput)
-                }>
+                style={[userTempInput.cupon.backgroundColor]}
+                onPress={() => {
+                  SetChangeColor('cupon', userTempInput, setuserTempInput);
+                }}>
                 <Icon_MaterialCommunityIcons
-                  name="package-variant"
-                  size={50}
-                  style={userTempInput.takeout.icon}
+                  name="ticket-percent-outline"
+                  size={40}
+                  style={userTempInput.cupon.icon}
                 />
-
-                <Text style={userTempInput.takeout.text}>테이크 아웃</Text>
+                <Text style={userTempInput.cupon.text}>모바일</Text>
+                <Text style={userTempInput.cupon.text}>쿠폰</Text>
               </TouchableOpacity>
             )}
 
-            <TouchableOpacity
-              style={userTempInput.cafe.backgroundColor}
-              onPress={() =>
-                SetChangeColor('cafe', userTempInput, setuserTempInput)
-              }>
+            <TouchableOpacity style={styles.paymentBtn}>
               <Icon_MaterialCommunityIcons
-                name="store"
-                size={50}
-                style={userTempInput.cafe.icon}
+                name="barcode"
+                size={40}
+                style={{color: '#6A3B07'}}
               />
-              <Text style={userTempInput.cafe.text}>매장</Text>
+              <Text style={styles.pay_text}>포인트</Text>
+              <Text style={styles.pay_text}>사용</Text>
             </TouchableOpacity>
           </View>
 
           {/*취소/선택 버튼*/}
           <View style={styles.optionBtn}>
-            <TouchableOpacity
-              style={styles.selectBtn_1}
-              // onPress={closePopup}
-            >
+            <TouchableOpacity style={styles.selectBtn_1}>
               <Text style={styles.cancel_text}>취소하기</Text>
             </TouchableOpacity>
-            {props.KioskState === '3-3-1' ? (
+            {props.KioskState === '4-1-1' ? (
               <Animated.View
                 style={[
                   styles.selectBtn_2,
@@ -150,22 +158,23 @@ export default PackagingPopup = props => {
                     {backgroundColor: '#FFC000', width: '100%'},
                   ]}
                   onPress={() => {
-                    props.SetKioskState(['4-1(order)', '주문내역 확인']);
+                    props.SetKioskState(['4-2', '모바일쿠폰 결제']);
                     props.SetvisibleOption({
                       basicOption: 0,
-                      order: 1,
+                      order: 0,
                       takeoutOption: 0,
                       payment: 0,
-                      pay: 0,
-                      final: 0,
+                      pay: 1,
                     });
                   }}>
-                  <Text style={styles.select_text}>다음으로</Text>
+                  <Text style={styles.select_text}>결제하기</Text>
                 </TouchableOpacity>
               </Animated.View>
             ) : (
-              <TouchableOpacity style={styles.selectBtn_2}>
-                <Text style={styles.select_text}>다음으로</Text>
+              <TouchableOpacity
+                style={styles.selectBtn_2}
+                onPress={() => setOpen(true)}>
+                <Text style={styles.select_text}>결제하기</Text>
               </TouchableOpacity>
             )}
           </View>
@@ -173,27 +182,35 @@ export default PackagingPopup = props => {
       </View>
 
       {/* {open1 ? (
-        <LR_Kiosk_Tutorial_Packaging
-        closePopup={() => setOpen_tutorial_packaging(false)}
+        <LR_Kiosk_Tutorial_Payment
+          closePopup={() => setOpen_tutorial_payment(false)}
         />
       ) : null}
-      {open ? <PaymentPopup closePopup={() => setOpen(false)} /> : null} */}
+      {open ? <PaymentCoupon closePopup={() => setOpen(false)} /> : null} */}
     </View>
   );
 };
 
+export default PaymentPopup;
+
 const SetChangeColor = (name, userTempInput, setuserTempInput) => {
-  if (name === 'takeout') {
+  if (name === 'cupon') {
     if (
-      JSON.stringify(userTempInput.takeout.icon) === JSON.stringify(styles.icon)
+      JSON.stringify(userTempInput.cupon.icon) === JSON.stringify(styles.icon)
     ) {
+      console.log('AAAAA');
       setuserTempInput({
-        takeout: {
+        card: {
+          icon: styles.icon,
+          text: styles.pay_text,
+          backgroundColor: styles.paymentBtn,
+        },
+        cupon: {
           icon: styles.icon_s,
           text: styles.pay_text_s,
           backgroundColor: styles.paymentBtn_s,
         },
-        cafe: {
+        point: {
           icon: styles.icon,
           text: styles.pay_text,
           backgroundColor: styles.paymentBtn,
@@ -201,42 +218,17 @@ const SetChangeColor = (name, userTempInput, setuserTempInput) => {
       });
     } else {
       setuserTempInput({
-        takeout: {
+        card: {
           icon: styles.icon,
           text: styles.pay_text,
           backgroundColor: styles.paymentBtn,
         },
-        cafe: {
+        cupon: {
           icon: styles.icon,
           text: styles.pay_text,
           backgroundColor: styles.paymentBtn,
         },
-      });
-    }
-  } else {
-    if (
-      JSON.stringify(userTempInput.cafe.icon) === JSON.stringify(styles.icon)
-    ) {
-      setuserTempInput({
-        takeout: {
-          icon: styles.icon,
-          text: styles.pay_text,
-          backgroundColor: styles.paymentBtn,
-        },
-        cafe: {
-          icon: styles.icon_s,
-          text: styles.pay_text_s,
-          backgroundColor: styles.paymentBtn_s,
-        },
-      });
-    } else {
-      setuserTempInput({
-        takeout: {
-          icon: styles.icon,
-          text: styles.pay_text,
-          backgroundColor: styles.paymentBtn,
-        },
-        cafe: {
+        point: {
           icon: styles.icon,
           text: styles.pay_text,
           backgroundColor: styles.paymentBtn,
@@ -255,6 +247,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.36)',
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 1,
   },
   optionContainer: {
     width: '90%',
@@ -330,19 +323,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
-    width: '33%',
+    width: '28%',
     height: '100%',
     //marginHorizontal: -25,
   },
   paymentBtn_s: {
     backgroundColor: '#6A3B07',
-    borderColor: '#6A3B07',
+    borderColor: 'white',
     borderWidth: 1,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
-    width: '33%',
+    width: '28%',
     height: '100%',
     //marginHorizontal: -25,
   },

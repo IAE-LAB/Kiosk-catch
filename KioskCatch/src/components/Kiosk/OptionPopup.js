@@ -12,7 +12,11 @@ import {
 } from 'react-native';
 import Icon_Entypo from 'react-native-vector-icons/Entypo';
 import Popup_BasicOption from 'KioskCatch/src/components/Kiosk/Popup_BasicOption';
-import Popup_AddOption from 'KioskCatch/src/components/Kiosk/Popup_AddOption';
+import Popup_Order from 'KioskCatch/src/components/Kiosk/Popup_Order';
+import Popup_Takeout from 'KioskCatch/src/components/Kiosk/Popup_Takeout';
+import Popup_Payment from 'KioskCatch/src/components/Kiosk/Popup_Payment';
+import Popup_Pay from 'KioskCatch/src/components/Kiosk/Popup_Pay';
+import Popup_Final from 'KioskCatch/src/components/Kiosk/Popup_Final';
 
 export default Popup = props => {
   const styles = getStyles(props.visibleOption);
@@ -64,6 +68,77 @@ export default Popup = props => {
         OptionRef={props.OptionRef}
         SetvisibleOption={props.SetvisibleOption}
       />
+      <Popup_Takeout
+        styles={styles}
+        userTempInput={userTempInput}
+        setuserTempInput={setuserTempInput}
+        userSizeInput={userSizeInput}
+        setuserSizeInput={setuserSizeInput}
+        animation={props.animation}
+        SelectMenu={props.SelectMenu}
+        KioskState={props.KioskState}
+        SetKioskState={props.SetKioskState}
+        OptionSizeRef={props.OptionSizeRef}
+        OptionRef={props.OptionRef}
+        SetvisibleOption={props.SetvisibleOption}
+      />
+      <Popup_Order
+        styles={styles}
+        userTempInput={userTempInput}
+        setuserTempInput={setuserTempInput}
+        userSizeInput={userSizeInput}
+        setuserSizeInput={setuserSizeInput}
+        animation={props.animation}
+        SelectMenu={props.SelectMenu}
+        KioskState={props.KioskState}
+        SetKioskState={props.SetKioskState}
+        OptionSizeRef={props.OptionSizeRef}
+        OptionRef={props.OptionRef}
+        SetvisibleOption={props.SetvisibleOption}
+      />
+      <Popup_Payment
+        styles={styles}
+        userTempInput={userTempInput}
+        setuserTempInput={setuserTempInput}
+        userSizeInput={userSizeInput}
+        setuserSizeInput={setuserSizeInput}
+        animation={props.animation}
+        SelectMenu={props.SelectMenu}
+        KioskState={props.KioskState}
+        SetKioskState={props.SetKioskState}
+        OptionSizeRef={props.OptionSizeRef}
+        OptionRef={props.OptionRef}
+        SetvisibleOption={props.SetvisibleOption}
+      />
+      <Popup_Pay
+        styles={styles}
+        userTempInput={userTempInput}
+        setuserTempInput={setuserTempInput}
+        userSizeInput={userSizeInput}
+        setuserSizeInput={setuserSizeInput}
+        animation={props.animation}
+        SelectMenu={props.SelectMenu}
+        KioskState={props.KioskState}
+        SetKioskState={props.SetKioskState}
+        OptionSizeRef={props.OptionSizeRef}
+        OptionRef={props.OptionRef}
+        SetvisibleOption={props.SetvisibleOption}
+      />
+      <Popup_Final
+        styles={styles}
+        userTempInput={userTempInput}
+        setuserTempInput={setuserTempInput}
+        userSizeInput={userSizeInput}
+        setuserSizeInput={setuserSizeInput}
+        animation={props.animation}
+        SelectMenu={props.SelectMenu}
+        KioskState={props.KioskState}
+        SetKioskState={props.SetKioskState}
+        OptionSizeRef={props.OptionSizeRef}
+        OptionRef={props.OptionRef}
+        SetvisibleOption={props.SetvisibleOption}
+        navigation={props.navigation}
+      />
       {/* <View style={styles.overlay}>
         <View style={styles.optionContainer} ref={props.OptionRef}>
           <View style={styles.optionTitle}>
@@ -79,9 +154,58 @@ export default Popup = props => {
 // CSS
 const getStyles = visibleOption =>
   StyleSheet.create({
-    overlay: {
+    overlay1: {
       // flex: 1,
-      zIndex: visibleOption,
+      zIndex: visibleOption.basicOption,
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.36)',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    overlay2: {
+      // flex: 1,
+      zIndex: visibleOption.takeoutOption,
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.36)',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    overlay_order: {
+      // flex: 1,
+      zIndex: visibleOption.order,
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.36)',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    overlay_payment: {
+      // flex: 1,
+      zIndex: visibleOption.payment,
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.36)',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    overlay_pay: {
+      // flex: 1,
+      zIndex: visibleOption.pay,
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0, 0, 0, 0.36)',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    overlay_final: {
+      zIndex: visibleOption.final,
       position: 'absolute',
       width: '100%',
       height: '100%',

@@ -6,40 +6,53 @@ export default TaskText = props => {
 
   const animation = new Animated.Value(0);
 
-  {
-    props.KioskState === '2-3T' || props.KioskState === '2-3-1T'
-      ? Animated.sequence([
-          // Animated.timing(animation, {
-          //   toValue: -150,
-          //   duration: 500,
-          //   useNativeDriver: true,
-          // }),
-          // Animated.delay(50),
-          Animated.timing(animation, {
-            toValue: 130,
-            duration: 800,
-            useNativeDriver: true,
-          }),
-          Animated.delay(2000),
-          Animated.timing(animation, {
-            toValue: -150,
-            duration: 800,
-            useNativeDriver: true,
-          }),
-        ]).start()
-      : Animated.sequence([
-          Animated.timing(animation, {
-            toValue: -150,
-            duration: 500,
-            useNativeDriver: true,
-          }),
-          Animated.delay(50),
-          Animated.timing(animation, {
-            toValue: 0,
-            duration: 800,
-            useNativeDriver: true,
-          }),
-        ]).start();
+  if (
+    props.KioskState === '2-3T' ||
+    props.KioskState === '2-3-1T' ||
+    props.KioskState == '4-1T' ||
+    props.KioskState == '4-2T'
+  ) {
+    Animated.sequence([
+      Animated.timing(animation, {
+        toValue: 130,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+      Animated.delay(3000),
+      Animated.timing(animation, {
+        toValue: -150,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  } else if (props.KioskState === '3-3T') {
+    Animated.sequence([
+      Animated.timing(animation, {
+        toValue: -150,
+        duration: 500,
+        useNativeDriver: true,
+      }),
+      Animated.delay(50),
+      Animated.timing(animation, {
+        toValue: 90,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  } else {
+    Animated.sequence([
+      Animated.timing(animation, {
+        toValue: -150,
+        duration: 500,
+        useNativeDriver: true,
+      }),
+      Animated.delay(50),
+      Animated.timing(animation, {
+        toValue: 0,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+    ]).start();
   }
 
   return (
@@ -54,7 +67,14 @@ export default TaskText = props => {
       props.KioskState === '3-1T' ||
       props.KioskState === '3-1-1' ||
       props.KioskState === '3-1-2' ||
-      props.KioskState === '3-2' ? (
+      props.KioskState === '3-2' ||
+      props.KioskState === '3-3T' ||
+      props.KioskState === '3-3-1' ||
+      props.KioskState === '4-1T' ||
+      props.KioskState === '4-1-1' ||
+      props.KioskState === '4-2T' ||
+      props.KioskState === '4-3T' ||
+      props.KioskState === '4-1(order)' ? (
         <Animated.View
           style={{
             position: 'absolute',
@@ -104,6 +124,27 @@ export default TaskText = props => {
                 <Text style={style.text}>"선택완료" 버튼을 누르세요</Text>
               ) : null}
               {props.KioskState === '3-2' ? (
+                <Text style={style.text}>"결제하기" 버튼을 누르세요</Text>
+              ) : null}
+              {props.KioskState === '3-3T' ? (
+                <Text style={style.text}>"테이크 아웃" 버튼을 누르세요</Text>
+              ) : null}
+              {props.KioskState === '3-3-1' ? (
+                <Text style={style.text}>"다음으로" 버튼을 누르세요</Text>
+              ) : null}
+              {props.KioskState === '4-1T' ? (
+                <Text style={style.text}>"모바일 쿠폰" 버튼을 누르세요</Text>
+              ) : null}
+              {props.KioskState === '4-1-1' ? (
+                <Text style={style.text}>"결제하기" 버튼을 누르세요</Text>
+              ) : null}
+              {props.KioskState === '4-2T' ? (
+                <Text style={style.text}>"바코드"를 누르세요</Text>
+              ) : null}
+              {props.KioskState === '4-3T' ? (
+                <Text style={style.text}>"확인" 버튼을 누르세요</Text>
+              ) : null}
+              {props.KioskState === '4-1(order)' ? (
                 <Text style={style.text}>"결제하기" 버튼을 누르세요</Text>
               ) : null}
             </View>

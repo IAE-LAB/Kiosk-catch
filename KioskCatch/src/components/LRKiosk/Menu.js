@@ -186,7 +186,12 @@ const CoffeeComponent2 = props => {
               style={styles.menuBtnCom}
               onPress={() => {
                 props.SetKioskState(['2-3', '옵션 선택']);
-                props.SetvisibleOption(1);
+                props.SetvisibleOption({
+                  basicOption: 1,
+                  // order: 0,
+                  takeoutOption: 0,
+                  payment: 0,
+                });
                 props.SetSelectMenu('말차라떼');
               }}
               ref={props.MenuSelectRef}>

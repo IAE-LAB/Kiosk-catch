@@ -28,6 +28,16 @@ export default function LR_Kiosk({navigation, route}) {
             navigation.navigate('LR_Kiosk_Explore', {
               KioskState: KioskState,
               state: ['2-1', '카테고리 확인'],
+              CategoryState: 'coffee',
+              PageState: 1,
+              visibleOption: {
+                basicOption: 0,
+                order: 0,
+                takeoutOption: 0,
+                payment: 0,
+                pay: 0,
+                final: 0,
+              },
             })
           }>
           <View style={styles.btn}>

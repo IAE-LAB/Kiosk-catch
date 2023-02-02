@@ -8,6 +8,7 @@ import {
   Button,
   Alert,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import 'react-native-gesture-handler';
 import Icon_MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -41,7 +42,7 @@ const KioskState = {
 
 export default function Tutorial_LRkiosk_list({navigation}) {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {/* 키오스크 시작하기 버튼 */}
       <View style={{alignItems: 'center', height: '44.5%', marginTop: -20}}>
         <Image
@@ -69,14 +70,48 @@ export default function Tutorial_LRkiosk_list({navigation}) {
         <Text style={styles.h1}>☺️ 단계별 배워보기</Text>
       </View>
       {/* 1. 메뉴 탐색하기 */}
-      <TouchableOpacity style={styles.stagebtn}>
+      <TouchableOpacity
+        style={styles.stagebtn}
+        onPress={() =>
+          navigation.navigate('LR_Kiosk_Explore', {
+            KioskState: KioskState,
+            state: ['2-1', '카테고리 확인'],
+            CategoryState: 'coffee',
+            PageState: 1,
+            visibleOption: {
+              basicOption: 0,
+              order: 0,
+              takeoutOption: 0,
+              payment: 0,
+              pay: 0,
+              final: 0,
+            },
+          })
+        }>
         <Icon_Fontisto name="search" size={22} style={styles.stage_icon} />
         <Text style={styles.stage_text}>1. 메뉴 </Text>
         <Text style={styles.stage_text_highlight}>탐색</Text>
         <Text style={styles.stage_text}>하기</Text>
       </TouchableOpacity>
       {/* 2. 메뉴 선택하기 */}
-      <TouchableOpacity style={styles.stagebtn}>
+      <TouchableOpacity
+        style={styles.stagebtn}
+        onPress={() =>
+          navigation.navigate('LR_Kiosk_Explore', {
+            KioskState: KioskState,
+            state: ['2-2-1', '메뉴 선택'],
+            CategoryState: 'coffee',
+            PageState: 2,
+            visibleOption: {
+              basicOption: 0,
+              order: 0,
+              takeoutOption: 0,
+              payment: 0,
+              pay: 0,
+              final: 0,
+            },
+          })
+        }>
         <Icon_MaterialIcons
           name="restaurant-menu"
           style={styles.stage_icon}
@@ -87,7 +122,24 @@ export default function Tutorial_LRkiosk_list({navigation}) {
         <Text style={styles.stage_text}>하기</Text>
       </TouchableOpacity>
       {/* 3. 옵션 선택하기 */}
-      <TouchableOpacity style={styles.stagebtn}>
+      <TouchableOpacity
+        style={styles.stagebtn}
+        onPress={() =>
+          navigation.navigate('LR_Kiosk_Explore', {
+            KioskState: KioskState,
+            state: ['2-3', '옵션 선택'],
+            CategoryState: 'coffee',
+            PageState: 2,
+            visibleOption: {
+              basicOption: 1,
+              order: 0,
+              takeoutOption: 0,
+              payment: 0,
+              pay: 0,
+              final: 0,
+            },
+          })
+        }>
         <Icon_MaterialCommunityIcons
           name="checkbox-marked-outline"
           size={25}
@@ -98,7 +150,24 @@ export default function Tutorial_LRkiosk_list({navigation}) {
         <Text style={styles.stage_text}>선택하기</Text>
       </TouchableOpacity>
       {/* 4. 장바구니 */}
-      <TouchableOpacity style={styles.stagebtn}>
+      <TouchableOpacity
+        style={styles.stagebtn}
+        onPress={() =>
+          navigation.navigate('LR_Kiosk_Explore', {
+            KioskState: KioskState,
+            state: ['3-1', '장바구니'],
+            CategoryState: 'coffee',
+            PageState: 2,
+            visibleOption: {
+              basicOption: 0,
+              order: 0,
+              takeoutOption: 0,
+              payment: 0,
+              pay: 0,
+              final: 0,
+            },
+          })
+        }>
         <Icon_MaterialCommunityIcons
           name="cart"
           size={25}
@@ -109,7 +178,24 @@ export default function Tutorial_LRkiosk_list({navigation}) {
         <Text style={styles.stage_text}>확인하기</Text>
       </TouchableOpacity>
       {/* 5. 주문하기 */}
-      <TouchableOpacity style={styles.stagebtn}>
+      <TouchableOpacity
+        style={styles.stagebtn}
+        onPress={() =>
+          navigation.navigate('LR_Kiosk_Explore', {
+            KioskState: KioskState,
+            state: ['3-3', '식사 장소 선택'],
+            CategoryState: 'coffee',
+            PageState: 2,
+            visibleOption: {
+              basicOption: 0,
+              order: 0,
+              takeoutOption: 1,
+              payment: 0,
+              pay: 0,
+              final: 0,
+            },
+          })
+        }>
         <Icon_MaterialCommunityIcons
           name="basket-check"
           size={25}
@@ -120,7 +206,24 @@ export default function Tutorial_LRkiosk_list({navigation}) {
         <Text style={styles.stage_text}>하기</Text>
       </TouchableOpacity>
       {/* 6. 결제하기 */}
-      <TouchableOpacity style={styles.stagebtn}>
+      <TouchableOpacity
+        style={styles.stagebtn}
+        onPress={() =>
+          navigation.navigate('LR_Kiosk_Explore', {
+            KioskState: KioskState,
+            state: ['4-2', '결제 방식 선택'],
+            CategoryState: 'coffee',
+            PageState: 2,
+            visibleOption: {
+              basicOption: 0,
+              order: 0,
+              takeoutOption: 0,
+              payment: 1,
+              pay: 0,
+              final: 0,
+            },
+          })
+        }>
         <Icon_MaterialCommunityIcons
           name="credit-card-outline"
           size={25}
@@ -130,7 +233,7 @@ export default function Tutorial_LRkiosk_list({navigation}) {
         <Text style={styles.stage_text_highlight}>결제</Text>
         <Text style={styles.stage_text}>하기</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 
