@@ -95,7 +95,7 @@ export default KioskStage_2_2_1 = props => {
                   축하합니다! 결제가 완료되었어요
                 </Text>
                 <Text style={styles.taskTxt}>
-                  확인 버튼을 눌러 홈으로 돌아가요
+                  마지막으로 주문번호를 확인해보아요.
                 </Text>
               </View>
             </View>

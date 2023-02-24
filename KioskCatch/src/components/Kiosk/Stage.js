@@ -13,6 +13,7 @@ import {
 
 import Icon_MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon_FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Tts from 'react-native-tts';
 
 // 단계를 나타내는 컴포넌트 헤더
 const Stage = props => {
@@ -60,6 +61,11 @@ const Stage = props => {
       <StageHeader_set state={props.state}></StageHeader_set>
     </Animated.View>
   );
+};
+
+const _onPressSpeech = text => {
+  Tts.stop();
+  Tts.speak(text);
 };
 
 const StageHeader_set = props => {
@@ -405,6 +411,9 @@ const StageHeader_Temperature = () => {
 
 /***** stage_header_(1)시작 단계 *****/
 const StageHeader_start = () => {
+  // 음성 TTS*******************************************
+  _onPressSpeech('시작 단계 입니다. 주문을 하시려면 화면을 터치해주세요.');
+
   return (
     <View style={styles.stage_header}>
       <View style={styles.stage_header_text_header}>
@@ -449,6 +458,7 @@ const StageHeader_start = () => {
 
 /***** stage_header_(2)탐색 단계 *****/
 const StageHeader_explore = () => {
+  // 음성 TTS*******************************************
   return (
     <View style={styles.stage_header}>
       <View style={styles.stage_header_text_header}>

@@ -211,7 +211,7 @@ export default function Tutorial_LRkiosk_list({navigation}) {
         onPress={() =>
           navigation.navigate('LR_Kiosk_Explore', {
             KioskState: KioskState,
-            state: ['4-2', '결제 방식 선택'],
+            state: ['4-1', '결제 방식 선택'],
             CategoryState: 'coffee',
             PageState: 2,
             visibleOption: {
