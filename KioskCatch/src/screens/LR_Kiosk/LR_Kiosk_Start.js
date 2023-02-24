@@ -24,7 +24,7 @@ export default function LR_Kiosk({navigation, route}) {
 
         <TouchableOpacity
           style={styles.background}
-          onPress={() =>
+          onPress={() => {
             navigation.navigate('LR_Kiosk_Explore', {
               KioskState: KioskState,
               state: ['2-1', '카테고리 확인'],
@@ -38,8 +38,8 @@ export default function LR_Kiosk({navigation, route}) {
                 pay: 0,
                 final: 0,
               },
-            })
-          }>
+            });
+          }}>
           <View style={styles.btn}>
             <View style={{flexDirection: 'row', marginBottom: 10}}>
               <Text style={styles.btn_text}>"</Text>
@@ -62,6 +62,7 @@ export default function LR_Kiosk({navigation, route}) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   contents: {
     flex: 1,

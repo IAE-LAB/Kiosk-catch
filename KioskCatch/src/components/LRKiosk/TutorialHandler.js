@@ -8,7 +8,19 @@ import KioskStage_3_3 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_
 import KioskStage_4_1 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_4-1';
 import KioskStage_4_2 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_4-2';
 import KioskStage_4_3 from 'KioskCatch/src/screens/LR_Kiosk/Tutorial/KioskStage_4-3';
+
+import Tts from 'react-native-tts';
+var Tasktext = '';
 export default TutorialHandler = props => {
+  Tts.setDefaultLanguage('ko-KR');
+  Tts.setDefaultRate(0.6);
+  // Tts.addEventListener('tts-start', event => console.log('start', event));
+  // Tts.addEventListener('tts-finish', event => console.log('finish', event));
+  // Tts.addEventListener('tts-cancel', event => console.log('cancel', event));
+
+  // SetText(props.KioskState);
+  // _onPressSpeech();
+
   return (
     <>
       {/* 튜토리얼 화면 */}
@@ -128,3 +140,17 @@ export default TutorialHandler = props => {
     </>
   );
 };
+
+// const _onPressSpeech = () => {
+//   Tts.stop();
+//   Tts.speak(Tasktext);
+// };
+
+// const SetText = KioskState => {
+//   switch (KioskState) {
+
+//       break;
+//     default:
+//       break;
+//   }
+// };
