@@ -12,10 +12,17 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Icon_Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Main from './src/screens/Main';
-import Kiosk_practical from './src/screens/Kiosk_practical';
-import Kiosk_difficulty_high from './src/screens/Kiosk_difficulty_high';
-import Kiosk_difficulty_medium from './src/screens/Kiosk_difficulty_medium';
-import Kiosk_difficulty_low from './src/screens/Kiosk_difficulty_low';
+
+// 튜토리얼 list screen
+import Kiosk_practical from './src/screens/Tutorial/List/Kiosk_practical';
+import Kiosk_difficulty_high from './src/screens/Tutorial/List/Kiosk_difficulty_high';
+import Kiosk_difficulty_medium from './src/screens/Tutorial/List/Kiosk_difficulty_medium';
+import Kiosk_difficulty_low from './src/screens/Tutorial/List/Kiosk_difficulty_low';
+
+// 튜토리얼 process Screen
+import Kiosk_tutorial_Menu from './src/screens/Tutorial/Process/Kiosk_tutorial_Menu';
+import Kiosk_tutorial_StartScreen from './src/screens/Tutorial/Process/Kiosk_tutorial_StartScreen';
+
 import Kiosk_useFreely from './src/screens/Kiosk_useFreely';
 import Tutorial_1 from './src/screens/Tutorial_1';
 import Tutorial_LRkiosk_list from './src/screens/Tutorial_LRkiosk_list';
@@ -31,16 +38,13 @@ import LR_Kiosk_Start from './src/screens/LR_Kiosk/LR_Kiosk_Start';
 import LR_Kiosk_Explore_Tutorial from './src/screens/LR_Kiosk/Tutorial/LR_Kiosk_Explore_Tutorial';
 import LR_Kiosk_Explore from './src/screens/LR_Kiosk/LR_Kiosk_Explore';
 
-import LR_Kiosk_explore from './src/screens/danbi/LR_Kiosk_explore';
-import LR_Kiosk_explore_category from './src/screens/danbi/LR_Kiosk_explore_category';
-import LR_Kiosk_explore_menu from './src/screens/danbi/LR_Kiosk_explore_menu';
-import LR_Kiosk_explore_option from './src/screens/danbi/LR_Kiosk_explore_option';
-import LR_Kiosk_explore_cart from './src/screens/danbi/LR_Kiosk_explore_cart';
-import LR_Kiosk_explore_tutorial_1 from './src/screens/danbi/LR_Kiosk_explore_tutorial_1';
-import LR_Kiosk_explore_tutorial_2 from './src/screens/danbi/LR_Kiosk_explore_tutorial_2';
+// import LR_Kiosk_explore from './src/screens/danbi/LR_Kiosk_explore';
+// import LR_Kiosk_explore_category from './src/screens/danbi/LR_Kiosk_explore_category';
+// import LR_Kiosk_explore_menu from './src/screens/danbi/LR_Kiosk_explore_menu';
+// import LR_Kiosk_explore_option from './src/screens/danbi/LR_Kiosk_explore_option';
+// import LR_Kiosk_explore_tutorial_1 from './src/screens/danbi/LR_Kiosk_explore_tutorial_1';
+// import LR_Kiosk_explore_tutorial_2 from './src/screens/danbi/LR_Kiosk_explore_tutorial_2';
 import Kiosk_update from './src/screens/danbi/Kiosk_update';
-
-import CB_Kiosk_Explore from './src/screens/danbi/CB_Kiosk_Explore';
 
 const Stack = createStackNavigator();
 
@@ -220,7 +224,7 @@ function App() {
               },
             }}
           />
-          <Stack.Screen
+          {/* <Stack.Screen
             name="LR_Kiosk_explore"
             component={LR_Kiosk_explore}
             options={{
@@ -230,8 +234,8 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="LR_Kiosk_explore_category"
             component={LR_Kiosk_explore_category}
             options={{
@@ -241,8 +245,8 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="LR_Kiosk_explore_menu"
             component={LR_Kiosk_explore_menu}
             options={{
@@ -252,8 +256,8 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="LR_Kiosk_explore_option"
             component={LR_Kiosk_explore_option}
             options={{
@@ -263,19 +267,8 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
-          <Stack.Screen
-            name="LR_Kiosk_explore_cart"
-            component={LR_Kiosk_explore_cart}
-            options={{
-              title: '탐색단계',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-                fontSize: 20,
-              },
-            }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="LR_Kiosk_explore_tutorial_1"
             component={LR_Kiosk_explore_tutorial_1}
             options={{
@@ -285,8 +278,8 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
-          <Stack.Screen
+          /> */}
+          {/* <Stack.Screen
             name="LR_Kiosk_explore_tutorial_2"
             component={LR_Kiosk_explore_tutorial_2}
             options={{
@@ -296,7 +289,7 @@ function App() {
                 fontSize: 20,
               },
             }}
-          />
+          /> */}
         </Stack.Group>
         <Stack.Group>
           <Stack.Screen

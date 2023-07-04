@@ -9,6 +9,7 @@ import {
   Alert,
   TouchableOpacity,
   Animated,
+  ScrollView,
 } from 'react-native';
 import 'react-native-gesture-handler';
 import Icon_MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -145,9 +146,9 @@ const KioskState = {
 
 export default function Tutorial_CBkiosk_list({navigation}) {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {/* 키오스크 시작하기 버튼 */}
-      <View style={{alignItems: 'center', height: '44.5%', marginTop: -20}}>
+      <View style={{alignItems: 'center', height: 280, marginTop: -20}}>
         <Image
           source={require('KioskCatch/assets/img/tutorial_list/C_kiosk_img.png')}
           style={styles.btnImage}
@@ -233,7 +234,7 @@ export default function Tutorial_CBkiosk_list({navigation}) {
         <Text style={styles.stage_text_highlight}>결제</Text>
         <Text style={styles.stage_text}>하기</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -244,7 +245,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderColor: '#C6C6C6',
     width: '100%',
-    height: '7%',
+    height: 44,
     alignItems: 'center',
     paddingLeft: 20,
     flexDirection: 'row',
@@ -277,8 +278,8 @@ const styles = StyleSheet.create({
     borderColor: '#E02649',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '32%',
-    width: '91%',
+    height: 90,
+    width: 311,
     borderRadius: 17,
     marginTop: -110,
     elevation: 7,

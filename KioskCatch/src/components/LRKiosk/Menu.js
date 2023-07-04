@@ -18,11 +18,20 @@ import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
 export default Menu = props => {
   // console.log(props.CategoryState +"   "+props.PageState);
   return (
-    <View style={styles.menu}>
+    <View style={[styles.menu]} ref={props.MenuRef}>
       {props.CategoryState === 'coffee' ? (
         <>
           {props.PageState === 1 ? <CoffeeComponent1 /> : null}
-          {props.PageState === 2 ? <CoffeeComponent2 /> : null}
+          {props.PageState === 2 ? (
+            <CoffeeComponent2
+              KioskState={props.KioskState}
+              animation={props.animation}
+              SetKioskState={props.SetKioskState}
+              SetvisibleOption={props.SetvisibleOption}
+              MenuSelectRef={props.MenuSelectRef}
+              SetSelectMenu={props.SetSelectMenu}
+            />
+          ) : null}
           {props.PageState === 3 ? <CoffeeComponent3 /> : null}
         </>
       ) : null}
@@ -164,15 +173,50 @@ const CoffeeComponent2 = props => {
         </TouchableOpacity>
       </View>
       <View style={styles.menuRow}>
-        <TouchableOpacity style={styles.menuBtn}>
-          <Image
-            source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.png')}
-            style={styles.menuImage}></Image>
-          <View style={{flexDirection: 'column'}}>
-            <Text style={styles.menuTxt}>말차라떼</Text>
-            <Text style={styles.menuTxt_highlight}>3,200 원</Text>
-          </View>
-        </TouchableOpacity>
+        {props.KioskState === '2-2-1' || props.KioskState === '2-2-1T' ? (
+          <Animated.View
+            style={[
+              styles.menuBtn,
+              {
+                transform: [{scale: props.animation}],
+                backgroundColor: '#FFC000',
+              },
+            ]}>
+            <TouchableOpacity
+              style={styles.menuBtnCom}
+              onPress={() => {
+                props.SetKioskState(['2-3', '옵션 선택']);
+                props.SetvisibleOption({
+                  basicOption: 1,
+                  // order: 0,
+                  takeoutOption: 0,
+                  payment: 0,
+                });
+                props.SetSelectMenu('말차라떼');
+              }}
+              ref={props.MenuSelectRef}>
+              <Image
+                source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.png')}
+                style={[styles.menuImage]}></Image>
+              <View style={{flexDirection: 'column'}}>
+                <Text style={styles.menuTxt}>말차라떼</Text>
+                <Text style={styles.menuTxt_highlight}>3,200 원</Text>
+              </View>
+            </TouchableOpacity>
+          </Animated.View>
+        ) : (
+          // </Animated.View>
+          <TouchableOpacity style={styles.menuBtn}>
+            <Image
+              source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.png')}
+              style={styles.menuImage}></Image>
+            <View style={{flexDirection: 'column'}}>
+              <Text style={styles.menuTxt}>말차라떼</Text>
+              <Text style={styles.menuTxt_highlight}>3,200 원</Text>
+            </View>
+          </TouchableOpacity>
+        )}
+
         <TouchableOpacity style={styles.menuBtn}>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/spani_latte.png')}

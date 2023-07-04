@@ -31,7 +31,7 @@ export default MenuLR = props => {
         </Text>
       </TouchableOpacity>
       <Circle CategoryState={props.CategoryState} PageState={props.PageState} />
-      {props.state[0] === '2-2' ? (
+      {props.KioskState === '2-2T' || props.KioskState === '2-2' ? (
         <Animated.View
           style={[
             styles.LR_btn,
@@ -42,10 +42,13 @@ export default MenuLR = props => {
           ]}>
           <TouchableOpacity
             onPress={() =>
-              props.navigation.navigate('LR_Kiosk_explore_menu', {
-                KioskState: props.KioskState,
-                state: ['2-2-1', '메뉴선택'],
-              })
+              NextChangeHandler(
+                props.CategoryState,
+                props.PageState,
+                props.setPageState,
+                props.KioskState,
+                props.SetKioskState,
+              )
             }>
             <Text style={styles.LR_text}>다음</Text>
           </TouchableOpacity>
@@ -58,6 +61,8 @@ export default MenuLR = props => {
               props.CategoryState,
               props.PageState,
               props.setPageState,
+              props.KioskState,
+              props.SetKioskState,
             )
           }>
           <Text style={styles.LR_text}>다음</Text>
@@ -97,7 +102,8 @@ const Circle = props => {
       ) : null}
       {props.CategoryState === 'beverage' ||
       props.CategoryState === 'tea' ||
-      props.CategoryState === 'snack' ? (
+      props.CategoryState === 'snack' ||
+      props.CategoryState === 'ice' ? (
         <>
           {props.PageState === 1 ? (
             <>
@@ -153,7 +159,15 @@ const PreviousChangeHandler = (CategoryState, PageState, setPageState) => {
   equal(state, CategoryState, setPageState);
 };
 
-const NextChangeHandler = (CategoryState, PageState, setPageState) => {
+const NextChangeHandler = (
+  CategoryState,
+  PageState,
+  setPageState,
+  KioskState,
+  SetKioskState,
+) => {
+  console.log('AAA');
+  if (KioskState === '2-2T') SetKioskState(['2-2-1', '메뉴선택']);
   state = PageState + 1;
   equal(state, CategoryState, setPageState);
 };

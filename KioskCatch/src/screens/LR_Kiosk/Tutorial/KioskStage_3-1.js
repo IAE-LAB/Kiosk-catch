@@ -15,7 +15,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-export default KioskStage_2_2 = props => {
+export default KioskStage_3_1 = props => {
   var [Parameter, setParameter] = useState({
     offsetX: 0,
     offsetY: 0,
@@ -24,6 +24,8 @@ export default KioskStage_2_2 = props => {
   });
 
   const {width, height} = Dimensions.get('window');
+  let cartHeight = height * 0.14;
+  console.log(cartHeight);
 
   var [Opacity, setOpacity] = useState(Ostyles.opTrue);
 
@@ -31,13 +33,13 @@ export default KioskStage_2_2 = props => {
     console.log('useEffect ');
     props.MenuRef.current.measureInWindow((x, y, width, height) => {
       var tempX = x;
-      var tempY = y - props.headerHeight;
+      var tempY = y - props.headerHeight + height + cartHeight;
 
       setParameter({
         offsetX: tempX,
         offsetY: tempY,
         offsetWidth: width,
-        offsetHeight: height,
+        offsetHeight: cartHeight,
       });
     });
   }, [
@@ -55,7 +57,7 @@ export default KioskStage_2_2 = props => {
         style={{width: width, height: height}}
         onPress={() => {
           setOpacity(Ostyles.opFalse);
-          props.SetKioskState(['2-2T', '메뉴 선택']);
+          props.SetKioskState(['3-1T', '옵션변경']);
         }}>
         <View
           style={{
@@ -79,7 +81,7 @@ export default KioskStage_2_2 = props => {
                   fontSize: 25,
                   color: 'white',
                 }}>
-                메뉴
+                장바구니
               </Text>
             </View>
 
@@ -90,10 +92,13 @@ export default KioskStage_2_2 = props => {
                 style={styles.taskBubbleTail_icon}
               />
               <View style={styles.taskIofo}>
-                <Text style={styles.taskTxt}>다음 버튼을 눌러 추가적으로</Text>
                 <Text style={styles.taskTxt}>
-                  더 많은 메뉴를 확인할 수 있어요
+                  선택한 메뉴가 맞는지 확인 후,
                 </Text>
+                <Text style={styles.taskTxt}>
+                  옵션 버튼을 눌러 원하는 항목으로
+                </Text>
+                <Text style={styles.taskTxt}>변경할 수 있어요</Text>
               </View>
             </View>
           </View>
@@ -219,8 +224,9 @@ const styles = StyleSheet.create({
     transform: [{rotate: '90deg'}],
   },
   taskBubble: {
+    position: 'relative',
     alignItems: 'center',
-    top: 50,
+    top: -150,
   },
   taskBubbleTail_icon: {
     color: 'white',
@@ -248,7 +254,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFC000',
     textAlign: 'center',
-    top: 300,
+    top: 100,
     justifyContent: 'flex-end',
   },
 });

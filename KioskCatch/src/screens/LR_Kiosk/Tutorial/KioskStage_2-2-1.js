@@ -15,24 +15,22 @@ import {
   Dimensions,
 } from 'react-native';
 
-export default KioskStage_2_2 = props => {
+export default KioskStage_2_2_1 = props => {
   var [Parameter, setParameter] = useState({
     offsetX: 0,
     offsetY: 0,
     offsetWidth: 0,
     offsetHeight: 0,
   });
-
   const {width, height} = Dimensions.get('window');
 
   var [Opacity, setOpacity] = useState(Ostyles.opTrue);
 
   useEffect(() => {
-    console.log('useEffect ');
-    props.MenuRef.current.measureInWindow((x, y, width, height) => {
+    // console.log('props.OptionRef.current' + props.OptionRef.current);
+    props.MenuSelectRef.current.measureInWindow((x, y, width, height) => {
       var tempX = x;
       var tempY = y - props.headerHeight;
-
       setParameter({
         offsetX: tempX,
         offsetY: tempY,
@@ -55,34 +53,30 @@ export default KioskStage_2_2 = props => {
         style={{width: width, height: height}}
         onPress={() => {
           setOpacity(Ostyles.opFalse);
-          props.SetKioskState(['2-2T', '메뉴 선택']);
+          props.SetKioskState(['2-2-1T', '메뉴 선택']);
         }}>
         <View
-          style={{
-            position: 'relative',
-            top: Parameter.offsetY,
-            left: Parameter.offsetX,
-          }}>
-          <View
-            // ref={props.state}
-            style={[
-              styles.taskBox,
-              {
-                height: Parameter.offsetHeight + 15,
-                width: Parameter.offsetWidth,
-              },
-            ]}>
-            <View style={styles.taskName}>
-              <Text
-                style={{
-                  fontFamily: 'NanumSquare_acEB',
-                  fontSize: 25,
-                  color: 'white',
-                }}>
-                메뉴
-              </Text>
-            </View>
-
+          style={[
+            styles.taskBox,
+            {
+              // position: 'relative',
+              top: Parameter.offsetY,
+              right: Parameter.offsetX,
+              height: Parameter.offsetHeight,
+              width: Parameter.offsetWidth,
+            },
+          ]}>
+          <View style={styles.taskName}>
+            <Text
+              style={{
+                fontFamily: 'NanumSquare_acEB',
+                fontSize: 25,
+                color: 'white',
+              }}>
+              메뉴 선택
+            </Text>
+          </View>
+          <View style={{position: 'relative', top: -170, left: 70}}>
             <View style={styles.taskBubble}>
               <Icon_Entypo
                 name="controller-volume"
@@ -90,17 +84,14 @@ export default KioskStage_2_2 = props => {
                 style={styles.taskBubbleTail_icon}
               />
               <View style={styles.taskIofo}>
-                <Text style={styles.taskTxt}>다음 버튼을 눌러 추가적으로</Text>
-                <Text style={styles.taskTxt}>
-                  더 많은 메뉴를 확인할 수 있어요
-                </Text>
+                <Text style={styles.taskTxt}>말차라떼를 확인하고</Text>
+                <Text style={styles.taskTxt}>선택해보세요</Text>
               </View>
             </View>
           </View>
-          <MenuKR_Tutorial />
         </View>
 
-        <Text style={[styles.clickTxt]}>설명 확인 후, 화면을 클릭해주세요</Text>
+        {/* <Text style={[styles.clickTxt]}>설명 확인 후, 화면을 클릭해주세요</Text> */}
       </TouchableOpacity>
     </ImageBackground>
   );
@@ -117,7 +108,7 @@ const MenuKR_Tutorial = props => {
         <View style={styles.circle1} />
         <View style={styles.circle2} />
       </View>
-      <View style={styles.LR_btn} ref={props.NextBtnRef}>
+      <View style={styles.LR_btn}>
         <Text style={styles.LR_text}>다음</Text>
       </View>
     </View>
@@ -186,7 +177,7 @@ const styles = StyleSheet.create({
 
   taskName: {
     backgroundColor: '#FFC000',
-    width: 100,
+    width: 120,
     height: 35,
     alignItems: 'center',
     justifyContent: 'center',
@@ -196,8 +187,8 @@ const styles = StyleSheet.create({
     top: -35,
   },
   taskBox: {
-    // width: '100%',
-    // height: 318,
+    width: '100%',
+    height: 318,
     borderColor: '#FFC000',
     borderWidth: 5,
     alignContent: 'center',
@@ -220,12 +211,15 @@ const styles = StyleSheet.create({
   },
   taskBubble: {
     alignItems: 'center',
-    top: 50,
+    // top: -150,
+    // bottom: 200,
+    // position: 'relative',
   },
   taskBubbleTail_icon: {
     color: 'white',
     top: 103,
-    left: 125,
+    left: -130,
+    position: 'relative',
     transform: [{rotate: '-80deg'}],
   },
   taskIofo: {
@@ -235,6 +229,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     top: -16,
+
     borderRadius: 20,
   },
   taskTxt: {
