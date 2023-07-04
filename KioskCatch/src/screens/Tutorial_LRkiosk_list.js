@@ -52,7 +52,7 @@ export default function Tutorial_LRkiosk_list({navigation}) {
         <TouchableOpacity
           style={styles.btn}
           onPress={() =>
-            navigation.navigate('LR_Kiosk_explore_tutorial_1', {
+            navigation.navigate('LR_Kiosk_Start', {
               KioskState: KioskState,
               state: KioskState.stage[0],
             })
@@ -321,10 +321,8 @@ const styles = StyleSheet.create({
 
 /*
   키오스크 단계 State
-
   ** KioskState.stage[][0] -> 과업단계
   ** KioskState.stage[][1] -> 헤더에 나오는 이름
-
   --------------------------
   # 화면 터치하기
   (시작) 과업(세부과업) : 화면 터치하기(화면 터치하기)  ***** stage_header_(1)시작 단계 *****
@@ -338,7 +336,6 @@ const styles = StyleSheet.create({
       KioskState.stage[1][]
   KioskState.stage[1][0] : 2-1
   KioskState.stage[1][1]: 카테고리 확인
-
   (탐색) 과업(세부과업) : 메뉴 선택(메뉴 선택하기)
       KioskState.stage[2][]
   KioskState.stage[2][0] : 2-2
@@ -349,17 +346,14 @@ const styles = StyleSheet.create({
       KioskState.stage[3][]
   KioskState.stage[3][0] : 2-3 
   KioskState.stage[3][1]: 옵션 선택
-
   (탐색) 과업(세부과업) : 옵션 선택(사이즈 선택)
       KioskState.stage[4][]
   KioskState.stage[4][0] : 2-4
   KioskState.stage[4][1]: 옵션 선택
-
   (탐색) 과업(세부과업) : 옵션 선택(추가 옵션 선택)
       KioskState.stage[5][]
   KioskState.stage[5][0] : 2-5 
   KioskState.stage[5][1]: 옵션 선택
-
   (탐색) 과업(세부과업) : 옵션 선택(메뉴 담기)
       KioskState.stage[6][]
   KioskState.stage[6][0] : 2-6 
@@ -370,22 +364,18 @@ const styles = StyleSheet.create({
       KioskState.stage[7][]
   KioskState.stage[7][0] : 3-1 
   KioskState.stage[7][1]: 장바구니
-
   (탐색) 과업(세부과업) : 장바구니(수량조절(삭제))
       KioskState.stage[8][]
   KioskState.stage[8][0] : 3-2 
   KioskState.stage[8][1]: 장바구니
-
   (탐색) 과업(세부과업) : 주문하기(주문하기버튼 클릭하기)
       KioskState.stage[9][]
   KioskState.stage[9][0] : 3-3 
   KioskState.stage[9][1]: 주문하기
-
   (탐색) 과업(세부과업) : 식사 장소 선택(매장취식 혹은 포장하기 선택하기)
       KioskState.stage[10][]
   KioskState.stage[10][0] : 3-4
   KioskState.stage[10][1]: 식사 장소 선택
-
   (탐색) 과업(세부과업) : 주문 내역 확인(주문 내역 확인)
       KioskState.stage[11][]
   KioskState.stage[11][0] : 3-5
@@ -396,30 +386,24 @@ const styles = StyleSheet.create({
       KioskState.stage[12][]
   KioskState.stage[12][0] : 4-1
   KioskState.stage[12][1]: 결제
-
   (탐색) 과업(세부과업) : 결제 방식 선택(신용카드 선택하기)
       KioskState.stage[13][]
   KioskState.stage[13][0] : 4-2
   KioskState.stage[13][1]: 결제
-
   (탐색) 과업(세부과업) : 결제(신용카드 넣기)
       KioskState.stage[14][]
   KioskState.stage[14][0] : 4-3
   KioskState.stage[14][1]: 결제
-
   (탐색) 과업(세부과업) : 결제 완료(-)
       KioskState.stage[15][]
   KioskState.stage[15][0] : 4-4
   KioskState.stage[15][1]: 결제 완료
-
   (탐색) 과업(세부과업) : 멤버십 적립(멤버십 적립 번호 혹은 넘어가기)
       KioskState.stage[16][]
   KioskState.stage[16][0] : 4-5
   KioskState.stage[16][1]: 멤버십 적립
-
   (탐색) 과업(세부과업) : 주문번호 받기(주문번호 받기) ***** stage_header_(5)결제 완료 단계 *****
       KioskState.stage[17][]
   KioskState.stage[17][0] : 4-6
   KioskState.stage[17][1]: 주문번호 받기
-
 */

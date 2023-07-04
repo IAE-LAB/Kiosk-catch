@@ -32,7 +32,7 @@ import LR_Kiosk from './src/screens/LR_Kiosk';
 import CB_Kiosk from './src/screens/CB_Kiosk';
 
 import CB_Kiosk_Start from './src/screens/CB_Kiosk/CB_Kiosk_Start';
-// import CB_Kiosk_Explore from './src/screens/CB_Kiosk/CB_Kiosk_Explore';
+import CB_Kiosk_Explore from './src/screens/CB_Kiosk/CB_Kiosk_Explore';
 
 import LR_Kiosk_Start from './src/screens/LR_Kiosk/LR_Kiosk_Start';
 import LR_Kiosk_Explore_Tutorial from './src/screens/LR_Kiosk/Tutorial/LR_Kiosk_Explore_Tutorial';
