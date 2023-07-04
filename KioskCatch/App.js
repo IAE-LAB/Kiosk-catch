@@ -17,11 +17,11 @@ import Main from './src/screens/Main';
 import Kiosk_practical from './src/screens/Tutorial/List/Kiosk_practical';
 import Kiosk_difficulty_high from './src/screens/Tutorial/List/Kiosk_difficulty_high';
 import Kiosk_difficulty_medium from './src/screens/Tutorial/List/Kiosk_difficulty_medium';
-import Kiosk_difficulty_low from './src/screens/Tutorial/List/Kiosk_difficulty_low';
+import Kiosk_difficulty_low from './src/screens/Tutorial/Process/Kiosk_difficulty_low';
 
 // 튜토리얼 process Screen
-// import Kiosk_tutorial_Menu from './src/screens/Tutorial/Process/Kiosk_tutorial_Menu';
-// import Kiosk_tutorial_StartScreen from './src/screens/Tutorial/Process/Kiosk_tutorial_StartScreen';
+import Kiosk_tutorial_Menu from './src/screens/Tutorial/Process/Kiosk_tutorial_Menu';
+import Kiosk_tutorial_StartScreen from './src/screens/Tutorial/Process/Kiosk_tutorial_StartScreen';
 
 import Kiosk_useFreely from './src/screens/Kiosk_useFreely';
 import Tutorial_1 from './src/screens/Tutorial_1';
@@ -260,18 +260,6 @@ function App() {
           {/* <Stack.Screen
             name="LR_Kiosk_explore_option"
             component={LR_Kiosk_explore_option}
-            options={{
-              title: '탐색단계',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-                fontSize: 20,
-              },
-            }}
-<<<<<<< HEAD
-          />
-          <Stack.Screen
-            name="LR_Kiosk_explore_cart"
-            component={LR_Kiosk_explore_cart}
             options={{
               title: '탐색단계',
               headerTitleStyle: {
