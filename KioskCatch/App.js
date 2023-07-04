@@ -12,10 +12,17 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Icon_Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Main from './src/screens/Main';
-import Kiosk_practical from './src/screens/Kiosk_practical';
-import Kiosk_difficulty_high from './src/screens/Kiosk_difficulty_high';
-import Kiosk_difficulty_medium from './src/screens/Kiosk_difficulty_medium';
-import Kiosk_difficulty_low from './src/screens/Kiosk_difficulty_low';
+
+// 튜토리얼 list screen
+import Kiosk_practical from './src/screens/Tutorial/List/Kiosk_practical';
+import Kiosk_difficulty_high from './src/screens/Tutorial/List/Kiosk_difficulty_high';
+import Kiosk_difficulty_medium from './src/screens/Tutorial/List/Kiosk_difficulty_medium';
+import Kiosk_difficulty_low from './src/screens/Tutorial/Process/Kiosk_difficulty_low';
+
+// 튜토리얼 process Screen
+import Kiosk_tutorial_Menu from './src/screens/Tutorial/Process/Kiosk_tutorial_Menu';
+import Kiosk_tutorial_StartScreen from './src/screens/Tutorial/Process/Kiosk_tutorial_StartScreen';
+
 import Kiosk_useFreely from './src/screens/Kiosk_useFreely';
 import Tutorial_1 from './src/screens/Tutorial_1';
 import Tutorial_LRkiosk_list from './src/screens/Tutorial_LRkiosk_list';
