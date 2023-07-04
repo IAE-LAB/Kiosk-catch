@@ -17,11 +17,11 @@ import Main from './src/screens/Main';
 import Kiosk_practical from './src/screens/Tutorial/List/Kiosk_practical';
 import Kiosk_difficulty_high from './src/screens/Tutorial/List/Kiosk_difficulty_high';
 import Kiosk_difficulty_medium from './src/screens/Tutorial/List/Kiosk_difficulty_medium';
-import Kiosk_difficulty_low from './src/screens/Tutorial/Process/Kiosk_difficulty_low';
+import Kiosk_difficulty_low from './src/screens/Tutorial/List/Kiosk_difficulty_low';
 
 // 튜토리얼 process Screen
-import Kiosk_tutorial_Menu from './src/screens/Tutorial/Process/Kiosk_tutorial_Menu';
-import Kiosk_tutorial_StartScreen from './src/screens/Tutorial/Process/Kiosk_tutorial_StartScreen';
+// import Kiosk_tutorial_Menu from './src/screens/Tutorial/Process/Kiosk_tutorial_Menu';
+// import Kiosk_tutorial_StartScreen from './src/screens/Tutorial/Process/Kiosk_tutorial_StartScreen';
 
 import Kiosk_useFreely from './src/screens/Kiosk_useFreely';
 import Tutorial_1 from './src/screens/Tutorial_1';
@@ -45,8 +45,6 @@ import LR_Kiosk_Explore from './src/screens/LR_Kiosk/LR_Kiosk_Explore';
 // import LR_Kiosk_explore_tutorial_1 from './src/screens/danbi/LR_Kiosk_explore_tutorial_1';
 // import LR_Kiosk_explore_tutorial_2 from './src/screens/danbi/LR_Kiosk_explore_tutorial_2';
 import Kiosk_update from './src/screens/danbi/Kiosk_update';
-
-import CB_Kiosk_Explore from './src/screens/danbi/CB_Kiosk_Explore';
 
 const Stack = createStackNavigator();
 
