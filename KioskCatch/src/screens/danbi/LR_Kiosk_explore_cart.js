@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState}, {useState} from 'react';
 import 'react-native-gesture-handler';
 import Icon_FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
@@ -154,7 +154,8 @@ export default function LR_Kiosk_explore_cart({navigation}) {
         </View>
         <TouchableOpacity
           style={styles.LR_btn}
-          //onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}
+          ////onPress={() => navigation.navigate('LR_Kiosk_explore_menu')}
+                    
         >
           <Text style={styles.LR_text}>다음</Text>
         </TouchableOpacity>

@@ -187,7 +187,7 @@ const Cart = props => {
             <Text style={styles.cart_text}>0 개</Text>
           </View>
           <View style={styles.cartInfo}>
-            <Text style={styles.cart_text}>0</Text>
+            <Text style={styles.cart_text}>0 원</Text>
           </View>
         </>
       )}
