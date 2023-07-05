@@ -13,17 +13,16 @@ import Icon_Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Main from './src/screens/Main';
 
-// 튜토리얼 list screen
+// 시뮬레이션 list screen
 import Kiosk_practical from './src/screens/Tutorial/List/Kiosk_practical';
 import Kiosk_difficulty_high from './src/screens/Tutorial/List/Kiosk_difficulty_high';
 import Kiosk_difficulty_medium from './src/screens/Tutorial/List/Kiosk_difficulty_medium';
 import Kiosk_difficulty_low from './src/screens/Tutorial/List/Kiosk_difficulty_low';
 
-// 튜토리얼 process Screen
-import Kiosk_tutorial_Menu from './src/screens/Tutorial/Process/Kiosk_tutorial_Menu';
-import Kiosk_tutorial_StartScreen from './src/screens/Tutorial/Process/Kiosk_tutorial_StartScreen';
+// 시뮬레이션 process Screen
+import Kiosk_simulation_start from './src/screens/Tutorial/Process/Kiosk_simulation_StartScreen';
+import Kiosk_simulation_Explore from './src/screens/Tutorial/Process/Kiosk_simulation_Explore';
 
-import Kiosk_useFreely from './src/screens/Kiosk_useFreely';
 import Tutorial_1 from './src/screens/Tutorial_1';
 import Tutorial_LRkiosk_list from './src/screens/Tutorial_LRkiosk_list';
 import Tutorial_CBkiosk_list from './src/screens/Tutorial_CBkiosk_list';
@@ -57,6 +56,8 @@ function App() {
           component={Main}
           options={{headerShown: false}}
         />
+
+        {/* simulation */}
         <Stack.Group>
           <Stack.Screen
             name="Kiosk_practical"
@@ -69,6 +70,33 @@ function App() {
               },
             }}
           />
+          {/* 자유학습 */}
+          {/* 시작 */}
+          <Stack.Screen
+            name="Kiosk_simulation_start"
+            component={Kiosk_simulation_start}
+            options={{
+              title: '자유탐색',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          {/* 탐색 */}
+          <Stack.Screen
+            name="Kiosk_simulation_Explore"
+            component={Kiosk_simulation_Explore}
+            options={{
+              title: '자유탐색',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+
+          {/* 난이도 */}
           <Stack.Screen
             name="Kiosk_difficulty_high"
             component={Kiosk_difficulty_high}
@@ -94,17 +122,6 @@ function App() {
           <Stack.Screen
             name="Kiosk_difficulty_low"
             component={Kiosk_difficulty_low}
-            options={{
-              title: '실전 키오스크 이용하기',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-                fontSize: 20,
-              },
-            }}
-          />
-          <Stack.Screen
-            name="Kiosk_useFreely"
-            component={Kiosk_useFreely}
             options={{
               title: '실전 키오스크 이용하기',
               headerTitleStyle: {
@@ -166,7 +183,19 @@ function App() {
         </Stack.Group>
 
         <Stack.Group>
-          {/* 새로 제작 */}
+          {/* 튜토리얼 */}
+
+          <Stack.Screen
+            name="LR_Kiosk_Explore_Tutorial"
+            component={LR_Kiosk_Explore_Tutorial}
+            options={{
+              title: '실전 키오스크 이용하기',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
           <Stack.Screen
             name="LR_Kiosk_Start"
             component={LR_Kiosk_Start}
@@ -190,17 +219,6 @@ function App() {
             }}
           />
 
-          <Stack.Screen
-            name="LR_Kiosk_Explore_Tutorial"
-            component={LR_Kiosk_Explore_Tutorial}
-            options={{
-              title: '시작단계',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-                fontSize: 20,
-              },
-            }}
-          />
           <Stack.Screen
             name="LR_Kiosk_Explore"
             component={LR_Kiosk_Explore}

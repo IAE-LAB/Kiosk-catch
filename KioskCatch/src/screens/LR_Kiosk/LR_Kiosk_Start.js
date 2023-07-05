@@ -8,57 +8,82 @@ import {
   StyleSheet,
   TouchableOpacity,
   Animated,
+  PanResponder,
+  ScrollView,
+  Platform,
 } from 'react-native';
+import {PinchGestureHandler, State} from 'react-native-gesture-handler';
+import WebView from 'react-native-webview';
 
 import StageHeader from 'KioskCatch/src/components/Kiosk/Stage';
 
 export default function LR_Kiosk({navigation, route}) {
-  var [KioskState, SetKioskState] = useState(route.params.state);
+  const [KioskState, setKioskState] = useState(route.params.state);
+  const scale = useRef(new Animated.Value(1)).current;
+
+  const onPinchGestureEvent = Animated.event([{nativeEvent: {scale: scale}}], {
+    useNativeDriver: true,
+  });
+
+  const onPinchHandlerStateChange = event => {
+    if (event.nativeEvent.oldState === State.ACTIVE) {
+      Animated.spring(scale, {
+        toValue: 1,
+        useNativeDriver: true,
+      }).start();
+    }
+  };
 
   return (
     <View style={styles.contents}>
-      <ImageBackground
-        source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
-        style={styles.bgImage}>
-        <View style={styles.black_layer}></View>
+      <PinchGestureHandler
+        onGestureEvent={onPinchGestureEvent}
+        onHandlerStateChange={onPinchHandlerStateChange}>
+        <Animated.View style={{flex: 1, transform: [{scale: scale}]}}>
+          <ImageBackground
+            source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
+            style={styles.bgImage}>
+            <View style={styles.black_layer}></View>
 
-        <TouchableOpacity
-          style={styles.background}
-          onPress={() => {
-            navigation.navigate('LR_Kiosk_Explore', {
-              KioskState: KioskState,
-              state: ['2-1', '카테고리 확인'],
-              CategoryState: 'coffee',
-              PageState: 1,
-              visibleOption: {
-                basicOption: 0,
-                order: 0,
-                takeoutOption: 0,
-                payment: 0,
-                pay: 0,
-                final: 0,
-              },
-            });
-          }}>
-          <View style={styles.btn}>
-            <View style={{flexDirection: 'row', marginBottom: 10}}>
-              <Text style={styles.btn_text}>"</Text>
-              <Text style={styles.btn_text_highlight}>주문</Text>
-              <Text style={styles.btn_text}>을 하시려면 </Text>
-            </View>
-            <View style={{flexDirection: 'row'}}>
-              <Text style={styles.btn_text}>화면을 </Text>
-              <Text style={styles.btn_text_highlight}>터치</Text>
-              <Text style={styles.btn_text}>해주세요"</Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-        <StageHeader
-          state={KioskState[0]}
-          navigation={navigation}
-          style={{zIndex: 1}}
-        />
-      </ImageBackground>
+            <TouchableOpacity
+              style={styles.background}
+              onPress={() => {
+                navigation.navigate('LR_Kiosk_Explore', {
+                  KioskState: KioskState,
+                  state: ['2-1', '카테고리 확인'],
+                  CategoryState: 'coffee',
+                  PageState: 1,
+                  visibleOption: {
+                    basicOption: 0,
+                    order: 0,
+                    takeoutOption: 0,
+                    payment: 0,
+                    pay: 0,
+                    final: 0,
+                  },
+                });
+              }}>
+              <View style={styles.btn}>
+                <View style={{flexDirection: 'row', marginBottom: 10}}>
+                  <Text style={styles.btn_text}>"</Text>
+                  <Text style={styles.btn_text_highlight}>주문</Text>
+                  <Text style={styles.btn_text}>을 하시려면 </Text>
+                </View>
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={styles.btn_text}>화면을 </Text>
+                  <Text style={styles.btn_text_highlight}>터치</Text>
+                  <Text style={styles.btn_text}>해주세요"</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+            <StageHeader
+              state={KioskState[0]}
+              navigation={navigation}
+              style={{zIndex: 1}}
+            />
+          </ImageBackground>
+        </Animated.View>
+      </PinchGestureHandler>
     </View>
   );
 }

@@ -10,8 +10,7 @@ function Kiosk_practical({navigation}) {
       </View>
       <TouchableOpacity
         style={styles.btn1}
-        onPress={() => navigation.navigate('Kiosk_difficulty_high')}
-        >
+        onPress={() => navigation.navigate('Kiosk_difficulty_high')}>
         <View style={{flexDirection: 'column'}}>
           <View style={{flexDirection: 'row'}}>
             <Text style={styles.btn_text}>난이도 : </Text>
@@ -21,8 +20,7 @@ function Kiosk_practical({navigation}) {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.btn2}
-        onPress={() => navigation.navigate('Kiosk_difficulty_medium')}
-        >
+        onPress={() => navigation.navigate('Kiosk_difficulty_medium')}>
         <View style={{flexDirection: 'column'}}>
           <View style={{flexDirection: 'row'}}>
             <Text style={styles.btn_text}>난이도 : </Text>
@@ -32,8 +30,7 @@ function Kiosk_practical({navigation}) {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.btn3}
-        onPress={() => navigation.navigate('Kiosk_difficulty_low')}
-        >
+        onPress={() => navigation.navigate('Kiosk_difficulty_low')}>
         <View style={{flexDirection: 'column'}}>
           <View style={{flexDirection: 'row'}}>
             <Text style={styles.btn_text}>난이도 : </Text>
@@ -46,12 +43,11 @@ function Kiosk_practical({navigation}) {
       </View>
       <TouchableOpacity
         style={styles.btn4}
-        onPress={() => navigation.navigate('Kiosk_useFreely')}
-        >
+        onPress={() => navigation.navigate('Kiosk_simulation_start')}>
         <Image
           source={require('KioskCatch/assets/img/main/simulation_icon_yellow.png')}
           style={styles.btnImage}
-        /> 
+        />
         <View style={{flexDirection: 'column'}}>
           <Text style={styles.btn_text_4}>키오스크</Text>
           <Text style={styles.btn_text_4}>자유롭게</Text>
