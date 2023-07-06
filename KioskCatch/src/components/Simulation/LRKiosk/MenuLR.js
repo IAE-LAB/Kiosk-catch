@@ -12,7 +12,7 @@ import {
   ImageBackground,
   Animated,
 } from 'react-native';
-import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
+import styles from 'KioskCatch/src/style/LR_Kiosk/LR_Kiosk_Explore';
 
 export default MenuLR = props => {
   return (
@@ -31,43 +31,19 @@ export default MenuLR = props => {
         </Text>
       </TouchableOpacity>
       <Circle CategoryState={props.CategoryState} PageState={props.PageState} />
-      {props.KioskState === '2-2T' || props.KioskState === '2-2' ? (
-        <Animated.View
-          style={[
-            styles.LR_btn,
-            {
-              transform: [{scale: props.animation}],
-              backgroundColor: '#FFC000',
-            },
-          ]}>
-          <TouchableOpacity
-            onPress={() =>
-              NextChangeHandler(
-                props.CategoryState,
-                props.PageState,
-                props.setPageState,
-                props.KioskState,
-                props.SetKioskState,
-              )
-            }>
-            <Text style={styles.LR_text}>다음</Text>
-          </TouchableOpacity>
-        </Animated.View>
-      ) : (
-        <TouchableOpacity
-          style={styles.LR_btn}
-          onPress={() =>
-            NextChangeHandler(
-              props.CategoryState,
-              props.PageState,
-              props.setPageState,
-              props.KioskState,
-              props.SetKioskState,
-            )
-          }>
-          <Text style={styles.LR_text}>다음</Text>
-        </TouchableOpacity>
-      )}
+      <TouchableOpacity
+        style={styles.LR_btn}
+        onPress={() =>
+          NextChangeHandler(
+            props.CategoryState,
+            props.PageState,
+            props.setPageState,
+            props.KioskState,
+            props.SetKioskState,
+          )
+        }>
+        <Text style={styles.LR_text}>다음</Text>
+      </TouchableOpacity>
     </View>
   );
 };

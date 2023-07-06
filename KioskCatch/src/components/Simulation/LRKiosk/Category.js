@@ -12,7 +12,7 @@ import {
   ImageBackground,
   Animated,
 } from 'react-native';
-import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
+import styles from 'KioskCatch/src//style/LR_Kiosk/LR_Kiosk_Explore';
 
 // 카테고리 컴포넌트
 export default Category = props => {
@@ -48,12 +48,7 @@ export default Category = props => {
     <View style={styles.category} ref={props.catagoryRef}>
       <TouchableOpacity
         onPress={() =>
-          PrevBtn(
-            props.SetKioskState,
-            props.setCategoryState,
-            props.setPageState,
-            SetCaText,
-          )
+          PrevBtn(props.setCategoryState, props.setPageState, SetCaText)
         }>
         <Icon_FontAwesome
           name="angle-left"
@@ -64,13 +59,7 @@ export default Category = props => {
       {CategoryList}
       <TouchableOpacity
         onPress={() =>
-          NextBtn(
-            props.KioskState,
-            props.SetKioskState,
-            props.setCategoryState,
-            props.setPageState,
-            SetCaText,
-          )
+          NextBtn(props.setCategoryState, props.setPageState, SetCaText)
         }>
         <Icon_FontAwesome
           name="angle-right"
@@ -82,27 +71,13 @@ export default Category = props => {
   );
 };
 
-const PrevBtn = (
-  KioskState,
-  SetKioskState,
-  setCategoryState,
-  setPageState,
-  SetCaText,
-) => {
-  if (KioskState === '2-1-2') SetKioskState(['2-2', '메뉴 선택']);
+const PrevBtn = (setCategoryState, setPageState, SetCaText) => {
   SetCaText(['커피', '음료', '차']);
   setCategoryState('coffee');
   setPageState(1);
 };
 
-const NextBtn = (
-  KioskState,
-  SetKioskState,
-  setCategoryState,
-  setPageState,
-  SetCaText,
-) => {
-  if (KioskState === '2-1T') SetKioskState(['2-1-2', '카테고리 확인']);
+const NextBtn = (setCategoryState, setPageState, SetCaText) => {
   SetCaText(['빵', '과자', '빙수']);
   setCategoryState('bread');
   setPageState(1);

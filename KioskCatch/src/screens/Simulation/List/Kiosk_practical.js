@@ -1,60 +1,63 @@
 import {Text, View, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import * as React from 'react';
 import 'react-native-gesture-handler';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 function Kiosk_practical({navigation}) {
   return (
-    <View style={styles.container}>
-      <View style={styles.h1_container}>
-        <Text style={styles.h1}>🤗 실전처럼 이용하기</Text>
+    <SafeAreaProvider>
+      <View style={styles.container}>
+        <View style={styles.h1_container}>
+          <Text style={styles.h1}>🤗 실전처럼 이용하기</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.btn1}
+          onPress={() => navigation.navigate('Kiosk_difficulty_high')}>
+          <View style={{flexDirection: 'column'}}>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={styles.btn_text}>난이도 : </Text>
+              <Text style={styles.btn_text_1}>상</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.btn2}
+          onPress={() => navigation.navigate('Kiosk_difficulty_medium')}>
+          <View style={{flexDirection: 'column'}}>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={styles.btn_text}>난이도 : </Text>
+              <Text style={styles.btn_text_2}>중</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.btn3}
+          onPress={() => navigation.navigate('Kiosk_difficulty_low')}>
+          <View style={{flexDirection: 'column'}}>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={styles.btn_text}>난이도 : </Text>
+              <Text style={styles.btn_text_3}>하</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+        <View style={styles.h1_container_2}>
+          <Text style={styles.h1}>🤗 키오스크 이용하기</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.btn4}
+          onPress={() => navigation.navigate('Kiosk_simulation_start')}>
+          <Image
+            source={require('KioskCatch/assets/img/main/simulation_icon_yellow.png')}
+            style={styles.btnImage}
+          />
+          <View style={{flexDirection: 'column'}}>
+            <Text style={styles.btn_text_4}>키오스크</Text>
+            <Text style={styles.btn_text_4}>자유롭게</Text>
+            <Text style={styles.btn_text_4}>이용하기</Text>
+          </View>
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        style={styles.btn1}
-        onPress={() => navigation.navigate('Kiosk_difficulty_high')}>
-        <View style={{flexDirection: 'column'}}>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={styles.btn_text}>난이도 : </Text>
-            <Text style={styles.btn_text_1}>상</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.btn2}
-        onPress={() => navigation.navigate('Kiosk_difficulty_medium')}>
-        <View style={{flexDirection: 'column'}}>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={styles.btn_text}>난이도 : </Text>
-            <Text style={styles.btn_text_2}>중</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.btn3}
-        onPress={() => navigation.navigate('Kiosk_difficulty_low')}>
-        <View style={{flexDirection: 'column'}}>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={styles.btn_text}>난이도 : </Text>
-            <Text style={styles.btn_text_3}>하</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-      <View style={styles.h1_container_2}>
-        <Text style={styles.h1}>🤗 키오스크 이용하기</Text>
-      </View>
-      <TouchableOpacity
-        style={styles.btn4}
-        onPress={() => navigation.navigate('Kiosk_simulation_start')}>
-        <Image
-          source={require('KioskCatch/assets/img/main/simulation_icon_yellow.png')}
-          style={styles.btnImage}
-        />
-        <View style={{flexDirection: 'column'}}>
-          <Text style={styles.btn_text_4}>키오스크</Text>
-          <Text style={styles.btn_text_4}>자유롭게</Text>
-          <Text style={styles.btn_text_4}>이용하기</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
+    </SafeAreaProvider>
   );
 }
 

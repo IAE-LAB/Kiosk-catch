@@ -15,14 +15,14 @@ import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 import Main from './src/screens/Main';
 
 // 시뮬레이션 list screen
-import Kiosk_practical from './src/screens/Tutorial/List/Kiosk_practical';
-import Kiosk_difficulty_high from './src/screens/Tutorial/List/Kiosk_difficulty_high';
-import Kiosk_difficulty_medium from './src/screens/Tutorial/List/Kiosk_difficulty_medium';
-import Kiosk_difficulty_low from './src/screens/Tutorial/List/Kiosk_difficulty_low';
+import Kiosk_practical from './src/screens/Simulation/List/Kiosk_practical';
+import Kiosk_difficulty_high from './src/screens/Simulation/List/Kiosk_difficulty_high';
+import Kiosk_difficulty_medium from './src/screens/Simulation/List/Kiosk_difficulty_medium';
+import Kiosk_difficulty_low from './src/screens/Simulation/List/Kiosk_difficulty_low';
 
 // 시뮬레이션 process Screen
-import Kiosk_simulation_start from './src/screens/Tutorial/Process/Kiosk_simulation_StartScreen';
-import Kiosk_simulation_Explore from './src/screens/Tutorial/Process/Kiosk_simulation_Explore';
+import Kiosk_simulation_start from './src/screens/Simulation/Process/Kiosk_simulation_StartScreen';
+import Kiosk_simulation_Explore from './src/screens/Simulation/Process/Kiosk_simulation_Explore';
 
 import Tutorial_1 from './src/screens/Tutorial_1';
 import Tutorial_LRkiosk_list from './src/screens/Tutorial_LRkiosk_list';

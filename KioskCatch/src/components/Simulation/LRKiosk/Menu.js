@@ -13,49 +13,66 @@ import {
   ImageBackground,
   Animated,
 } from 'react-native';
-import styles from '../../style/LR_Kiosk/LR_Kiosk_Explore';
+import styles from 'KioskCatch/src/style/LR_Kiosk/LR_Kiosk_Explore';
 
 export default Menu = props => {
-  // console.log(props.CategoryState +"   "+props.PageState);
   return (
-    <View style={[styles.menu]} ref={props.MenuRef}>
+    <View style={[styles.menu]}>
       {props.CategoryState === 'coffee' ? (
         <>
-          {props.PageState === 1 ? <CoffeeComponent1 /> : null}
-          {props.PageState === 2 ? (
-            <CoffeeComponent2
-              KioskState={props.KioskState}
-              animation={props.animation}
-              SetKioskState={props.SetKioskState}
-              SetvisibleOption={props.SetvisibleOption}
-              MenuSelectRef={props.MenuSelectRef}
-              SetSelectMenu={props.SetSelectMenu}
-            />
-          ) : null}
-          {props.PageState === 3 ? <CoffeeComponent3 /> : null}
+          {props.PageState === 1 ? <CoffeeComponent1 props={props} /> : null}
+          {props.PageState === 2 ? <CoffeeComponent2 props={props} /> : null}
+          {props.PageState === 3 ? <CoffeeComponent3 props={props} /> : null}
         </>
       ) : null}
       {props.CategoryState === 'beverage' ? (
-        <>{props.PageState === 1 ? <BeverageComponent1 /> : null}</>
+        <>
+          {props.PageState === 1 ? <BeverageComponent1 props={props} /> : null}
+        </>
       ) : null}
       {props.CategoryState === 'tea' ? (
-        <>{props.PageState === 1 ? <TeaComponent1 /> : null}</>
+        <>{props.PageState === 1 ? <TeaComponent1 props={props} /> : null}</>
       ) : null}
       {props.CategoryState === 'bread' ? (
         <>
-          {props.PageState === 1 ? <BreadComponent1 /> : null}
-          {props.PageState === 2 ? <BreadComponent2 /> : null}
-          {props.PageState === 3 ? <BreadComponent3 /> : null}
+          {props.PageState === 1 ? <BreadComponent1 props={props} /> : null}
+          {props.PageState === 2 ? <BreadComponent2 props={props} /> : null}
+          {props.PageState === 3 ? <BreadComponent3 props={props} /> : null}
         </>
       ) : null}
       {props.CategoryState === 'snack' ? (
-        <>{props.PageState === 1 ? <SnackComponent1 /> : null}</>
+        <>{props.PageState === 1 ? <SnackComponent1 props={props} /> : null}</>
       ) : null}
       {props.CategoryState === 'ice' ? (
-        <>{props.PageState === 1 ? <IceComponent1 /> : null}</>
+        <>{props.PageState === 1 ? <IceComponent1 props={props} /> : null}</>
       ) : null}
     </View>
   );
+};
+
+const addToCart = (menu, props) => {
+  const {name, price} = menu;
+
+  // Check if the menu item already exists in the cart
+  if (props.cartItems.has(name)) {
+    const existingItem = props.cartItems.get(name);
+    const updatedItem = {
+      ...existingItem,
+      quantity: existingItem.quantity + 1,
+    };
+
+    // Update the quantity of the existing item in the cart
+    props.setCartItems(new Map(props.cartItems.set(name, updatedItem)));
+  } else {
+    // Add a new item to the cart
+    const newItem = {
+      name,
+      price,
+      quantity: 1,
+    };
+    props.setCartItems(new Map(props.cartItems.set(name, newItem)));
+  }
+  console.log(props.cartItems);
 };
 
 // 커피
@@ -63,7 +80,11 @@ const CoffeeComponent1 = props => {
   return (
     <View>
       <View style={styles.menuRow}>
-        <TouchableOpacity style={styles.menuBtn}>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '아메리카노', price: 1400}, props.props)
+          }>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_americano.jpg')}
             style={styles.menuImage}></Image>
@@ -72,7 +93,11 @@ const CoffeeComponent1 = props => {
             <Text style={styles.menuTxt_highlight}>1,400 원</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuBtn}>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '카페라떼', price: 2000}, props.props)
+          }>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_cafe_latte.jpg')}
             style={styles.menuImage}></Image>
@@ -83,7 +108,11 @@ const CoffeeComponent1 = props => {
         </TouchableOpacity>
       </View>
       <View style={styles.menuRow}>
-        <TouchableOpacity style={styles.menuBtn}>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '카라멜모카', price: 2500}, props.props)
+          }>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_carameo_moca.jpg')}
             style={styles.menuImage}></Image>
@@ -92,7 +121,11 @@ const CoffeeComponent1 = props => {
             <Text style={styles.menuTxt_highlight}>2,500 원</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuBtn}>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '에스프레소', price: 1500}, props.props)
+          }>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso.jpg')}
             style={styles.menuImage}></Image>
@@ -103,7 +136,11 @@ const CoffeeComponent1 = props => {
         </TouchableOpacity>
       </View>
       <View style={styles.menuRow}>
-        <TouchableOpacity style={styles.menuBtn}>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '에스프레소 콘파냐', price: 2000}, props.props)
+          }>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_espresso_conpa.jpg')}
             style={styles.menuImage}></Image>
@@ -113,7 +150,11 @@ const CoffeeComponent1 = props => {
             <Text style={styles.menuTxt_highlight}>2,000 원</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuBtn}>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '카라멜 카페라떼', price: 2500}, props.props)
+          }>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_caramel_latte.jpg')}
             style={styles.menuImage}></Image>
@@ -132,7 +173,11 @@ const CoffeeComponent2 = props => {
   return (
     <View>
       <View style={styles.menuRow}>
-        <TouchableOpacity style={styles.menuBtn}>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '카푸치노', price: 2000}, props.props)
+          }>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_capuch.jpg')}
             style={styles.menuImage}></Image>
@@ -141,7 +186,11 @@ const CoffeeComponent2 = props => {
             <Text style={styles.menuTxt_highlight}>2,000 원</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuBtn}>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '아포카토', price: 3000}, props.props)
+          }>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/digital_apo.jpg')}
             style={styles.menuImage}></Image>
@@ -152,7 +201,11 @@ const CoffeeComponent2 = props => {
         </TouchableOpacity>
       </View>
       <View style={styles.menuRow}>
-        <TouchableOpacity style={styles.menuBtn}>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '콜드브루', price: 2500}, props.props)
+          }>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/cold.png')}
             style={styles.menuImage}></Image>
@@ -161,7 +214,11 @@ const CoffeeComponent2 = props => {
             <Text style={styles.menuTxt_highlight}>2,500 원</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.menuBtn}>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '콜드브루 라떼', price: 2800}, props.props)
+          }>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/cold_latte.png')}
             style={styles.menuImage}></Image>
@@ -173,51 +230,24 @@ const CoffeeComponent2 = props => {
         </TouchableOpacity>
       </View>
       <View style={styles.menuRow}>
-        {props.KioskState === '2-2-1' || props.KioskState === '2-2-1T' ? (
-          <Animated.View
-            style={[
-              styles.menuBtn,
-              {
-                transform: [{scale: props.animation}],
-                backgroundColor: '#FFC000',
-              },
-            ]}>
-            <TouchableOpacity
-              style={styles.menuBtnCom}
-              onPress={() => {
-                props.SetKioskState(['2-3', '옵션 선택']);
-                props.SetvisibleOption({
-                  basicOption: 1,
-                  // order: 0,
-                  takeoutOption: 0,
-                  payment: 0,
-                });
-                props.SetSelectMenu('말차라떼');
-              }}
-              ref={props.MenuSelectRef}>
-              <Image
-                source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.png')}
-                style={[styles.menuImage]}></Image>
-              <View style={{flexDirection: 'column'}}>
-                <Text style={styles.menuTxt}>말차라떼</Text>
-                <Text style={styles.menuTxt_highlight}>3,200 원</Text>
-              </View>
-            </TouchableOpacity>
-          </Animated.View>
-        ) : (
-          // </Animated.View>
-          <TouchableOpacity style={styles.menuBtn}>
-            <Image
-              source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.png')}
-              style={styles.menuImage}></Image>
-            <View style={{flexDirection: 'column'}}>
-              <Text style={styles.menuTxt}>말차라떼</Text>
-              <Text style={styles.menuTxt_highlight}>3,200 원</Text>
-            </View>
-          </TouchableOpacity>
-        )}
-
-        <TouchableOpacity style={styles.menuBtn}>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '말차라떼', price: 3200}, props.props)
+          }>
+          <Image
+            source={require('KioskCatch/assets/img/digital_cafe_menu/green_latte.png')}
+            style={styles.menuImage}></Image>
+          <View style={{flexDirection: 'column'}}>
+            <Text style={styles.menuTxt}>말차라떼</Text>
+            <Text style={styles.menuTxt_highlight}>3,200 원</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.menuBtn}
+          onPress={() =>
+            addToCart({name: '연유라떼', price: 3000}, props.props)
+          }>
           <Image
             source={require('KioskCatch/assets/img/digital_cafe_menu/spani_latte.png')}
             style={styles.menuImage}></Image>

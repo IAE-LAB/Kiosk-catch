@@ -25,8 +25,6 @@ export default function SimulationStart({navigation, route}) {
           style={styles.background}
           onPress={() => {
             navigation.navigate('Kiosk_simulation_Explore', {
-              // KioskState: KioskState,
-              // state: ['2-1', '카테고리 확인'],
               CategoryState: 'coffee',
               PageState: 1,
               visibleOption: {
