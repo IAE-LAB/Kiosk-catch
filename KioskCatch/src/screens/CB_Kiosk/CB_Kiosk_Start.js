@@ -13,6 +13,8 @@ import {
 import StageHeader from 'KioskCatch/src/components/Kiosk/Stage';
 
 export default function CB_Kiosk_Start({navigation, route}) {
+  var [KioskState, SetKioskState] = useState(route.params.state);
+
   return (
     <View style={styles.contents}>
       <ImageBackground
@@ -22,7 +24,22 @@ export default function CB_Kiosk_Start({navigation, route}) {
 
         <TouchableOpacity
           style={styles.background}
-          onPress={() => navigation.navigate('CB_Kiosk_Explore')}>
+          onPress={() => {
+            navigation.navigate('CB_Kiosk_Explore_coffee', {
+              KioskState: KioskState,
+              state: ['2-1', '카테고리 확인'],
+              CategoryState: 'coffee',
+              PageState: 1,
+              visibleOption: {
+                basicOption: 0,
+                order: 0,
+                takeoutOption: 0,
+                payment: 0,
+                pay: 0,
+                final: 0,
+              },
+            });
+          }}>
           <View style={styles.btn}>
             <View style={{flexDirection: 'row', marginBottom: 10}}>
               <Text style={styles.btn_text}>"</Text>
@@ -37,7 +54,7 @@ export default function CB_Kiosk_Start({navigation, route}) {
           </View>
         </TouchableOpacity>
         <StageHeader
-          state={route.params.state}
+          state={KioskState[0]}
           navigation={navigation}
           style={{zIndex: 1}}
         />

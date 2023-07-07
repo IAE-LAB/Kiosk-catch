@@ -45,6 +45,18 @@ import LR_Kiosk_Explore from './src/screens/LR_Kiosk/LR_Kiosk_Explore';
 // import LR_Kiosk_explore_tutorial_1 from './src/screens/danbi/LR_Kiosk_explore_tutorial_1';
 // import LR_Kiosk_explore_tutorial_2 from './src/screens/danbi/LR_Kiosk_explore_tutorial_2';
 import Kiosk_update from './src/screens/danbi/Kiosk_update';
+import Kiosk_free_learning from './src/screens/danbi/Kiosk_free_learning';
+import CB_Kiosk_Explore_coffee from './src/screens/danbi/CB_Kiosk/CB_Kiosk_Explore_coffee';
+import CB_Kiosk_Explore_MD_tumbler from './src/screens/danbi/CB_Kiosk/CB_Kiosk_Explore_MD_tumbler';
+import CB_Kiosk_Explore_MD_goods from './src/screens/danbi/CB_Kiosk/CB_Kiosk_Explore_MD_goods';
+import CB_Kiosk_Explore_coffee_option from './src/screens/danbi/CB_Kiosk/CB_Kiosk_Explore_coffee_option';
+import CB_Kiosk_Explore_coffee_option_choose from './src/screens/danbi/CB_Kiosk/CB_Kiosk_Explore_coffee_option_choose';
+import CB_Kiosk_Explore_coffee_cart from './src/screens/danbi/CB_Kiosk/CB_Kiosk_Explore_coffee_cart';
+import CB_Kiosk_Order_coffee_cart_confirmation from './src/screens/danbi/CB_Kiosk/CB_Kiosk_Order_coffee_cart_confirmation';
+import CB_Kiosk_Payment_methods from './src/screens/danbi/CB_Kiosk/CB_Kiosk_Payment_methods';
+import CB_Kiosk_Payment_methods_card from './src/screens/danbi/CB_Kiosk/CB_Kiosk_Payment_methods_card';
+import CB_Kiosk_Payment_card_paying from './src/screens/danbi/CB_Kiosk/CB_Kiosk_Payment_card_paying';
+import CB_Kiosk_Payment_card_complete from './src/screens/danbi/CB_Kiosk/CB_Kiosk_Payment_card_complete';
 
 const Stack = createStackNavigator();
 
@@ -102,11 +114,22 @@ function App() {
               },
             }}
           />
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Kiosk_useFreely"
             component={Kiosk_useFreely}
             options={{
               title: '실전 키오스크 이용하기',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          /> */}
+          <Stack.Screen
+            name="Kiosk_free_learning"
+            component={Kiosk_free_learning}
+            options={{
+              title: '자유 학습',
               headerTitleStyle: {
                 fontWeight: 'bold',
                 fontSize: 20,
@@ -315,11 +338,132 @@ function App() {
             }}
           />
 
-          <Stack.Screen
+          {/* <Stack.Screen
             name="CB_Kiosk_Explore"
             component={CB_Kiosk_Explore}
             options={{
               title: '탐색단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          /> */}
+          <Stack.Screen
+            name="CB_Kiosk_Explore_coffee"
+            component={CB_Kiosk_Explore_coffee}
+            options={{
+              title: '탐색단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Explore_MD_tumbler"
+            component={CB_Kiosk_Explore_MD_tumbler}
+            options={{
+              title: '탐색단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Explore_MD_goods"
+            component={CB_Kiosk_Explore_MD_goods}
+            options={{
+              title: '탐색단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Explore_coffee_option"
+            component={CB_Kiosk_Explore_coffee_option}
+            options={{
+              title: '탐색단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Explore_coffee_option_choose"
+            component={CB_Kiosk_Explore_coffee_option_choose}
+            options={{
+              title: '탐색단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Explore_coffee_cart"
+            component={CB_Kiosk_Explore_coffee_cart}
+            options={{
+              title: '탐색단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Order_coffee_cart_confirmation"
+            component={CB_Kiosk_Order_coffee_cart_confirmation}
+            options={{
+              title: '주문단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Payment_methods"
+            component={CB_Kiosk_Payment_methods}
+            options={{
+              title: '결제단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Payment_methods_card"
+            component={CB_Kiosk_Payment_methods_card}
+            options={{
+              title: '결제단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Payment_card_paying"
+            component={CB_Kiosk_Payment_card_paying}
+            options={{
+              title: '결제단계',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="CB_Kiosk_Payment_card_complete"
+            component={CB_Kiosk_Payment_card_complete}
+            options={{
+              title: '결제단계',
               headerTitleStyle: {
                 fontWeight: 'bold',
                 fontSize: 20,

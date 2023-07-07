@@ -46,7 +46,8 @@ function Kiosk_practical({navigation}) {
       </View>
       <TouchableOpacity
         style={styles.btn4}
-        onPress={() => navigation.navigate('Kiosk_useFreely')}
+        // onPress={() => navigation.navigate('Kiosk_useFreely')}
+        onPress={() => navigation.navigate('Kiosk_free_learning')}
         >
         <Image
           source={require('KioskCatch/assets/img/main/simulation_icon_yellow.png')}

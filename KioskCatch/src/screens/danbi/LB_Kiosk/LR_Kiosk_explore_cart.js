@@ -1,4 +1,4 @@
-import React, {useState}, {useState} from 'react';
+// import React, {useState}, {useState} from 'react';
 import 'react-native-gesture-handler';
 import Icon_FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon_AntDesign from 'react-native-vector-icons/AntDesign';
