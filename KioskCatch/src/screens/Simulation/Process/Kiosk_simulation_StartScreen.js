@@ -9,11 +9,22 @@ import {
   TouchableOpacity,
   Animated,
 } from 'react-native';
+import Tts from 'react-native-tts';
 
 import StageHeader from 'KioskCatch/src/components/Kiosk/Stage';
 
 export default function SimulationStart({navigation, route}) {
-  ``;
+  useEffect(() => {
+    _onPressSpeech('주문을 하시려면 화면을 터치해주세요.');
+  }, []);
+
+  const _onPressSpeech = name => {
+    Tts.setDefaultLanguage('ko-KR');
+    Tts.setDefaultRate(0.7);
+
+    Tts.stop();
+    Tts.speak(name);
+  };
   return (
     <View style={styles.contents}>
       <ImageBackground

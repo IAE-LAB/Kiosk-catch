@@ -116,7 +116,7 @@ const OrderListContainer = ({menu, handleDelete}) => {
         </TouchableOpacity>
       </View>
       <View style={styles.order_option}>
-        <Text style={styles.order_text}>{menu.price}</Text>
+        <Text style={styles.order_text}>{menu.price * menu.quantity}</Text>
         <TouchableOpacity style={styles.orderBtn}>
           <Icon_Feather name="plus" size={20} style={styles.order_icon} />
           <Text style={styles.order_text}>옵션</Text>

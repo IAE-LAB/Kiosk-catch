@@ -18,6 +18,8 @@ import Icon_MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommu
 
 import {useHeaderHeight} from '@react-navigation/elements';
 
+import PopupHandler from 'KioskCatch/src/components/Simulation/LRKiosk/Popup/PopupHandler';
+
 import Category from 'KioskCatch/src/components/Simulation/LRKiosk/Category';
 import Menu from 'KioskCatch/src/components/Simulation/LRKiosk/Menu';
 import MenuLR from 'KioskCatch/src/components/Simulation/LRKiosk/MenuLR';
@@ -34,10 +36,28 @@ export default function LR_Kiosk_tutorial_Explore({navigation, route}) {
   );
   const [PageState, setPageState] = useState(route.params.PageState);
   var [visibleOption, SetvisibleOption] = useState(route.params.visibleOption);
-  var [SelectMenu, SetSelectMenu] = useState('');
+  var [SelectMenuInfo, SetSelectMenuInfo] = useState({name: '', price: 0});
+  var [Option, SetOption] = useState({size: '', temp: ''});
+  var [optionTrigger, SetoptionTrigger] = useState(false);
+  var [check, SetCheck] = useState(false);
 
   return (
     <View style={{flex: 1, width: '100%', height: '100%'}}>
+      <PopupHandler
+        visibleOption={visibleOption}
+        SetvisibleOption={SetvisibleOption}
+        SelectMenuInfo={SelectMenuInfo}
+        SetSelectMenuInfo={SetSelectMenuInfo}
+        navigation={navigation}
+        Option={Option}
+        SetOption={SetOption}
+        optionTrigger={optionTrigger}
+        SetoptionTrigger={SetoptionTrigger}
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+        check={check}
+        SetCheck={SetCheck}
+      />
       <View style={styles.contents}>
         <Image
           source={require('KioskCatch/assets/img/LR_kiosk/LR_kiosk_bg.jpg')}
@@ -55,8 +75,12 @@ export default function LR_Kiosk_tutorial_Explore({navigation, route}) {
           PageState={PageState}
           visibleOption={visibleOption}
           SetvisibleOption={SetvisibleOption}
-          SelectMenu={SelectMenu}
-          SetSelectMenu={SetSelectMenu}
+          SelectMenuInfo={SelectMenuInfo}
+          SetSelectMenuInfo={SetSelectMenuInfo}
+          optionTrigger={optionTrigger}
+          SetoptionTrigger={SetoptionTrigger}
+          check={check}
+          SetCheck={SetCheck}
         />
 
         <MenuLR
@@ -65,7 +89,7 @@ export default function LR_Kiosk_tutorial_Explore({navigation, route}) {
           PageState={PageState}
           setPageState={setPageState}
         />
-        <Cart />
+        <Cart cartItems={cartItems} setCartItems={setCartItems} />
         <OrderList cartItems={cartItems} setCartItems={setCartItems} />
 
         <FooterBtn SetvisibleOption={SetvisibleOption} />
@@ -75,16 +99,25 @@ export default function LR_Kiosk_tutorial_Explore({navigation, route}) {
 }
 
 const Cart = props => {
+  const totalQuantity = Array.from(props.cartItems.values()).reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
+
+  const totalAmount = Array.from(props.cartItems.values())
+    .reduce((total, item) => total + item.price * item.quantity, 0)
+    .toLocaleString();
+
   return (
     <View style={styles.cart}>
       <View style={styles.cartInfo}>
         <Text style={styles.cart_text}>주문내역</Text>
       </View>
       <View style={styles.cartInfo2}>
-        <Text style={styles.cart_text}>0 개</Text>
+        <Text style={styles.cart_text}>{totalQuantity} 개</Text>
       </View>
       <View style={styles.cartInfo}>
-        <Text style={styles.cart_text}>0 원</Text>
+        <Text style={styles.cart_text}>{totalAmount} 원</Text>
       </View>
     </View>
   );
